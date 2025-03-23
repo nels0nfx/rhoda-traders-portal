@@ -1,0 +1,77 @@
+// Firebase Storage security rules for Rhoda Traders employment portal
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Common functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isSignedIn() && 
+        firestore.exists(/databases/(default)/documents/users/$(request.auth.uid)) &&
+        firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    function isCurrentUser(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+    
+    function isApprovedUser() {
+      return isSignedIn() && 
+        firestore.exists(/databases/(default)/documents/users/$(request.auth.uid)) &&
+        firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.status == 'approved';
+    }
+    
+    // Default deny all
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+    
+    // User profile pictures
+    match /profilePictures/{userId}/{fileName} {
+      // Create: Admin can upload for anyone, users can upload their own
+      // Read: Anyone can read (public profile pictures)
+      // Update: Admin can update for anyone, users can update their own
+      // Delete: Admin can delete for anyone, users can delete their own
+      allow create, update: if isAdmin() || isCurrentUser(userId);
+      allow read: if true;
+      allow delete: if isAdmin() || isCurrentUser(userId);
+    }
+    
+    // User resumes
+    match /resumes/{userId}/{fileName} {
+      // Create: Admin can upload for anyone, users can upload their own
+      // Read: Admin can read all, users can read their own
+      // Update: Admin can update for anyone, users can update their own
+      // Delete: Admin can delete for anyone, users can delete their own
+      allow create, update: if isAdmin() || isCurrentUser(userId);
+      allow read: if isAdmin() || isCurrentUser(userId);
+      allow delete: if isAdmin() || isCurrentUser(userId);
+    }
+    
+    // Report photos
+    match /reports/{userId}/{fileName} {
+      // Create: Admin can upload for anyone, approved users can upload their own
+      // Read: Admin can read all, users can read their own
+      // Update: Admin can update for anyone, users can update their own
+      // Delete: Admin can delete for anyone, users can delete their own
+      allow create, update: if isAdmin() || (isApprovedUser() && isCurrentUser(userId));
+      allow read: if isAdmin() || isCurrentUser(userId);
+      allow delete: if isAdmin() || isCurrentUser(userId);
+    }
+    
+    // Shipment photos (admin only)
+    match /shipments/{shipmentId}/{fileName} {
+      // Create: Only admin can upload
+      // Read: Admin can read all, assigned users can read
+      // Update: Only admin can update
+      // Delete: Only admin can delete
+      allow create, update, delete: if isAdmin();
+      allow read: if isAdmin() || 
+        (isSignedIn() && 
+         firestore.exists(/databases/(default)/documents/shipments/$(shipmentId)) &&
+         firestore.get(/databases/(default)/documents/shipments/$(shipmentId)).data.userId == request.auth.uid);
+    }
+  }
+}

@@ -1,0 +1,100 @@
+// Firestore security rules for Rhoda Traders employment portal
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Common functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isSignedIn() && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    function isCurrentUser(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+    
+    function isApprovedUser() {
+      return isSignedIn() && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == 'approved';
+    }
+    
+    // Users collection
+    match /users/{userId} {
+      // Create: Anyone can create a user document (during registration)
+      // Read: Admin can read all, users can read their own
+      // Update: Admin can update all, users can update their own
+      // Delete: Only admin can delete
+      allow create: if isSignedIn() && request.auth.uid == request.resource.data.uid;
+      allow read: if isAdmin() || isCurrentUser(resource.data.uid);
+      allow update: if isAdmin() || (isCurrentUser(resource.data.uid) && 
+        (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'status'])));
+      allow delete: if isAdmin();
+    }
+    
+    // Reports collection
+    match /reports/{reportId} {
+      // Create: Only approved users can create reports
+      // Read: Admin can read all, users can read their own
+      // Update: Admin can update all, users can update their own drafts
+      // Delete: Admin can delete all, users can delete their own drafts
+      allow create: if isApprovedUser() && request.resource.data.userId == request.auth.uid;
+      allow read: if isAdmin() || isCurrentUser(resource.data.userId);
+      allow update: if isAdmin() || (isCurrentUser(resource.data.userId) && resource.data.status == 'draft');
+      allow delete: if isAdmin() || (isCurrentUser(resource.data.userId) && resource.data.status == 'draft');
+    }
+    
+    // Report drafts collection
+    match /reportDrafts/{draftId} {
+      // Create: Only approved users can create drafts
+      // Read: Admin can read all, users can read their own
+      // Update: Admin can update all, users can update their own
+      // Delete: Admin can delete all, users can delete their own
+      allow create: if isApprovedUser() && request.resource.data.userId == request.auth.uid;
+      allow read: if isAdmin() || isCurrentUser(resource.data.userId);
+      allow update: if isAdmin() || isCurrentUser(resource.data.userId);
+      allow delete: if isAdmin() || isCurrentUser(resource.data.userId);
+    }
+    
+    // Shipments collection
+    match /shipments/{shipmentId} {
+      // Create: Only admin can create shipments
+      // Read: Admin can read all, users can read their assigned shipments
+      // Update: Admin can update all, users can update their assigned shipments status
+      // Delete: Only admin can delete
+      allow create: if isAdmin();
+      allow read: if isAdmin() || isCurrentUser(resource.data.userId);
+      allow update: if isAdmin() || (isCurrentUser(resource.data.userId) && 
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt']));
+      allow delete: if isAdmin();
+    }
+    
+    // Messages collection
+    match /messages/{messageId} {
+      // Create: Admin and approved users can create messages
+      // Read: Admin can read all, users can read messages they sent or received
+      // Update: Only admin can update
+      // Delete: Only admin can delete
+      allow create: if isAdmin() || (isApprovedUser() && request.resource.data.senderId == request.auth.uid);
+      allow read: if isAdmin() || isCurrentUser(resource.data.senderId) || isCurrentUser(resource.data.recipientId);
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+    
+    // Payments collection
+    match /payments/{paymentId} {
+      // Create: Only admin can create payments
+      // Read: Admin can read all, users can read their own payments
+      // Update: Only admin can update
+      // Delete: Only admin can delete
+      allow create: if isAdmin();
+      allow read: if isAdmin() || isCurrentUser(resource.data.userId);
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+  }
+}

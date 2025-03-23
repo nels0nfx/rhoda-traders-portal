@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Reports - Rhoda Traders</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Dashboard Sidebar -->
+        <div class="dashboard-sidebar">
+            <div class="dashboard-logo">
+                <a href="../../index.html">
+                    <img src="../../images/logo.jpeg" alt="Rhoda Traders Logo" class="logo">
+                </a>
+            </div>
+            
+            <ul class="dashboard-nav">
+                <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                <li><a href="reports.html" class="active"><i class="fas fa-file-alt"></i> Submit Reports</a></li>
+                <li><a href="shipments.html"><i class="fas fa-box"></i> Shipments</a></li>
+                <li><a href="payments.html"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+                <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="help.html"><i class="fas fa-question-circle"></i> Help & Support</a></li>
+                <li><a href="../../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+        
+        <!-- Dashboard Main Content -->
+        <div class="dashboard-main">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Submit Reports</h1>
+                <div class="user-info">
+                    <span class="user-greeting">Welcome, <strong>John Doe</strong></span>
+                    <div class="user-avatar">
+                        <img src="../../images/avatar.jpg" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Report Form Section -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Count Report Form</h2>
+                    <p>Use this form to submit your Wall Fittings count report after receiving a shipment.</p>
+                </div>
+                
+                <div class="report-form-container">
+                    <form id="count-report-form" class="needs-validation">
+                        <div class="form-section">
+                            <h3>Shipment Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="tracking-number">Tracking Number *</label>
+                                <select id="tracking-number" name="trackingNumber" class="form-control" required>
+                                    <option value="">Select Tracking Number</option>
+                                    <option value="RT78945612">RT78945612 (Received Today)</option>
+                                    <option value="RT98765432">RT98765432 (Expected: March 25, 2025)</option>
+                                    <option value="RT45678912">RT45678912 (Expected: March 27, 2025)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="delivery-date">Delivery Date *</label>
+                                <input type="date" id="delivery-date" name="deliveryDate" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="shipment-condition">Shipment Condition *</label>
+                                <select id="shipment-condition" name="shipmentCondition" class="form-control" required>
+                                    <option value="">Select Condition</option>
+                                    <option value="excellent">Excellent - No damage</option>
+                                    <option value="good">Good - Minor packaging damage</option>
+                                    <option value="fair">Fair - Some damage but contents intact</option>
+                                    <option value="poor">Poor - Significant damage</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="condition-notes">Condition Notes</label>
+                                <textarea id="condition-notes" name="conditionNotes" class="form-control" rows="3" placeholder="Describe any damage or issues with the shipment packaging"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Box Contents</h3>
+                            
+                            <div class="box-counting-container">
+                                <div class="box-count-item">
+                                    <div class="box-header">
+                                        <h4>Box #1</h4>
+                                        <button type="button" class="btn btn-sm btn-outline remove-box" disabled>
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="box1-type">Wall Fitting Type *</label>
+                                            <select id="box1-type" name="boxes[0][type]" class="form-control" required>
+                                                <option value="">Select Type</option>
+                                                <option value="type-a">Type A</option>
+                                                <option value="type-b">Type B</option>
+                                                <option value="type-c">Type C</option>
+                                                <option value="mixed">Mixed Types</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="box1-count">Item Count *</label>
+                                            <input type="number" id="box1-count" name="boxes[0][count]" class="form-control" min="1" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="box1-notes">Notes</label>
+                                        <textarea id="box1-notes" name="boxes[0][notes]" class="form-control" rows="2" placeholder="Any additional notes about this box"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="box-actions">
+                                <button type="button" id="add-box" class="btn btn-sm btn-outline">
+                                    <i class="fas fa-plus"></i> Add Another Box
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Additional Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="report-notes">Additional Notes</label>
+                                <textarea id="report-notes" name="reportNotes" class="form-control" rows="3" placeholder="Any other information you'd like to include in your report"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="report-photos">Upload Photos (Optional)</label>
+                                <div class="file-upload">
+                                    <input type="file" id="report-photos" name="reportPhotos" class="file-input" multiple>
+                                    <label for="report-photos" class="file-label">Choose Files</label>
+                                    <span class="file-name">No files chosen</span>
+                                </div>
+                                <small class="form-text">You can upload up to 5 photos of the shipment or contents if needed. Max size: 5MB per file.</small>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Submit Report</button>
+                            <button type="button" class="btn btn-outline" id="save-draft">Save as Draft</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Previous Reports Section -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Previous Reports</h2>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Report ID</th>
+                                <th>Tracking #</th>
+                                <th>Submission Date</th>
+                                <th>Total Items</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>R-23456</td>
+                                <td>RT65432198</td>
+                                <td>March 15, 2025</td>
+                                <td>250</td>
+                                <td><span class="status-badge status-approved">Approved</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="View Report">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>R-23455</td>
+                                <td>RT12345678</td>
+                                <td>March 10, 2025</td>
+                                <td>175</td>
+                                <td><span class="status-badge status-approved">Approved</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="View Report">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>R-23454</td>
+                                <td>RT87654321</td>
+                                <td>March 5, 2025</td>
+                                <td>300</td>
+                                <td><span class="status-badge status-approved">Approved</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="View Report">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Reporting Guidelines -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Reporting Guidelines</h2>
+                </div>
+                
+                <div class="guidelines">
+                    <div class="guideline-item">
+                        <div class="guideline-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="guideline-content">
+                            <h4>Count Accurately</h4>
+                            <p>Take your time to count all Wall Fittings carefully. Double-check your counts to ensure accuracy.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="guideline-item">
+                        <div class="guideline-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="guideline-content">
+                            <h4>Document Damage</h4>
+                            <p>If you notice any damage to the shipment or items, take clear photos and include them in your report.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="guideline-item">
+                        <div class="guideline-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="guideline-content">
+                            <h4>Submit Promptly</h4>
+                            <p>Submit your report within 24 hours of receiving the shipment to ensure timely processing.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="guideline-item">
+                        <div class="guideline-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="guideline-content">
+                            <h4>Report Discrepancies</h4>
+                            <p>If the contents don't match what was expected, note this clearly in your report.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Submitted Modal -->
+    <div id="report-submitted-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Report Submitted</h3>
+                <button class="modal-close" data-modal-close>&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h4>Thank You!</h4>
+                <p>Your count report has been successfully submitted. Our team will review your report and process it accordingly.</p>
+                <p>Report ID: <strong>R-23457</strong></p>
+            </div>
+            <div class="modal-footer">
+                <a href="index.html" class="btn btn-primary">Return to Dashboard</a>
+                <button class="btn btn-outline" data-modal-close>Submit Another Report</button>
+            </div>
+        </div>
+    </div>
+
+<!-- Firebase JavaScript Files -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-storage.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBCF-MkWe8JhkXKNoKLqzWAZxZVHMukO-c",
+            authDomain: "rhoda-traders.firebaseapp.com",
+            projectId: "rhoda-traders",
+            storageBucket: "rhoda-traders.firebasestorage.app",
+            messagingSenderId: "88738705806",
+            appId: "1:88738705806:web:0cbbb1be4ce51daa7334df",
+            measurementId: "G-44T210GQ6S"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore();
+        const storage = getStorage();
+        
+        let currentUser = null;
+
+        // Check if user is logged in
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in
+                currentUser = user;
+                
+                try {
+                    // Get user data from Firestore
+                    const q = query(collection(db, 'users'), where('uid', '==', user.uid));
+                    const querySnapshot = await getDocs(q);
+                    
+                    if (!querySnapshot.empty) {
+                        const userData = querySnapshot.docs[0].data();
+                        
+                        // Update UI with user data
+                        updateUserInfo(userData);
+                        
+                        // Load user's shipments for dropdown
+                        loadUserShipments(user.uid);
+                        
+                        // Load previous reports
+                        loadPreviousReports(user.uid);
+                    } else {
+                        console.error('User data not found in Firestore');
+                    }
+                } catch (error) {
+                    console.error('Error getting user data:', error);
+                }
+            } else {
+                // User is signed out, redirect to login page
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Update user info in the UI
+        function updateUserInfo(userData) {
+            const userGreeting = document.querySelector('.user-greeting strong');
+            if (userGreeting) {
+                userGreeting.textContent = `${userData.firstName} ${userData.lastName}`;
+            }
+        }
+
+        // Load user's shipments from Firestore
+        async function loadUserShipments(userId) {
+            try {
+                const q = query(
+                    collection(db, 'shipments'),
+                    where('userId', '==', userId),
+                    where('status', 'in', ['delivered', 'in_transit']),
+                    orderBy('deliveryDate', 'desc')
+                );
+                
+                const querySnapshot = await getDocs(q);
+                const shipments = [];
+                
+                querySnapshot.forEach((doc) => {
+                    shipments.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
+                });
+                
+                // Update shipments dropdown
+                updateShipmentsDropdown(shipments);
+            } catch (error) {
+                console.error('Error loading shipments:', error);
+            }
+        }
+
+        // Update shipments dropdown
+        function updateShipmentsDropdown(shipments) {
+            const trackingSelect = document.getElementById('tracking-number');
+            if (!trackingSelect) return;
+            
+            // Clear existing options (keep the default option)
+            while (trackingSelect.options.length > 1) {
+                trackingSelect.remove(1);
+            }
+            
+            // Add shipment options
+            shipments.forEach(shipment => {
+                const option = document.createElement('option');
+                option.value = shipment.trackingId;
+                
+                // Format delivery date
+                const deliveryDate = shipment.deliveryDate?.toDate ? 
+                    shipment.deliveryDate.toDate() : 
+                    new Date(shipment.deliveryDate);
+                    
+                const status = shipment.status === 'delivered' ? 
+                    'Received' : 
+                    `Expected: ${formatDate(deliveryDate)}`;
+                    
+                option.textContent = `${shipment.trackingId} (${status})`;
+                option.dataset.shipmentId = shipment.id;
+                option.dataset.deliveryDate = formatDateISO(deliveryDate);
+                
+                trackingSelect.appendChild(option);
+            });
+            
+            // Add event listener to update delivery date when shipment is selected
+            trackingSelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+                if (selectedOption.dataset.deliveryDate) {
+                    document.getElementById('delivery-date').value = selectedOption.dataset.deliveryDate;
+                }
+            });
+        }
+
+        // Load previous reports
+        async function loadPreviousReports(userId) {
+            try {
+                const q = query(
+                    collection(db, 'reports'),
+                    where('userId', '==', userId),
+                    orderBy('createdAt', 'desc')
+                );
+                
+                const querySnapshot = await getDocs(q);
+                const reports = [];
+                
+                querySnapshot.forEach((doc) => {
+                    reports.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
+                });
+                
+                // Update previous reports table
+                updatePreviousReportsTable(reports);
+            } catch (error) {
+                console.error('Error loading previous reports:', error);
+            }
+        }
+
+        // Update previous reports table
+        function updatePreviousReportsTable(reports) {
+            const tableBody = document.querySelector('.dashboard-section:nth-of-type(2) tbody');
+            if (!tableBody) return;
+            
+            // Clear existing rows
+            tableBody.innerHTML = '';
+            
+            // Add report rows
+            if (reports.length === 0) {
+                const emptyRow = document.createElement('tr');
+                emptyRow.innerHTML = `<td colspan="6" class="text-center">No reports submitted yet.</td>`;
+                tableBody.appendChild(emptyRow);
+                return;
+            }
+            
+            reports.forEach(report => {
+                const totalItems = report.boxes.reduce((total, box) => total + parseInt(box.count), 0);
+                const submissionDate = report.createdAt?.toDate ? 
+                    report.createdAt.toDate() : 
+                    new Date(report.createdAt);
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${report.id.substring(0, 7)}</td>
+                    <td>${report.trackingNumber}</td>
+                    <td>${formatDate(submissionDate)}</td>
+                    <td>${totalItems}</td>
+                    <td><span class="status-badge status-${report.status}">${formatStatus(report.status)}</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline view-report" data-report-id="${report.id}" data-tooltip="View Report">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+            
+            // Add event listeners to view buttons
+            document.querySelectorAll('.view-report').forEach(button => {
+                button.addEventListener('click', function() {
+                    const reportId = this.dataset.reportId;
+                    // Here you would show a modal with the report details
+                    alert(`View report ${reportId} (to be implemented)`);
+                });
+            });
+        }
+
+        // Add Box Button Functionality
+        document.getElementById('add-box').addEventListener('click', function() {
+            const boxContainer = document.querySelector('.box-counting-container');
+            const boxCount = boxContainer.children.length;
+            
+            // Create new box element
+            const newBox = document.createElement('div');
+            newBox.className = 'box-count-item';
+            newBox.innerHTML = `
+                <div class="box-header">
+                    <h4>Box #${boxCount + 1}</h4>
+                    <button type="button" class="btn btn-sm btn-outline remove-box">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="box${boxCount + 1}-type">Wall Fitting Type *</label>
+                        <select id="box${boxCount + 1}-type" name="boxes[${boxCount}][type]" class="form-control" required>
+                            <option value="">Select Type</option>
+                            <option value="type-a">Type A</option>
+                            <option value="type-b">Type B</option>
+                            <option value="type-c">Type C</option>
+                            <option value="mixed">Mixed Types</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="box${boxCount + 1}-count">Item Count *</label>
+                        <input type="number" id="box${boxCount + 1}-count" name="boxes[${boxCount}][count]" class="form-control" min="1" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="box${boxCount + 1}-notes">Notes</label>
+                    <textarea id="box${boxCount + 1}-notes" name="boxes[${boxCount}][notes]" class="form-control" rows="2" placeholder="Any additional notes about this box"></textarea>
+                </div>
+            `;
+            
+            boxContainer.appendChild(newBox);
+            
+            // Enable remove button for first box
+            if (boxCount === 0) {
+                document.querySelector('.remove-box').disabled = false;
+            }
+            
+            // Add event listener to new remove button
+            newBox.querySelector('.remove-box').addEventListener('click', function() {
+                newBox.remove();
+                
+                // Update box numbers
+                updateBoxNumbers();
+                
+                // If only one box left, disable its remove button
+                if (document.querySelectorAll('.box-count-item').length === 1) {
+                    document.querySelector('.remove-box').disabled = true;
+                }
+            });
+        });
+        
+        // Update box numbers after removal
+        function updateBoxNumbers() {
+            const boxes = document.querySelectorAll('.box-count-item');
+            boxes.forEach((box, index) => {
+                box.querySelector('h4').textContent = `Box #${index + 1}`;
+                
+                // Update input names and IDs
+                const typeSelect = box.querySelector('select[id*="-type"]');
+                const countInput = box.querySelector('input[id*="-count"]');
+                const notesTextarea = box.querySelector('textarea[id*="-notes"]');
+                
+                typeSelect.id = `box${index + 1}-type`;
+                typeSelect.name = `boxes[${index}][type]`;
+                
+                countInput.id = `box${index + 1}-count`;
+                countInput.name = `boxes[${index}][count]`;
+                
+                notesTextarea.id = `box${index + 1}-notes`;
+                notesTextarea.name = `boxes[${index}][notes]`;
+            });
+        }
+        
+        // Form submission
+        document.getElementById('count-report-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            if (!currentUser) {
+                alert('You must be logged in to submit a report.');
+                return;
+            }
+            
+            // Show loading state
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            
+            try {
+                // Get form data
+                const formData = new FormData(this);
+                const reportData = {
+                    userId: currentUser.uid,
+                    trackingNumber: formData.get('trackingNumber'),
+                    shipmentId: document.getElementById('tracking-number').options[document.getElementById('tracking-number').selectedIndex].dataset.shipmentId,
+                    deliveryDate: new Date(formData.get('deliveryDate')),
+                    shipmentCondition: formData.get('shipmentCondition'),
+                    conditionNotes: formData.get('conditionNotes'),
+                    reportNotes: formData.get('reportNotes'),
+                    boxes: [],
+                    status: 'pending',
+                    createdAt: serverTimestamp()
+                };
+                
+                // Get box data
+                const boxElements = document.querySelectorAll('.box-count-item');
+                boxElements.forEach((box, index) => {
+                    reportData.boxes.push({
+                        type: formData.get(`boxes[${index}][type]`),
+                        count: parseInt(formData.get(`boxes[${index}][count]`)),
+                        notes: formData.get(`boxes[${index}][notes]`)
+                    });
+                });
+                
+                // Upload photos if provided
+                const photoFiles = document.getElementById('report-photos').files;
+                if (photoFiles.length > 0) {
+                    reportData.photos = [];
+                    
+                    for (let i = 0; i < photoFiles.length; i++) {
+                        const file = photoFiles[i];
+                        const photoRef = ref(storage, `reports/${currentUser.uid}/${Date.now()}_${file.name}`);
+                        await uploadBytes(photoRef, file);
+                        const photoUrl = await getDownloadURL(photoRef);
+                        reportData.photos.push(photoUrl);
+                    }
+                }
+                
+                // Add report to Firestore
+                const docRef = await addDoc(collection(db, 'reports'), reportData);
+                
+                // Show success modal with report ID
+                document.querySelector('#report-submitted-modal .modal-body p:nth-of-type(2) strong').textContent = docRef.id.substring(0, 7);
+                document.getElementById('report-submitted-modal').classList.add('active');
+                
+                // Reset form
+                this.reset();
+                
+                // Reload previous reports
+                loadPreviousReports(currentUser.uid);
+                
+            } catch (error) {
+                console.error('Error submitting report:', error);
+                alert('Failed to submit report. Please try again.');
+            } finally {
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        });
+        
+        // Save draft
+        document.getElementById('save-draft').addEventListener('click', async function() {
+            if (!currentUser) {
+                alert('You must be logged in to save a draft.');
+                return;
+            }
+            
+            try {
+                const form = document.getElementById('count-report-form');
+                const formData = new FormData(form);
+                
+                // Get basic report data
+                const draftData = {
+                    userId: currentUser.uid,
+                    trackingNumber: formData.get('trackingNumber') || '',
+                    deliveryDate: formData.get('deliveryDate') ? new Date(formData.get('deliveryDate')) : null,
+                    shipmentCondition: formData.get('shipmentCondition') || '',
+                    conditionNotes: formData.get('conditionNotes') || '',
+                    reportNotes: formData.get('reportNotes') || '',
+                    boxes: [],
+                    status: 'draft',
+                    createdAt: serverTimestamp(),
+                    updatedAt: serverTimestamp()
+                };
+                
+                // Get box data
+                const boxElements = document.querySelectorAll('.box-count-item');
+                boxElements.forEach((box, index) => {
+                    draftData.boxes.push({
+                        type: formData.get(`boxes[${index}][type]`) || '',
+                        count: formData.get(`boxes[${index}][count]`) ? parseInt(formData.get(`boxes[${index}][count]`)) : 0,
+                        notes: formData.get(`boxes[${index}][notes]`) || ''
+                    });
+                });
+                
+                // Save draft to Firestore
+                await addDoc(collection(db, 'reportDrafts'), draftData);
+                
+                alert('Report saved as draft!');
+            } catch (error) {
+                console.error('Error saving draft:', error);
+                alert('Failed to save draft. Please try again.');
+            }
+        });
+        
+        // File upload preview
+        document.getElementById('report-photos').addEventListener('change', function() {
+            const fileNameDisplay = this.nextElementSibling.nextElementSibling;
+            if (this.files.length > 0) {
+                fileNameDisplay.textContent = this.files.length === 1 ? 
+                    this.files[0].name : 
+                    `${this.files.length} files selected`;
+            } else {
+                fileNameDisplay.textContent = 'No files chosen';
+            }
+        });
+
+        // Handle logout
+        document.querySelector('a[href="../../index.html"]').addEventListener('click', async function(event) {
+            event.preventDefault();
+            try {
+                await signOut(auth);
+                window.location.href = '../../index.html';
+            } catch (error) {
+                console.error('Error signing out:', error);
+            }
+        });
+
+        // Helper function to format date
+        function formatDate(date) {
+            return new Date(date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        // Helper function to format date as ISO string (YYYY-MM-DD)
+        function formatDateISO(date) {
+            const d = new Date(date);
+            return d.toISOString().split('T')[0];
+        }
+
+        // Helper function to format status
+        function formatStatus(status) {
+            const statusMap = {
+                'pending': 'Pending',
+                'approved': 'Approved',
+                'rejected': 'Rejected',
+                'draft': 'Draft'
+            };
+            
+            return statusMap[status] || status.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+        }
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="../../js/main.js"></script>
+</body>
+</html>

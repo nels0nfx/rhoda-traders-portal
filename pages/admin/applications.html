@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications - Rhoda Traders Admin</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Dashboard Sidebar -->
+        <div class="dashboard-sidebar">
+            <div class="dashboard-logo">
+                <a href="../../index.html">
+                    <img src="../../images/logo.jpeg" alt="Rhoda Traders Logo" class="logo">
+                </a>
+            </div>
+            
+            <ul class="dashboard-nav">
+                <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="applications.html" class="active"><i class="fas fa-user-plus"></i> Applications</a></li>
+                <li><a href="workers.html"><i class="fas fa-users"></i> Workers</a></li>
+                <li><a href="shipments.html"><i class="fas fa-box"></i> Shipments</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-alt"></i> Reports</a></li>
+                <li><a href="payments.html"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+                <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="../../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+        
+        <!-- Dashboard Main Content -->
+        <div class="dashboard-main">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Applications</h1>
+                <div class="user-info">
+                    <span class="user-greeting">Welcome, <strong>Admin</strong></span>
+                    <div class="user-avatar">
+                        <img src="../../images/admin-avatar.jpg" alt="Admin Avatar">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filter Section -->
+            <div class="dashboard-section">
+                <div class="filter-container">
+                    <div class="filter-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="status-filter">Status</label>
+                                <select id="status-filter" class="form-control">
+                                    <option value="all">All Statuses</option>
+                                    <option value="pending" selected>Pending</option>
+                                    <option value="approved">Approved</option>
+                                    <option value="rejected">Rejected</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="date-filter">Date Range</label>
+                                <select id="date-filter" class="form-control">
+                                    <option value="all">All Time</option>
+                                    <option value="today">Today</option>
+                                    <option value="week" selected>This Week</option>
+                                    <option value="month">This Month</option>
+                                    <option value="custom">Custom Range</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="location-filter">Location</label>
+                                <select id="location-filter" class="form-control">
+                                    <option value="all">All Locations</option>
+                                    <option value="us">United States</option>
+                                    <option value="ca">Canada</option>
+                                    <option value="uk">United Kingdom</option>
+                                    <option value="au">Australia</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="search-applications">Search</label>
+                                <input type="text" id="search-applications" class="form-control" placeholder="Search by name, email, or ID...">
+                            </div>
+                            <div class="form-group filter-actions">
+                                <button class="btn btn-primary">Apply Filters</button>
+                                <button class="btn btn-outline">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Applications Stats -->
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Total Applications</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">156</div>
+                    <div class="dashboard-card-label">
+                        All time
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Pending</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">15</div>
+                    <div class="dashboard-card-label">
+                        Awaiting review
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Approved</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">42</div>
+                    <div class="dashboard-card-label">
+                        Active workers
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Rejected</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">99</div>
+                    <div class="dashboard-card-label">
+                        Not qualified
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Applications Table -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Pending Applications</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-success" id="approve-selected" disabled>
+                            <i class="fas fa-check"></i> Approve Selected
+                        </button>
+                        <button class="btn btn-danger" id="reject-selected" disabled>
+                            <i class="fas fa-times"></i> Reject Selected
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="select-all">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th>Date Applied</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="select-application" value="A-1024">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>A-1024</td>
+                                <td>Sarah Johnson</td>
+                                <td>New York, USA</td>
+                                <td>March 22, 2025</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" data-application-id="A-1024" data-modal-target="application-modal">
+                                        <i class="fas fa-eye"></i> Review
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="select-application" value="A-1023">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>A-1023</td>
+                                <td>Michael Davis</td>
+                                <td>Chicago, USA</td>
+                                <td>March 21, 2025</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" data-application-id="A-1023" data-modal-target="application-modal">
+                                        <i class="fas fa-eye"></i> Review
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="select-application" value="A-1022">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>A-1022</td>
+                                <td>Jennifer Smith</td>
+                                <td>Los Angeles, USA</td>
+                                <td>March 20, 2025</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" data-application-id="A-1022" data-modal-target="application-modal">
+                                        <i class="fas fa-eye"></i> Review
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="select-application" value="A-1021">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>A-1021</td>
+                                <td>David Wilson</td>
+                                <td>Miami, USA</td>
+                                <td>March 19, 2025</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" data-application-id="A-1021" data-modal-target="application-modal">
+                                        <i class="fas fa-eye"></i> Review
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="select-application" value="A-1020">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td>A-1020</td>
+                                <td>Lisa Brown</td>
+                                <td>Dallas, USA</td>
+                                <td>March 18, 2025</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" data-application-id="A-1020" data-modal-target="application-modal">
+                                        <i class="fas fa-eye"></i> Review
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="pagination-button" disabled>
+                        <i class="fas fa-angle-double-left"></i>
+                    </button>
+                    <button class="pagination-button" disabled>
+                        <i class="fas fa-angle-left"></i>
+                    </button>
+                    <button class="pagination-button active">1</button>
+                    <button class="pagination-button">2</button>
+                    <button class="pagination-button">3</button>
+                    <button class="pagination-button">
+                        <i class="fas fa-angle-right"></i>
+                    </button>
+                    <button class="pagination-button">
+                        <i class="fas fa-angle-double-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Review Modal -->
+    <div id="application-modal" class="modal-overlay">
+        <div class="modal modal-large">
+            <div class="modal-header">
+                <h3 class="modal-title">Application Review</h3>
+                <button class="modal-close" data-modal-close>&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="application-review">
+                    <div class="application-header">
+                        <div class="application-info">
+                            <h4>Application ID: <span id="application-id">A-1024</span></h4>
+                            <p>Submitted on: <span id="application-date">March 22, 2025</span></p>
+                        </div>
+                        <div class="application-status">
+                            <span class="status-badge status-pending">Pending</span>
+                        </div>
+                    </div>
+                    
+                    <div class="application-tabs">
+                        <button class="tab-button active" data-tab="personal-info">Personal Info</button>
+                        <button class="tab-button" data-tab="professional-info">Professional Info</button>
+                        <button class="tab-button" data-tab="additional-info">Additional Info</button>
+                        <button class="tab-button" data-tab="documents">Documents</button>
+                    </div>
+                    
+                    <div class="application-tab-content">
+                        <!-- Personal Info Tab -->
+                        <div class="tab-pane active" id="personal-info">
+                            <div class="applicant-details">
+                                <div class="detail-section">
+                                    <h4>Contact Information</h4>
+                                    <div class="detail-grid">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Full Name</span>
+                                            <span class="detail-value">Sarah Johnson</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Email</span>
+                                            <span class="detail-value">sarah.johnson@example.com</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Phone</span>
+                                            <span class="detail-value">+1 (555) 123-4567</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="detail-section">
+                                    <h4>Address</h4>
+                                    <div class="detail-grid">
+                                        <div class="detail-item full-width">
+                                            <span class="detail-label">Street Address</span>
+                                            <span class="detail-value">123 Main Street, Apt 4B</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">City</span>
+                                            <span class="detail-value">New York</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">State/Province</span>
+                                            <span class="detail-value">NY</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Zip/Postal Code</span>
+                                            <span class="detail-value">10001</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Country</span>
+                                            <span class="detail-value">United States</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Professional Info Tab -->
+                        <div class="tab-pane" id="professional-info">
+                            <div class="applicant-details">
+                                <div class="detail-section">
+                                    <h4>Employment Status</h4>
+                                    <div class="detail-grid">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Current Status</span>
+                                            <span class="detail-value">Employed Part-Time</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">Availability</span>
+                                            <span class="detail-value">20-30 hours per week</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="detail-section">
+                                    <h4>Experience</h4>
+                                    <div class="detail-item full-width">
+                                        <span class="detail-label">Relevant Experience</span>
+                                        <span class="detail-value">
+                                            I have 3 years of experience in inventory management and quality control. In my previous role, I was responsible for counting and tracking inventory for a retail store. I'm very detail-oriented and have experience with reporting and documentation.
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="detail-section">
+                                    <h4>Qualifications</h4>
+                                    <div class="detail-grid">
+                                        <div class="detail-item">
+                                            <span class="detail-label">Secure Location</span>
+                                            <span class="detail-value">Yes</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label">FedEx Coordination</span>
+                                            <span class="detail-value">Yes</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional Info Tab -->
+                        <div class="tab-pane" id="additional-info">
+                            <div class="applicant-details">
+                                <div class="detail-section">
+                                    <h4>Motivation</h4>
+                                    <div class="detail-item full-width">
+                                        <span class="detail-label">Why Join Rhoda Traders</span>
+                                        <span class="detail-value">
+                                            I'm interested in joining Rhoda Traders because I'm looking for a flexible work-from-home opportunity that allows me to use my organizational skills. The position seems like a great fit for my experience with inventory management, and I appreciate the opportunity to work independently while still being part of a team.
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="detail-section">
+                                    <h4>Additional Information</h4>
+                                    <div class="detail-item full-width">
+                                        <span class="detail-label">How did you hear about us</span>
+                                        <span class="detail-value">Job Board</span>
+                                    </div>
+                                    <div class="detail-item full-width">
+                                        <span class="detail-label">Questions</span>
+                                        <span class="detail-value">
+                                            What is the typical turnaround time for shipments? How frequently would I be receiving boxes?
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Documents Tab -->
+                        <div class="tab-pane" id="documents">
+                            <div class="applicant-details">
+                                <div class="detail-section">
+                                    <h4>Uploaded Documents</h4>
+                                    <div class="document-list">
+                                        <div class="document-item">
+                                            <div class="document-icon">
+                                                <i class="fas fa-file-pdf"></i>
+                                            </div>
+                                            <div class="document-info">
+                                                <h5>Resume</h5>
+                                                <p>sarah_johnson_resume.pdf</p>
+                                            </div>
+                                            <div class="document-actions">
+                                                <button class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-download"></i> Download
+                                                </button>
+                                                <button class="btn btn-sm btn-outline">
+                                                    <i class="fas fa-eye"></i> View
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="application-decision">
+                    <div class="decision-section">
+                        <h4>Decision</h4>
+                        <div class="decision-buttons">
+                            <button class="btn btn-success" id="approve-application">
+                                <i class="fas fa-check"></i> Approve
+                            </button>
+                            <button class="btn btn-danger" id="reject-application">
+                                <i class="fas fa-times"></i> Reject
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="decision-section">
+                        <h4>Notes</h4>
+                        <textarea id="decision-notes" class="form-control" rows="3" placeholder="Add notes about this decision (optional)"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Approval Confirmation Modal -->
+    <div id="approval-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Confirm Approval</h3>
+                <button class="modal-close" data-modal-close>&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to approve this application? This will:</p>
+                <ul>
+                    <li>Create a new worker account</li>
+                    <li>Send a welcome email to the applicant</li>
+                    <li>Add them to the active workers list</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" id="confirm-approval">Yes, Approve</button>
+                <button class="btn btn-outline" data-modal-close>Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rejection Confirmation Modal -->
+    <div id="rejection-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Confirm Rejection</h3>
+                <button class="modal-close" data-modal-close>&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to reject this application?</p>
+                <div class="form-group">
+                    <label for="rejection-reason">Rejection Reason</label>
+                    <select id="rejection-reason" class="form-control">
+                        <option value="">Select a reason</option>
+                        <option value="not-qualified">Not qualified</option>
+                        <option value="incomplete">Incomplete application</option>
+                        <option value="location">Location not supported</option>
+                        <option value="availability">Insufficient availability</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group" id="other-reason-container" style="display: none;">
+                    <label for="other-reason">Specify Reason</label>
+                    <textarea id="other-reason" class="form-control" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" id="confirm-rejection">Yes, Reject</button>
+                <button class="btn btn-outline" data-modal-close>Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script>
+        // Tab Functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and panes
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding pane
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Checkbox Selection
+        const selectAll = document.getElementById('select-all');
+        const checkboxes = document.querySelectorAll('input[name="select-application"]');
+        const approveSelected = document.getElementById('approve-selected');
+        const rejectSelected = document.getElementById('reject-selected');
+        
+        selectAll.addEventListener('change', function() {
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+            
+            updateButtonState();
+        });
+        
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateButtonState);
+        });
+        
+        function updateButtonState() {
+            const checkedCount = document.querySelectorAll('input[name="select-application"]:checked').length;
+            
+            approveSelected.disabled = checkedCount === 0;
+            rejectSelected.disabled = checkedCount === 0;
+        }
+        
+        // Decision Modals
+        document.getElementById('approve-application').addEventListener('click', function() {
+            document.getElementById('application-modal').classList.remove('active');
+            document.getElementById('approval-modal').classList.add('active');
+        });
+        
+        document.getElementById('reject-application').addEventListener('click', function() {
+            document.getElementById('application-modal').classList.remove('active');
+            document.getElementById('rejection-modal').classList.add('active');
+        });
+        
+        // Rejection Reason Handling
+        document.getElementById('rejection-reason').addEventListener('change', function() {
+            const otherReasonContainer = document.getElementById('other-reason-container');
+            otherReasonContainer.style.display = this.value === 'other' ? 'block' : 'none';
+        });
+        
+        // Confirm Approval
+        document.getElementById('confirm-approval').addEventListener('click', function() {
+            // Here you would send the approval to your backend
+            document.getElementById('approval-modal').classList.remove('active');
+            
+            // For demo purposes, show an alert
+            alert('Application approved successfully!');
+            
+            // Refresh the page or update the UI
+            // window.location.reload();
+        });
+        
+        // Confirm Rejection
+        document.getElementById('confirm-rejection').addEventListener('click', function() {
+            const reason = document.getElementById('rejection-reason').value;
+            
+            if (!reason) {
+                alert('Please select a rejection reason.');
+                return;
+            }
+            
+            // Here you would send the rejection to your backend
+            document.getElementById('rejection-modal').classList.remove('active');
+            
+            // For demo purposes, show an alert
+            alert('Application rejected successfully!');
+            
+            // Refresh the page or update the UI
+            // window.location.reload();
+        });
+    </script>
+</body>
+</html>

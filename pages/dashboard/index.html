@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Rhoda Traders</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Dashboard Sidebar -->
+        <div class="dashboard-sidebar">
+            <div class="dashboard-logo">
+                <a href="../../index.html">
+                    <img src="../../images/logo.jpeg" alt="Rhoda Traders Logo" class="logo">
+                </a>
+            </div>
+            
+            <ul class="dashboard-nav">
+                <li><a href="index.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-alt"></i> Submit Reports</a></li>
+                <li><a href="shipments.html"><i class="fas fa-box"></i> Shipments</a></li>
+                <li><a href="payments.html"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+                <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="help.html"><i class="fas fa-question-circle"></i> Help & Support</a></li>
+                <li><a href="../../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+        
+        <!-- Dashboard Main Content -->
+        <div class="dashboard-main">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Dashboard</h1>
+                <div class="user-info">
+                    <span class="user-greeting">Welcome, <strong>John Doe</strong></span>
+                    <div class="user-avatar">
+                        <img src="../../images/avatar.jpg" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Overview Cards -->
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Application Status</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">
+                        <span class="status-badge status-approved">Approved</span>
+                    </div>
+                    <div class="dashboard-card-label">
+                        Last updated: March 15, 2025
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Pending Shipments</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-dolly"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">2</div>
+                    <div class="dashboard-card-label">
+                        Expected delivery: March 25, 2025
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Pending Pickups</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">1</div>
+                    <div class="dashboard-card-label">
+                        Scheduled for: March 28, 2025
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Earnings</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">$450</div>
+                    <div class="dashboard-card-label">
+                        Current month
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Activity -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Recent Activity</h2>
+                    <a href="#" class="btn btn-sm">View All</a>
+                </div>
+                
+                <div class="activity-timeline">
+                    <div class="activity-item">
+                        <div class="activity-icon bg-success">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Shipment Received</div>
+                            <div class="activity-desc">You received a shipment of Wall Fittings (Tracking #: RT78945612).</div>
+                            <div class="activity-time">Today, 10:25 AM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon bg-primary">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Report Submitted</div>
+                            <div class="activity-desc">You submitted a counting report for Shipment #RT78945612.</div>
+                            <div class="activity-time">Today, 11:45 AM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon bg-warning">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Pickup Scheduled</div>
+                            <div class="activity-desc">A FedEx pickup has been scheduled for Shipment #RT78945612.</div>
+                            <div class="activity-time">Today, 2:30 PM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon bg-info">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">New Message</div>
+                            <div class="activity-desc">You received a new message from Admin regarding your last report.</div>
+                            <div class="activity-time">Yesterday, 4:15 PM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon bg-success">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Payment Received</div>
+                            <div class="activity-desc">You received a payment of $150 for your services.</div>
+                            <div class="activity-time">March 20, 2025, 10:00 AM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Upcoming Shipments -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Upcoming Shipments</h2>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tracking #</th>
+                                <th>Expected Delivery</th>
+                                <th>Status</th>
+                                <th>Items</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>RT98765432</td>
+                                <td>March 25, 2025</td>
+                                <td><span class="status-badge status-pending">In Transit</span></td>
+                                <td>Wall Fittings (Type A)</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>RT45678912</td>
+                                <td>March 27, 2025</td>
+                                <td><span class="status-badge status-pending">Processing</span></td>
+                                <td>Wall Fittings (Type B)</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Pending Pickups -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Pending Pickups</h2>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tracking #</th>
+                                <th>Pickup Date</th>
+                                <th>Status</th>
+                                <th>Destination</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>RT78945612</td>
+                                <td>March 28, 2025</td>
+                                <td><span class="status-badge status-pending">Scheduled</span></td>
+                                <td>Client #RT-C001</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Quick Actions</h2>
+                </div>
+                
+                <div class="quick-actions">
+                    <a href="reports.html" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="quick-action-title">Submit Report</div>
+                    </a>
+                    
+                    <a href="profile.html" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-user-edit"></i>
+                        </div>
+                        <div class="quick-action-title">Update Profile</div>
+                    </a>
+                    
+                    <a href="messages.html" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="quick-action-title">Contact Admin</div>
+                    </a>
+                    
+                    <a href="help.html" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <div class="quick-action-title">Get Help</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase JavaScript Files -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs, orderBy, limit } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBCF-MkWe8JhkXKNoKLqzWAZxZVHMukO-c",
+            authDomain: "rhoda-traders.firebaseapp.com",
+            projectId: "rhoda-traders",
+            storageBucket: "rhoda-traders.firebasestorage.app",
+            messagingSenderId: "88738705806",
+            appId: "1:88738705806:web:0cbbb1be4ce51daa7334df",
+            measurementId: "G-44T210GQ6S"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore();
+
+        // Check if user is logged in
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in
+                try {
+                    // Get user data from Firestore
+                    const q = query(collection(db, 'users'), where('uid', '==', user.uid));
+                    const querySnapshot = await getDocs(q);
+                    
+                    if (!querySnapshot.empty) {
+                        const userData = querySnapshot.docs[0].data();
+                        
+                        // Update UI with user data
+                        updateUserInfo(userData);
+                        
+                        // Load user's reports
+                        loadUserReports(user.uid);
+                        
+                        // Load user's shipments
+                        loadUserShipments(user.uid);
+                    } else {
+                        console.error('User data not found in Firestore');
+                    }
+                } catch (error) {
+                    console.error('Error getting user data:', error);
+                }
+            } else {
+                // User is signed out, redirect to login page
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Update user info in the UI
+        function updateUserInfo(userData) {
+            const userGreeting = document.querySelector('.user-greeting strong');
+            if (userGreeting) {
+                userGreeting.textContent = `${userData.firstName} ${userData.lastName}`;
+            }
+            
+            // Update application status
+            const statusBadge = document.querySelector('.dashboard-card-value .status-badge');
+            if (statusBadge) {
+                statusBadge.className = `status-badge status-${userData.status}`;
+                statusBadge.textContent = userData.status.charAt(0).toUpperCase() + userData.status.slice(1);
+            }
+            
+            // Update last updated date
+            const lastUpdated = document.querySelector('.dashboard-card-label');
+            if (lastUpdated && userData.createdAt) {
+                const date = userData.createdAt.toDate ? userData.createdAt.toDate() : new Date(userData.createdAt);
+                lastUpdated.textContent = `Last updated: ${formatDate(date)}`;
+            }
+        }
+
+        // Load user's reports from Firestore
+        async function loadUserReports(userId) {
+            try {
+                const q = query(
+                    collection(db, 'reports'),
+                    where('userId', '==', userId),
+                    orderBy('createdAt', 'desc'),
+                    limit(5)
+                );
+                
+                const querySnapshot = await getDocs(q);
+                const reports = [];
+                
+                querySnapshot.forEach((doc) => {
+                    reports.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
+                });
+                
+                // Update recent activity with reports
+                updateRecentActivity(reports);
+            } catch (error) {
+                console.error('Error loading reports:', error);
+            }
+        }
+
+        // Load user's shipments from Firestore
+        async function loadUserShipments(userId) {
+            try {
+                const q = query(
+                    collection(db, 'shipments'),
+                    where('userId', '==', userId),
+                    orderBy('expectedDelivery', 'desc')
+                );
+                
+                const querySnapshot = await getDocs(q);
+                const shipments = [];
+                
+                querySnapshot.forEach((doc) => {
+                    shipments.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
+                });
+                
+                // Update shipments tables
+                updateShipmentsTables(shipments);
+                
+                // Update dashboard cards with counts
+                updateDashboardCards(shipments);
+            } catch (error) {
+                console.error('Error loading shipments:', error);
+            }
+        }
+
+        // Update recent activity section
+        function updateRecentActivity(reports) {
+            const activityTimeline = document.querySelector('.activity-timeline');
+            if (!activityTimeline || reports.length === 0) return;
+            
+            // Clear existing items (keep a template if needed)
+            const template = activityTimeline.firstElementChild.cloneNode(true);
+            activityTimeline.innerHTML = '';
+            
+            // Add report activities
+            reports.forEach(report => {
+                const date = report.createdAt.toDate ? report.createdAt.toDate() : new Date(report.createdAt);
+                
+                const activityItem = document.createElement('div');
+                activityItem.className = 'activity-item';
+                activityItem.innerHTML = `
+                    <div class="activity-icon bg-primary">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-title">Report Submitted</div>
+                        <div class="activity-desc">You submitted a counting report for Shipment #${report.shipmentId}.</div>
+                        <div class="activity-time">${formatDate(date)}, ${formatTime(date)}</div>
+                    </div>
+                `;
+                
+                activityTimeline.appendChild(activityItem);
+            });
+            
+            // Add template item if needed
+            if (reports.length < 5) {
+                activityTimeline.appendChild(template);
+            }
+        }
+
+        // Update shipments tables
+        function updateShipmentsTables(shipments) {
+            // Filter shipments by status
+            const upcomingShipments = shipments.filter(s => s.status === 'in_transit' || s.status === 'processing');
+            const pendingPickups = shipments.filter(s => s.status === 'counted' || s.status === 'scheduled_pickup');
+            
+            // Update upcoming shipments table
+            updateShipmentsTable(upcomingShipments, 'upcoming');
+            
+            // Update pending pickups table
+            updateShipmentsTable(pendingPickups, 'pickup');
+        }
+
+        // Update specific shipments table
+        function updateShipmentsTable(shipments, type) {
+            const tableSelector = type === 'upcoming' ? 
+                '.dashboard-section:nth-of-type(3) tbody' : 
+                '.dashboard-section:nth-of-type(4) tbody';
+            
+            const tableBody = document.querySelector(tableSelector);
+            if (!tableBody) return;
+            
+            // Clear existing rows
+            tableBody.innerHTML = '';
+            
+            // Add shipment rows
+            if (shipments.length === 0) {
+                const emptyRow = document.createElement('tr');
+                emptyRow.innerHTML = `<td colspan="5" class="text-center">No ${type === 'upcoming' ? 'upcoming shipments' : 'pending pickups'} found.</td>`;
+                tableBody.appendChild(emptyRow);
+                return;
+            }
+            
+            shipments.forEach(shipment => {
+                const row = document.createElement('tr');
+                
+                if (type === 'upcoming') {
+                    const deliveryDate = shipment.expectedDelivery.toDate ? 
+                        shipment.expectedDelivery.toDate() : new Date(shipment.expectedDelivery);
+                    
+                    row.innerHTML = `
+                        <td>${shipment.trackingId}</td>
+                        <td>${formatDate(deliveryDate)}</td>
+                        <td><span class="status-badge status-pending">${formatStatus(shipment.status)}</span></td>
+                        <td>${shipment.itemType}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline" data-tooltip="View Details" data-shipment-id="${shipment.id}">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </td>
+                    `;
+                } else {
+                    const pickupDate = shipment.pickupDate.toDate ? 
+                        shipment.pickupDate.toDate() : new Date(shipment.pickupDate);
+                    
+                    row.innerHTML = `
+                        <td>${shipment.trackingId}</td>
+                        <td>${formatDate(pickupDate)}</td>
+                        <td><span class="status-badge status-pending">${formatStatus(shipment.status)}</span></td>
+                        <td>${shipment.clientId}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline" data-tooltip="View Details" data-shipment-id="${shipment.id}">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </td>
+                    `;
+                }
+                
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Update dashboard cards with counts
+        function updateDashboardCards(shipments) {
+            const pendingShipments = shipments.filter(s => s.status === 'in_transit' || s.status === 'processing').length;
+            const pendingPickups = shipments.filter(s => s.status === 'counted' || s.status === 'scheduled_pickup').length;
+            
+            // Update pending shipments card
+            const pendingShipmentsValue = document.querySelector('.dashboard-card:nth-of-type(2) .dashboard-card-value');
+            if (pendingShipmentsValue) {
+                pendingShipmentsValue.textContent = pendingShipments;
+            }
+            
+            // Update pending pickups card
+            const pendingPickupsValue = document.querySelector('.dashboard-card:nth-of-type(3) .dashboard-card-value');
+            if (pendingPickupsValue) {
+                pendingPickupsValue.textContent = pendingPickups;
+            }
+        }
+
+        // Helper function to format date
+        function formatDate(date) {
+            return new Date(date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        // Helper function to format time
+        function formatTime(date) {
+            return new Date(date).toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true
+            });
+        }
+
+        // Helper function to format status
+        function formatStatus(status) {
+            const statusMap = {
+                'in_transit': 'In Transit',
+                'processing': 'Processing',
+                'delivered': 'Delivered',
+                'counted': 'Counted',
+                'scheduled_pickup': 'Scheduled'
+            };
+            
+            return statusMap[status] || status.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+        }
+
+        // Handle logout
+        document.querySelector('a[href="../../index.html"]').addEventListener('click', async function(event) {
+            event.preventDefault();
+            try {
+                await signOut(auth);
+                window.location.href = '../../index.html';
+            } catch (error) {
+                console.error('Error signing out:', error);
+            }
+        });
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="../../js/main.js"></script>
+    
+    <!-- Tawk.to Live Chat Integration -->
+    <script type="text/javascript">
+        // This would be replaced with your actual Tawk.to script
+        // Example:
+        /*
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/YOUR_TAWK_ID/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+        */
+        console.log('Tawk.to chat would be initialized here');
+    </script>
+</body>
+</html>

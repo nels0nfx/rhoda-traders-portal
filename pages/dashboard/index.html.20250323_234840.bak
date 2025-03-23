@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Rhoda Traders</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Dashboard Sidebar -->
+        <div class="dashboard-sidebar">
+            <div class="dashboard-logo">
+                <a href="../../index.html">
+                    <img src="../../images/logo.jpeg" alt="Rhoda Traders Logo" class="logo">
+                </a>
+            </div>
+            
+            <ul class="dashboard-nav">
+                <li><a href="index.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-alt"></i> Submit Reports</a></li>
+                <li><a href="shipments.html"><i class="fas fa-box"></i> Shipments</a></li>
+                <li><a href="payments.html"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+                <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="help.html"><i class="fas fa-question-circle"></i> Help & Support</a></li>
+                <li><a href="../../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+        
+        <!-- Dashboard Main Content -->
+        <div class="dashboard-main">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Dashboard</h1>
+                <div class="user-info">
+                    <span class="user-greeting">Welcome, <strong>John Doe</strong></span>
+                    <div class="user-avatar">
+                        <img src="../../images/avatar.jpg" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Overview Cards -->
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Application Status</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">
+                        <span class="status-badge status-approved">Approved</span>
+                    </div>
+                    <div class="dashboard-card-label">
+                        Last updated: March 15, 2025
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Pending Shipments</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-dolly"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">2</div>
+                    <div class="dashboard-card-label">
+                        Expected delivery: March 25, 2025
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Pending Pickups</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">1</div>
+                    <div class="dashboard-card-label">
+                        Scheduled for: March 28, 2025
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Earnings</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">$450</div>
+                    <div class="dashboard-card-label">
+                        Current month
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Activity -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Recent Activity</h2>
+                    <a href="#" class="btn btn-sm">View All</a>
+                </div>
+                
+                <div class="activity-timeline">
+                    <div class="activity-item">
+                        <div class="activity-icon bg-success">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Shipment Received</div>
+                            <div class="activity-desc">You received a shipment of Wall Fittings (Tracking #: RT78945612).</div>
+                            <div class="activity-time">Today, 10:25 AM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon bg-primary">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Report Submitted</div>
+                            <div class="activity-desc">You submitted a counting report for Shipment #RT78945612.</div>
+                            <div class="activity-time">Today, 11:45 AM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon bg-warning">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Pickup Scheduled</div>
+                            <div class="activity-desc">A FedEx pickup has been scheduled for Shipment #RT78945612.</div>
+                            <div class="activity-time">Today, 2:30 PM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon bg-info">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">New Message</div>
+                            <div class="activity-desc">You received a new message from Admin regarding your last report.</div>
+                            <div class="activity-time">Yesterday, 4:15 PM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon bg-success">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-title">Payment Received</div>
+                            <div class="activity-desc">You received a payment of $150 for your services.</div>
+                            <div class="activity-time">March 20, 2025, 10:00 AM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Upcoming Shipments -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Upcoming Shipments</h2>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tracking #</th>
+                                <th>Expected Delivery</th>
+                                <th>Status</th>
+                                <th>Items</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>RT98765432</td>
+                                <td>March 25, 2025</td>
+                                <td><span class="status-badge status-pending">In Transit</span></td>
+                                <td>Wall Fittings (Type A)</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>RT45678912</td>
+                                <td>March 27, 2025</td>
+                                <td><span class="status-badge status-pending">Processing</span></td>
+                                <td>Wall Fittings (Type B)</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Pending Pickups -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Pending Pickups</h2>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tracking #</th>
+                                <th>Pickup Date</th>
+                                <th>Status</th>
+                                <th>Destination</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>RT78945612</td>
+                                <td>March 28, 2025</td>
+                                <td><span class="status-badge status-pending">Scheduled</span></td>
+                                <td>Client #RT-C001</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Quick Actions</h2>
+                </div>
+                
+                <div class="quick-actions">
+                    <a href="reports.html" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="quick-action-title">Submit Report</div>
+                    </a>
+                    
+                    <a href="profile.html" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-user-edit"></i>
+                        </div>
+                        <div class="quick-action-title">Update Profile</div>
+                    </a>
+                    
+                    <a href="messages.html" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="quick-action-title">Contact Admin</div>
+                    </a>
+                    
+                    <a href="help.html" class="quick-action-card">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <div class="quick-action-title">Get Help</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <!-- Tawk.to Live Chat Integration (placeholder) -->
+    <script>
+        // This would be replaced with your actual Tawk.to script
+        console.log('Tawk.to chat would be initialized here');
+    </script>
+</body>
+</html>
