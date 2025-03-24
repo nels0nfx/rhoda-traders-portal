@@ -11,7 +11,41 @@
       "**/node_modules/**"
     ],
     "cleanUrls": true,
-    "trailingSlash": false
+    "trailingSlash": false,
+    "rewrites": [
+      {
+        "source": "/admin",
+        "destination": "/admin/index.html"
+      },
+      {
+        "source": "/admin/workers",
+        "destination": "/admin/workers.html"
+      },
+      {
+        "source": "/admin/shipments",
+        "destination": "/admin/shipments.html"
+      },
+      {
+        "source": "/admin/reports",
+        "destination": "/admin/reports.html"
+      },
+      {
+        "source": "/admin/payments",
+        "destination": "/admin/payments.html"
+      },
+      {
+        "source": "/admin/messages",
+        "destination": "/admin/messages.html"
+      },
+      {
+        "source": "/admin/settings",
+        "destination": "/admin/settings.html"
+      },
+      {
+        "source": "/admin/applications",
+        "destination": "/admin/applications.html"
+      }
+    ]
   },
   "storage": {
     "rules": "storage.rules"
