@@ -420,157 +420,58 @@
         }
 
         // Load workers data
-        // Load workers data with real-time updates
         async function loadWorkersData() {
             try {
-                // Set up real-time listener for active workers
+                // Get active workers
                 const activeWorkersQuery = query(
                     collection(db, 'users'),
                     where('status', '==', 'approved'),
                     where('role', '==', 'user')
                 );
                 
-                // Set up real-time listener for inactive workers
+                const activeWorkersSnapshot = await getDocs(activeWorkersQuery);
+                
+                // Get inactive workers
                 const inactiveWorkersQuery = query(
                     collection(db, 'users'),
                     where('status', '==', 'inactive'),
                     where('role', '==', 'user')
                 );
                 
-                // Listen for changes in active workers
-                onSnapshot(activeWorkersQuery, (activeSnapshot) => {
-                    // Listen for changes in inactive workers
-                    onSnapshot(inactiveWorkersQuery, (inactiveSnapshot) => {
-                        // Update dashboard cards
-                        const totalWorkers = activeSnapshot.size + inactiveSnapshot.size;
-                        const activeWorkers = activeSnapshot.size;
-                        const inactiveWorkers = inactiveSnapshot.size;
-                        
-                        // Calculate average performance (simplified)
-                        let totalPerformance = 0;
-                        let workerCount = 0;
-                        
-                        activeSnapshot.forEach(doc => {
-                            const userData = doc.data();
-                            // Calculate performance based on reports or use a default
-                            const performance = userData.performance || Math.floor(Math.random() * 30) + 70; // 70-100 range
-                            totalPerformance += performance;
-                            workerCount++;
-                        });
-                        
-                        const averagePerformance = workerCount > 0 ? Math.floor(totalPerformance / workerCount) : 0;
-                        
-                        // Update the UI
-                        document.querySelectorAll('.dashboard-card-value')[0].textContent = totalWorkers;
-                        document.querySelectorAll('.dashboard-card-value')[1].textContent = activeWorkers;
-                        document.querySelectorAll('.dashboard-card-value')[2].textContent = inactiveWorkers;
-                        document.querySelectorAll('.dashboard-card-value')[3].textContent = `${averagePerformance}%`;
-                        
-                        // Update worker list with real data
-                        updateWorkerList(activeSnapshot);
-                    });
+                const inactiveWorkersSnapshot = await getDocs(inactiveWorkersQuery);
+                
+                // Update dashboard cards
+                const totalWorkers = activeWorkersSnapshot.size + inactiveWorkersSnapshot.size;
+                const activeWorkers = activeWorkersSnapshot.size;
+                const inactiveWorkers = inactiveWorkersSnapshot.size;
+                
+                // Calculate average performance (simplified)
+                let totalPerformance = 0;
+                let workerCount = 0;
+                
+                activeWorkersSnapshot.forEach(doc => {
+                    const userData = doc.data();
+                    // Simulate performance score (would be calculated from reports in a real app)
+                    const performance = Math.floor(Math.random() * 30) + 70; // 70-100 range
+                    totalPerformance += performance;
+                    workerCount++;
                 });
+                
+                const averagePerformance = workerCount > 0 ? Math.floor(totalPerformance / workerCount) : 0;
+                
+                // Update the UI
+                document.querySelectorAll('.dashboard-card-value')[0].textContent = totalWorkers;
+                document.querySelectorAll('.dashboard-card-value')[1].textContent = activeWorkers;
+                document.querySelectorAll('.dashboard-card-value')[2].textContent = inactiveWorkers;
+                document.querySelectorAll('.dashboard-card-value')[3].textContent = `${averagePerformance}%`;
+                
+                // In a real application, you would load the actual worker data here
+                // and populate the worker cards dynamically
             } catch (error) {
-                console.error('Error setting up real-time listeners:', error);
+                console.error('Error loading workers data:', error);
             }
-        }
-        
-        // Update worker list with real user data
-        function updateWorkerList(snapshot) {
-            const workerList = document.querySelector('.worker-list');
-            if (!workerList) return;
-            
-            // Clear existing worker cards
-            workerList.innerHTML = '';
-            
-            if (snapshot.empty) {
-                workerList.innerHTML = '<div class="empty-state">No active workers found.</div>';
-                return;
-            }
-            
-            // Add worker cards for each user
-            snapshot.forEach(doc => {
-                const worker = doc.data();
-                const workerId = doc.id;
-                
-                // Calculate performance score (would be based on actual metrics in a real app)
-                const performance = worker.performance || Math.floor(Math.random() * 30) + 70; // 70-100 range
-                let performanceText = 'Average';
-                if (performance >= 90) {
-                    performanceText = 'Excellent';
-                } else if (performance >= 80) {
-                    performanceText = 'Good';
-                } else if (performance < 70) {
-                    performanceText = 'Poor';
-                }
-                
-                // Format join date
-                const joinDate = worker.createdAt ? new Date(worker.createdAt.seconds * 1000) : new Date();
-                const formattedDate = joinDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-                
-                // Create worker card
-                const workerCard = document.createElement('div');
-                workerCard.className = 'worker-card';
-                workerCard.innerHTML = `
-                    <div class="worker-avatar">
-                        <img src="${worker.photoURL || 'https://randomuser.me/api/portraits/men/32.jpg'}" alt="${worker.firstName} ${worker.lastName}">
-                    </div>
-                    <div class="worker-info">
-                        <div class="worker-name">${worker.firstName} ${worker.lastName}</div>
-                        <div class="worker-meta">${worker.city || 'Unknown'}, ${worker.country || 'Unknown'} | Joined: ${formattedDate}</div>
-                        <div class="worker-stats">
-                            <div class="worker-stat"><i class="fas fa-box"></i> ${worker.shipments || 0} Shipments</div>
-                            <div class="worker-stat"><i class="fas fa-file-alt"></i> ${worker.reports || 0} Reports</div>
-                            <div class="worker-stat"><i class="fas fa-star"></i> ${performanceText} Performance</div>
-                        </div>
-                    </div>
-                    <div class="worker-actions">
-                        <button class="btn btn-sm btn-primary view-worker" data-id="${workerId}"><i class="fas fa-eye"></i> View</button>
-                        <button class="btn btn-sm btn-outline message-worker" data-id="${workerId}"><i class="fas fa-envelope"></i> Message</button>
-                        <button class="btn btn-sm btn-danger suspend-worker" data-id="${workerId}"><i class="fas fa-ban"></i> Suspend</button>
-                    </div>
-                `;
-                
-                workerList.appendChild(workerCard);
-            });
-            
-            // Add event listeners to the newly created buttons
-            document.querySelectorAll('.view-worker').forEach(button => {
-                button.addEventListener('click', function() {
-                    const workerId = this.dataset.id;
-                    // View worker details
-                    alert(`Viewing details for worker ID: ${workerId}`);
-                });
-            });
-            
-            document.querySelectorAll('.message-worker').forEach(button => {
-                button.addEventListener('click', function() {
-                    const workerId = this.dataset.id;
-                    // Open message compose form
-                    alert(`Composing message to worker ID: ${workerId}`);
-                });
-            });
-            
-            document.querySelectorAll('.suspend-worker').forEach(button => {
-                button.addEventListener('click', async function() {
-                    const workerId = this.dataset.id;
-                    if (confirm(`Are you sure you want to suspend this worker?`)) {
-                        try {
-                            // Update worker status to inactive
-                            await updateDoc(doc(db, 'users', workerId), {
-                                status: 'inactive'
-                            });
-                            alert('Worker suspended successfully!');
-                        } catch (error) {
-                            console.error('Error suspending worker:', error);
-                            alert('Failed to suspend worker. Please try again.');
-                        }
-                    }
-                });
-            });
         }
 
-        
         // Add event listeners for filter dropdowns
         document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
             dropdown.addEventListener('change', function() {

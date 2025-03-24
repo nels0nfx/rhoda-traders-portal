@@ -568,535 +568,97 @@
     </div>
 
     <!-- JavaScript -->
-    <!-- Firebase JavaScript Files -->
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
-        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
-        import { getFirestore, collection, query, where, getDocs, updateDoc, doc, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
-
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyBCF-MkWe8JhkXKNoKLqzWAZxZVHMukO-c",
-            authDomain: "rhoda-traders.firebaseapp.com",
-            projectId: "rhoda-traders",
-            storageBucket: "rhoda-traders.firebasestorage.app",
-            messagingSenderId: "88738705806",
-            appId: "1:88738705806:web:0cbbb1be4ce51daa7334df",
-            measurementId: "G-44T210GQ6S"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const auth = getAuth();
-        const db = getFirestore();
+    <script src="../js/main.js"></script>
+    <script>
+        // Tab Functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabPanes = document.querySelectorAll('.tab-pane');
         
-        // Global variable to store current application ID for modals
-        let currentApplicationId = null;
-
-        // Check if user is logged in and is an admin
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                // User is signed in
-                try {
-                    // Get user data from Firestore
-                    const q = query(collection(db, 'users'), where('uid', '==', user.uid));
-                    const querySnapshot = await getDocs(q);
-                    
-                    if (!querySnapshot.empty) {
-                        const userData = querySnapshot.docs[0].data();
-                        
-                        // Check if user is an admin
-                        if (userData.role === 'admin') {
-                            // Update UI with admin data
-                            updateAdminInfo(userData);
-                            
-                            // Load applications data
-                            loadApplicationsData();
-                        } else {
-                            // Not an admin, redirect to user dashboard
-                            window.location.href = '../dashboard/index.html';
-                        }
-                    } else {
-                        // User not found in Firestore
-                        window.location.href = '../login.html';
-                    }
-                } catch (error) {
-                    console.error('Error getting user data:', error);
-                    window.location.href = '../login.html';
-                }
-            } else {
-                // User is signed out, redirect to login page
-                window.location.href = '../login.html';
-            }
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and panes
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding pane
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
         });
-
-        // Update admin info in the UI
-        function updateAdminInfo(userData) {
-            const userGreeting = document.querySelector('.user-greeting strong');
-            if (userGreeting) {
-                userGreeting.textContent = userData.firstName ? `${userData.firstName} ${userData.lastName}` : 'Admin';
-            }
-        }
-
-        // Load applications data with real-time updates
-        function loadApplicationsData() {
-            try {
-                // Set up real-time listener for all applications
-                const usersRef = collection(db, 'users');
-                const userQuery = query(usersRef, where('role', '==', 'user'));
-                
-                onSnapshot(userQuery, (snapshot) => {
-                    const applications = snapshot.docs.map(doc => ({
-                        id: doc.id,
-                        ...doc.data()
-                    }));
-                    
-                    // Count applications by status
-                    const counts = {
-                        total: applications.length,
-                        pending: applications.filter(app => app.status === 'pending').length,
-                        approved: applications.filter(app => app.status === 'approved').length,
-                        rejected: applications.filter(app => app.status === 'rejected').length
-                    };
-                    
-                    // Update stats cards
-                    updateApplicationStats(counts);
-                    
-                    // Update applications table based on current filter
-                    const statusFilter = document.getElementById('status-filter').value;
-                    updateApplicationsTable(applications, statusFilter);
-                });
-                
-                // Add event listener to status filter
-                document.getElementById('status-filter').addEventListener('change', function() {
-                    const usersRef = collection(db, 'users');
-                    const userQuery = query(usersRef, where('role', '==', 'user'));
-                    
-                    getDocs(userQuery).then(snapshot => {
-                        const applications = snapshot.docs.map(doc => ({
-                            id: doc.id,
-                            ...doc.data()
-                        }));
-                        
-                        updateApplicationsTable(applications, this.value);
-                    });
-                });
-                
-                // Set up event listeners for the approval and rejection buttons
-                setupModalEventListeners();
-            } catch (error) {
-                console.error('Error setting up real-time listeners:', error);
-            }
-        }
-
-        // Update application stats cards
-        function updateApplicationStats(counts) {
-            const statsCards = document.querySelectorAll('.dashboard-card-value');
-            if (statsCards.length >= 4) {
-                statsCards[0].textContent = counts.total;
-                statsCards[1].textContent = counts.pending;
-                statsCards[2].textContent = counts.approved;
-                statsCards[3].textContent = counts.rejected;
-            }
-        }
-
-        // Update applications table with real data
-        function updateApplicationsTable(applications, statusFilter) {
-            const tableBody = document.querySelector('tbody');
-            if (!tableBody) return;
-            
-            // Clear existing rows
-            tableBody.innerHTML = '';
-            
-            // Filter applications based on status
-            let filteredApplications = applications;
-            if (statusFilter !== 'all') {
-                filteredApplications = applications.filter(app => app.status === statusFilter);
-            }
-            
-            // Sort by date (newest first)
-            filteredApplications.sort((a, b) => {
-                const dateA = a.createdAt?.toDate ? a.createdAt.toDate() : new Date(a.createdAt || 0);
-                const dateB = b.createdAt?.toDate ? b.createdAt.toDate() : new Date(b.createdAt || 0);
-                return dateB - dateA;
+        
+        // Checkbox Selection
+        const selectAll = document.getElementById('select-all');
+        const checkboxes = document.querySelectorAll('input[name="select-application"]');
+        const approveSelected = document.getElementById('approve-selected');
+        const rejectSelected = document.getElementById('reject-selected');
+        
+        selectAll.addEventListener('change', function() {
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
             });
             
-            // Add application rows
-            if (filteredApplications.length === 0) {
-                const emptyRow = document.createElement('tr');
-                emptyRow.innerHTML = `<td colspan="7" class="text-center">No applications found.</td>`;
-                tableBody.appendChild(emptyRow);
+            updateButtonState();
+        });
+        
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateButtonState);
+        });
+        
+        function updateButtonState() {
+            const checkedCount = document.querySelectorAll('input[name="select-application"]:checked').length;
+            
+            approveSelected.disabled = checkedCount === 0;
+            rejectSelected.disabled = checkedCount === 0;
+        }
+        
+        // Decision Modals
+        document.getElementById('approve-application').addEventListener('click', function() {
+            document.getElementById('application-modal').classList.remove('active');
+            document.getElementById('approval-modal').classList.add('active');
+        });
+        
+        document.getElementById('reject-application').addEventListener('click', function() {
+            document.getElementById('application-modal').classList.remove('active');
+            document.getElementById('rejection-modal').classList.add('active');
+        });
+        
+        // Rejection Reason Handling
+        document.getElementById('rejection-reason').addEventListener('change', function() {
+            const otherReasonContainer = document.getElementById('other-reason-container');
+            otherReasonContainer.style.display = this.value === 'other' ? 'block' : 'none';
+        });
+        
+        // Confirm Approval
+        document.getElementById('confirm-approval').addEventListener('click', function() {
+            // Here you would send the approval to your backend
+            document.getElementById('approval-modal').classList.remove('active');
+            
+            // For demo purposes, show an alert
+            alert('Application approved successfully!');
+            
+            // Refresh the page or update the UI
+            // window.location.reload();
+        });
+        
+        // Confirm Rejection
+        document.getElementById('confirm-rejection').addEventListener('click', function() {
+            const reason = document.getElementById('rejection-reason').value;
+            
+            if (!reason) {
+                alert('Please select a rejection reason.');
                 return;
             }
             
-            filteredApplications.forEach(application => {
-                const applicationDate = application.createdAt?.toDate ? 
-                    application.createdAt.toDate() : 
-                    new Date(application.createdAt || Date.now());
-                
-                // Format date
-                const formattedDate = applicationDate.toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                });
-                
-                // Get status badge class
-                let statusClass = 'status-pending';
-                if (application.status === 'approved') {
-                    statusClass = 'status-approved';
-                } else if (application.status === 'rejected') {
-                    statusClass = 'status-rejected';
-                }
-                
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="select-application" value="${application.id}">
-                                <span></span>
-                            </label>
-                        </div>
-                    </td>
-                    <td>A-${application.id.substring(0, 4)}</td>
-                    <td>${application.firstName || ''} ${application.lastName || ''}</td>
-                    <td>${application.city || ''}, ${application.country || ''}</td>
-                    <td>${formattedDate}</td>
-                    <td><span class="status-badge ${statusClass}">${application.status || 'Pending'}</span></td>
-                    <td>
-                        <button class="btn btn-sm btn-primary review-application" data-application-id="${application.id}" data-modal-target="application-modal">
-                            <i class="fas fa-eye"></i> Review
-                        </button>
-                    </td>
-                `;
-                
-                tableBody.appendChild(row);
-            });
+            // Here you would send the rejection to your backend
+            document.getElementById('rejection-modal').classList.remove('active');
             
-            // Add event listeners to review buttons
-            document.querySelectorAll('.review-application').forEach(button => {
-                button.addEventListener('click', function() {
-                    const applicationId = this.dataset.applicationId;
-                    currentApplicationId = applicationId;
-                    
-                    // Find the application data
-                    const application = filteredApplications.find(app => app.id === applicationId);
-                    if (application) {
-                        // Populate modal with application data
-                        populateApplicationModal(application);
-                        
-                        // Show the modal
-                        document.getElementById('application-modal').classList.add('active');
-                    }
-                });
-            });
+            // For demo purposes, show an alert
+            alert('Application rejected successfully!');
             
-            // Reinitialize checkbox functionality
-            initCheckboxes();
-        }
-
-        // Populate application modal with real data
-        function populateApplicationModal(application) {
-            // Set application ID and date
-            document.getElementById('application-id').textContent = `A-${application.id.substring(0, 4)}`;
-            
-            const applicationDate = application.createdAt?.toDate ? 
-                application.createdAt.toDate() : 
-                new Date(application.createdAt || Date.now());
-            
-            document.getElementById('application-date').textContent = applicationDate.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            
-            // Update status badge
-            const statusBadge = document.querySelector('.application-status .status-badge');
-            statusBadge.className = 'status-badge';
-            statusBadge.classList.add(`status-${application.status || 'pending'}`);
-            statusBadge.textContent = application.status ? application.status.charAt(0).toUpperCase() + application.status.slice(1) : 'Pending';
-            
-            // Populate personal info tab
-            const personalInfoTab = document.getElementById('personal-info');
-            if (personalInfoTab) {
-                // Contact information
-                const contactValues = personalInfoTab.querySelectorAll('.detail-value');
-                if (contactValues.length >= 3) {
-                    contactValues[0].textContent = `${application.firstName || ''} ${application.lastName || ''}`;
-                    contactValues[1].textContent = application.email || '';
-                    contactValues[2].textContent = application.phone || '';
-                }
-                
-                // Address information
-                const addressValues = personalInfoTab.querySelectorAll('.detail-section:nth-of-type(2) .detail-value');
-                if (addressValues.length >= 5) {
-                    addressValues[0].textContent = application.address || '';
-                    addressValues[1].textContent = application.city || '';
-                    addressValues[2].textContent = application.state || '';
-                    addressValues[3].textContent = application.zip || '';
-                    addressValues[4].textContent = application.country || '';
-                }
-            }
-            
-            // Populate professional info tab (simplified)
-            const professionalInfoTab = document.getElementById('professional-info');
-            if (professionalInfoTab) {
-                const experienceValue = professionalInfoTab.querySelector('.detail-item.full-width .detail-value');
-                if (experienceValue) {
-                    experienceValue.textContent = application.experience || 'No experience information provided.';
-                }
-            }
-            
-            // Populate additional info tab (simplified)
-            const additionalInfoTab = document.getElementById('additional-info');
-            if (additionalInfoTab) {
-                const motivationValue = additionalInfoTab.querySelector('.detail-item.full-width .detail-value');
-                if (motivationValue) {
-                    motivationValue.textContent = application.motivation || 'No motivation information provided.';
-                }
-            }
-        }
-
-        // Set up event listeners for modals
-        function setupModalEventListeners() {
-            // Tab Functionality
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabPanes = document.querySelectorAll('.tab-pane');
-            
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Remove active class from all buttons and panes
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    tabPanes.forEach(pane => pane.classList.remove('active'));
-                    
-                    // Add active class to clicked button and corresponding pane
-                    button.classList.add('active');
-                    const tabId = button.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
-                });
-            });
-            
-            // Decision Modals
-            document.getElementById('approve-application').addEventListener('click', function() {
-                document.getElementById('application-modal').classList.remove('active');
-                document.getElementById('approval-modal').classList.add('active');
-            });
-            
-            document.getElementById('reject-application').addEventListener('click', function() {
-                document.getElementById('application-modal').classList.remove('active');
-                document.getElementById('rejection-modal').classList.add('active');
-            });
-            
-            // Rejection Reason Handling
-            document.getElementById('rejection-reason').addEventListener('change', function() {
-                const otherReasonContainer = document.getElementById('other-reason-container');
-                otherReasonContainer.style.display = this.value === 'other' ? 'block' : 'none';
-            });
-            
-            // Confirm Approval
-            document.getElementById('confirm-approval').addEventListener('click', async function() {
-                if (!currentApplicationId) {
-                    alert('No application selected for approval.');
-                    return;
-                }
-                
-                try {
-                    // Update application status in Firestore
-                    await updateDoc(doc(db, 'users', currentApplicationId), {
-                        status: 'approved',
-                        approvedAt: new Date(),
-                        approvedBy: auth.currentUser.uid,
-                        notes: document.getElementById('decision-notes').value || ''
-                    });
-                    
-                    // Close the modal
-                    document.getElementById('approval-modal').classList.remove('active');
-                    
-                    // Show success message
-                    alert('Application approved successfully!');
-                    
-                    // Clear current application ID
-                    currentApplicationId = null;
-                } catch (error) {
-                    console.error('Error approving application:', error);
-                    alert('Failed to approve application. Please try again.');
-                }
-            });
-            
-            // Confirm Rejection
-            document.getElementById('confirm-rejection').addEventListener('click', async function() {
-                if (!currentApplicationId) {
-                    alert('No application selected for rejection.');
-                    return;
-                }
-                
-                const reason = document.getElementById('rejection-reason').value;
-                if (!reason) {
-                    alert('Please select a rejection reason.');
-                    return;
-                }
-                
-                try {
-                    // Update application status in Firestore
-                    await updateDoc(doc(db, 'users', currentApplicationId), {
-                        status: 'rejected',
-                        rejectedAt: new Date(),
-                        rejectedBy: auth.currentUser.uid,
-                        rejectionReason: reason,
-                        rejectionNotes: reason === 'other' ? document.getElementById('other-reason').value : '',
-                        notes: document.getElementById('decision-notes').value || ''
-                    });
-                    
-                    // Close the modal
-                    document.getElementById('rejection-modal').classList.remove('active');
-                    
-                    // Show success message
-                    alert('Application rejected successfully!');
-                    
-                    // Clear current application ID
-                    currentApplicationId = null;
-                } catch (error) {
-                    console.error('Error rejecting application:', error);
-                    alert('Failed to reject application. Please try again.');
-                }
-            });
-            
-            // Close modals when clicking the X button
-            document.querySelectorAll('.modal-close').forEach(button => {
-                button.addEventListener('click', function() {
-                    const modal = this.closest('.modal-overlay');
-                    if (modal) {
-                        modal.classList.remove('active');
-                    }
-                });
-            });
-            
-            // Close modals when clicking outside
-            document.querySelectorAll('.modal-overlay').forEach(overlay => {
-                overlay.addEventListener('click', function(event) {
-                    if (event.target === this) {
-                        this.classList.remove('active');
-                    }
-                });
-            });
-        }
-
-        // Initialize checkbox functionality
-        function initCheckboxes() {
-            const selectAll = document.getElementById('select-all');
-            const checkboxes = document.querySelectorAll('input[name="select-application"]');
-            const approveSelected = document.getElementById('approve-selected');
-            const rejectSelected = document.getElementById('reject-selected');
-            
-            if (selectAll) {
-                selectAll.addEventListener('change', function() {
-                    checkboxes.forEach(checkbox => {
-                        checkbox.checked = this.checked;
-                    });
-                    
-                    updateButtonState();
-                });
-            }
-            
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', updateButtonState);
-            });
-            
-            // Add event listeners for bulk approval/rejection
-            if (approveSelected) {
-                approveSelected.addEventListener('click', async function() {
-                    const selectedIds = getSelectedApplicationIds();
-                    if (selectedIds.length === 0) return;
-                    
-                    if (confirm(`Are you sure you want to approve ${selectedIds.length} applications?`)) {
-                        try {
-                            // Update all selected applications
-                            const promises = selectedIds.map(id => 
-                                updateDoc(doc(db, 'users', id), {
-                                    status: 'approved',
-                                    approvedAt: new Date(),
-                                    approvedBy: auth.currentUser.uid
-                                })
-                            );
-                            
-                            await Promise.all(promises);
-                            alert(`${selectedIds.length} applications approved successfully!`);
-                            
-                            // Reset checkboxes
-                            if (selectAll) selectAll.checked = false;
-                            updateButtonState();
-                        } catch (error) {
-                            console.error('Error approving applications:', error);
-                            alert('Failed to approve applications. Please try again.');
-                        }
-                    }
-                });
-            }
-            
-            if (rejectSelected) {
-                rejectSelected.addEventListener('click', async function() {
-                    const selectedIds = getSelectedApplicationIds();
-                    if (selectedIds.length === 0) return;
-                    
-                    if (confirm(`Are you sure you want to reject ${selectedIds.length} applications?`)) {
-                        try {
-                            // Update all selected applications
-                            const promises = selectedIds.map(id => 
-                                updateDoc(doc(db, 'users', id), {
-                                    status: 'rejected',
-                                    rejectedAt: new Date(),
-                                    rejectedBy: auth.currentUser.uid,
-                                    rejectionReason: 'bulk_rejection'
-                                })
-                            );
-                            
-                            await Promise.all(promises);
-                            alert(`${selectedIds.length} applications rejected successfully!`);
-                            
-                            // Reset checkboxes
-                            if (selectAll) selectAll.checked = false;
-                            updateButtonState();
-                        } catch (error) {
-                            console.error('Error rejecting applications:', error);
-                            alert('Failed to reject applications. Please try again.');
-                        }
-                    }
-                });
-            }
-            
-            function updateButtonState() {
-                const checkedCount = document.querySelectorAll('input[name="select-application"]:checked').length;
-                
-                if (approveSelected) approveSelected.disabled = checkedCount === 0;
-                if (rejectSelected) rejectSelected.disabled = checkedCount === 0;
-            }
-            
-            function getSelectedApplicationIds() {
-                const selectedCheckboxes = document.querySelectorAll('input[name="select-application"]:checked');
-                return Array.from(selectedCheckboxes).map(checkbox => checkbox.value);
-            }
-            
-            // Initial button state update
-            updateButtonState();
-        }
-
-        // Handle logout
-        document.querySelector('a[href="../index.html"]').addEventListener('click', async function(event) {
-            event.preventDefault();
-            try {
-                await signOut(auth);
-                window.location.href = '../index.html';
-            } catch (error) {
-                console.error('Error signing out:', error);
-            }
+            // Refresh the page or update the UI
+            // window.location.reload();
         });
     </script>
-
-    <!-- Main JavaScript -->
-    <script src="../js/main.js"></script>
 </body>
 </html>
