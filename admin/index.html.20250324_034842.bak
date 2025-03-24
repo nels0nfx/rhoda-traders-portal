@@ -58,7 +58,7 @@
                     </div>
                     <div class="dashboard-card-value">15</div>
                     <div class="dashboard-card-label">
-                        <a href="/admin/applications">View Applications</a>
+                        <a href="applications.html">View Applications</a>
                     </div>
                 </div>
                 
@@ -71,7 +71,7 @@
                     </div>
                     <div class="dashboard-card-value">42</div>
                     <div class="dashboard-card-label">
-                        <a href="/admin/workers">Manage Workers</a>
+                        <a href="workers.html">Manage Workers</a>
                     </div>
                 </div>
                 
@@ -84,7 +84,7 @@
                     </div>
                     <div class="dashboard-card-value">8</div>
                     <div class="dashboard-card-label">
-                        <a href="/admin/reports">Review Reports</a>
+                        <a href="reports.html">Review Reports</a>
                     </div>
                 </div>
                 
@@ -97,7 +97,7 @@
                     </div>
                     <div class="dashboard-card-value">12</div>
                     <div class="dashboard-card-label">
-                        <a href="/admin/shipments">Manage Shipments</a>
+                        <a href="shipments.html">Manage Shipments</a>
                     </div>
                 </div>
             </div>
@@ -874,7 +874,7 @@
                 button.addEventListener('click', function() {
                     const applicationId = this.dataset.id;
                     // Here you would show a modal with application details
-                    window.location.href = `/admin/applications?id=${applicationId}`;
+                    window.location.href = `applications.html?id=${applicationId}`;
                 });
             });
             
@@ -982,14 +982,14 @@
             document.querySelectorAll('.view-worker').forEach(button => {
                 button.addEventListener('click', function() {
                     const workerId = this.dataset.id;
-                    window.location.href = `/admin/workers?id=${workerId}`;
+                    window.location.href = `workers.html?id=${workerId}`;
                 });
             });
             
             document.querySelectorAll('.message-worker').forEach(button => {
                 button.addEventListener('click', function() {
                     const workerId = this.dataset.id;
-                    window.location.href = `/admin/messages?id=${workerId}`;
+                    window.location.href = `messages.html?id=${workerId}`;
                 });
             });
         }
@@ -1039,7 +1039,7 @@
             document.querySelectorAll('.view-report').forEach(button => {
                 button.addEventListener('click', function() {
                     const reportId = this.dataset.id;
-                    window.location.href = `/admin/reports?id=${reportId}`;
+                    window.location.href = `reports.html?id=${reportId}`;
                 });
             });
             
@@ -1107,7 +1107,7 @@
             event.preventDefault();
             try {
                 await signOut(auth);
-                window.location.href = '../index.html';
+                window.location.href = '../../index.html';
             } catch (error) {
                 console.error('Error signing out:', error);
             }

@@ -874,7 +874,7 @@
                 button.addEventListener('click', function() {
                     const applicationId = this.dataset.id;
                     // Here you would show a modal with application details
-                    window.location.href = `/admin/applications?id=${applicationId}`;
+                    window.location.href = `applications.html?id=${applicationId}`;
                 });
             });
             
@@ -982,14 +982,14 @@
             document.querySelectorAll('.view-worker').forEach(button => {
                 button.addEventListener('click', function() {
                     const workerId = this.dataset.id;
-                    window.location.href = `/admin/workers?id=${workerId}`;
+                    window.location.href = `workers.html?id=${workerId}`;
                 });
             });
             
             document.querySelectorAll('.message-worker').forEach(button => {
                 button.addEventListener('click', function() {
                     const workerId = this.dataset.id;
-                    window.location.href = `/admin/messages?id=${workerId}`;
+                    window.location.href = `messages.html?id=${workerId}`;
                 });
             });
         }
@@ -1039,7 +1039,7 @@
             document.querySelectorAll('.view-report').forEach(button => {
                 button.addEventListener('click', function() {
                     const reportId = this.dataset.id;
-                    window.location.href = `/admin/reports?id=${reportId}`;
+                    window.location.href = `reports.html?id=${reportId}`;
                 });
             });
             
@@ -1107,7 +1107,7 @@
             event.preventDefault();
             try {
                 await signOut(auth);
-                window.location.href = '../index.html';
+                window.location.href = '../../index.html';
             } catch (error) {
                 console.error('Error signing out:', error);
             }
