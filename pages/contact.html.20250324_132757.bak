@@ -60,8 +60,8 @@
                             </div>
                             <div class="contact-details">
                                 <h3>Email Us</h3>
-                                <p><a href="mailto:employmentt30@gmail.com">employmentt30@gmail.com</a></p>
-                                <p><a href="mailto:employmentt30@gmail.com">employmentt30@gmail.com</a> (For employment inquiries)</p>
+                                <p><a href="mailto:info@rhodatraders.com">info@rhodatraders.com</a></p>
+                                <p><a href="mailto:careers@rhodatraders.com">careers@rhodatraders.com</a> (For employment inquiries)</p>
                             </div>
                         </div>
                         
@@ -71,8 +71,8 @@
                             </div>
                             <div class="contact-details">
                                 <h3>Call Us</h3>
-                                <p><a href="tel:+14326069313">+1 432 606-9313</a> (Main Office)</p>
-                                <p><a href="tel:+14326069313">+1 432 606-9313</a> (Support Team)</p>
+                                <p><a href="tel:+1234567890">+1 (234) 567-890</a> (Main Office)</p>
+                                <p><a href="tel:+1234567891">+1 (234) 567-891</a> (Support Team)</p>
                             </div>
                         </div>
                         
@@ -248,7 +248,7 @@
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="accordion-content">
-                            <p>You can contact our recruitment team at <a href="mailto:employmentt30@gmail.com">employmentt30@gmail.com</a> with any questions about your application status or the application process.</p>
+                            <p>You can contact our recruitment team at <a href="mailto:careers@rhodatraders.com">careers@rhodatraders.com</a> with any questions about your application status or the application process.</p>
                         </div>
                     </div>
                 </div>
@@ -297,8 +297,8 @@
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:employmentt30@gmail.com">employmentt30@gmail.com</a></li>
-                        <li><i class="fas fa-phone"></i> <a href="tel:+14326069313">+1 432 606-9313</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@rhodatraders.com">info@rhodatraders.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+1234567890">+1 (234) 567-890</a></li>
                         <li><i class="fas fa-map-marker-alt"></i> 123 Business Street, City, Country</li>
                     </ul>
                 </div>

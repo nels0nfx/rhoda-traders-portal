@@ -313,71 +313,30 @@
         const db = getFirestore();
 
         // Check if user is logged in
-        // Check if user is logged in and set up real-time listeners
         onAuthStateChanged(auth, async (user) => {
             if (user) {
                 // User is signed in
                 try {
-                    // Set up real-time listener for user data
-                    const userRef = doc(db, 'users', user.uid);
-                    onSnapshot(userRef, (docSnapshot) => {
-                        if (docSnapshot.exists()) {
-                            const userData = docSnapshot.data();
-                            
-                            // Update UI with user data
-                            updateUserInfo(userData);
-                        } else {
-                            console.error('User data not found in Firestore');
-                        }
-                    });
+                    // Get user data from Firestore
+                    const q = query(collection(db, 'users'), where('uid', '==', user.uid));
+                    const querySnapshot = await getDocs(q);
                     
-                    // Set up real-time listener for user's reports
-                    const reportsRef = collection(db, 'reports');
-                    const reportsQuery = query(
-                        reportsRef,
-                        where('userId', '==', user.uid),
-                        orderBy('createdAt', 'desc'),
-                        limit(5)
-                    );
-                    
-                    onSnapshot(reportsQuery, (querySnapshot) => {
-                        const reports = [];
-                        querySnapshot.forEach((doc) => {
-                            reports.push({
-                                id: doc.id,
-                                ...doc.data()
-                            });
-                        });
+                    if (!querySnapshot.empty) {
+                        const userData = querySnapshot.docs[0].data();
                         
-                        // Update recent activity with reports
-                        updateRecentActivity(reports);
-                    });
-                    
-                    // Set up real-time listener for user's shipments
-                    const shipmentsRef = collection(db, 'shipments');
-                    const shipmentsQuery = query(
-                        shipmentsRef,
-                        where('userId', '==', user.uid),
-                        orderBy('expectedDelivery', 'desc')
-                    );
-                    
-                    onSnapshot(shipmentsQuery, (querySnapshot) => {
-                        const shipments = [];
-                        querySnapshot.forEach((doc) => {
-                            shipments.push({
-                                id: doc.id,
-                                ...doc.data()
-                            });
-                        });
+                        // Update UI with user data
+                        updateUserInfo(userData);
                         
-                        // Update shipments tables
-                        updateShipmentsTables(shipments);
+                        // Load user's reports
+                        loadUserReports(user.uid);
                         
-                        // Update dashboard cards with counts
-                        updateDashboardCards(shipments);
-                    });
+                        // Load user's shipments
+                        loadUserShipments(user.uid);
+                    } else {
+                        console.error('User data not found in Firestore');
+                    }
                 } catch (error) {
-                    console.error('Error setting up real-time listeners:', error);
+                    console.error('Error getting user data:', error);
                 }
             } else {
                 // User is signed out, redirect to login page

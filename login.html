@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Rhoda Traders</title>
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo-container">
+                    <img src="images/logo.jpeg" alt="Rhoda Traders Logo" class="logo">
+                </a>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="pages/about.html">About Us</a></li>
+                    <li><a href="pages/job-description.html">Job Description</a></li>
+                    <li><a href="pages/contact.html">Contact</a></li>
+                    <li><a href="login.html" class="btn btn-primary">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Login Section -->
+    <section class="section auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-form-container">
+                    <div class="auth-header">
+                        <h2>Login to Your Account</h2>
+                        <p>Access your dashboard to manage your work with Rhoda Traders</p>
+                    </div>
+                    
+                    <form id="login-form" class="auth-form needs-validation">
+                        <div class="form-group">
+                            <label for="login-email">Email or Username</label>
+                            <input type="text" id="login-email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <div class="password-field">
+                                <input type="password" id="login-password" name="password" class="form-control" required>
+                                <button type="button" class="password-toggle"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="remember">
+                                    <span>Remember me</span>
+                                </label>
+                                <a href="#" class="forgot-password" data-modal-target="forgot-modal">Forgot Password?</a>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </div>
+                    </form>
+                    
+                    <div class="auth-separator">
+                        <span>OR</span>
+                    </div>
+                    
+                    <div class="auth-options">
+                        <p>Don't have an account yet?</p>
+                        <a href="pages/apply.html" class="btn btn-outline btn-block">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="auth-info">
+                    <div class="auth-info-content">
+                        <h3>Welcome Back!</h3>
+                        <p>Log in to access your dashboard where you can:</p>
+                        <ul class="auth-features">
+                            <li><i class="fas fa-check-circle"></i> View your application status</li>
+                            <li><i class="fas fa-check-circle"></i> Submit reports for Wall Fittings counts</li>
+                            <li><i class="fas fa-check-circle"></i> Communicate with our team</li>
+                            <li><i class="fas fa-check-circle"></i> Update your profile information</li>
+                            <li><i class="fas fa-check-circle"></i> Track your payment history</li>
+                        </ul>
+                        
+                        <div class="auth-support">
+                            <h4>Need Help?</h4>
+                            <p>If you're having trouble logging in or have questions about your account, please contact our support team.</p>
+                            <a href="pages/contact.html" class="btn btn-light">Contact Support</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgot-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Forgot Password</h3>
+                <button class="modal-close" data-modal-close>&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Enter your email address below, and we'll send you a link to reset your password.</p>
+                <form id="forgot-password-form">
+                    <div class="form-group">
+                        <label for="forgot-email">Email Address</label>
+                        <input type="email" id="forgot-email" name="email" class="form-control" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="send-reset-link">Send Reset Link</button>
+                <button class="btn btn-outline" data-modal-close>Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset Email Sent Modal -->
+    <div id="reset-sent-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Reset Link Sent</h3>
+                <button class="modal-close" data-modal-close>&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h4>Check Your Email</h4>
+                <p>We've sent a password reset link to your email address. Please check your inbox and follow the instructions to reset your password.</p>
+                <p>If you don't receive the email within a few minutes, please check your spam folder.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-modal-close>Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Rhoda Traders</h3>
+                    <p>A leading company in the Wall Fittings industry, providing quality products and flexible employment opportunities.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/about.html">About Us</a></li>
+                        <li><a href="pages/job-description.html">Job Description</a></li>
+                        <li><a href="pages/apply.html">Apply Now</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@rhodatraders.com">info@rhodatraders.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Business Street, City, Country</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rhoda Traders. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase JavaScript Files -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+        import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBCF-MkWe8JhkXKNoKLqzWAZxZVHMukO-c",
+            authDomain: "rhoda-traders.firebaseapp.com",
+            projectId: "rhoda-traders",
+            storageBucket: "rhoda-traders.firebasestorage.app",
+            messagingSenderId: "88738705806",
+            appId: "1:88738705806:web:0cbbb1be4ce51daa7334df",
+            measurementId: "G-44T210GQ6S"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore();
+
+        // Login form submission handler
+        document.getElementById('login-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const errorElement = document.createElement('div');
+            errorElement.className = 'error-message';
+            
+            try {
+                // Sign in with email and password
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                
+                // Check if user exists in Firestore and is approved
+                const q = query(collection(db, 'users'), where('uid', '==', user.uid));
+                const querySnapshot = await getDocs(q);
+                
+                if (!querySnapshot.empty) {
+                    const userData = querySnapshot.docs[0].data();
+                    
+                    // Check if user is approved or is an admin
+                    if (userData.status === 'approved' || userData.role === 'admin') {
+                        // Redirect based on role
+                        if (userData.role === 'admin') {
+                            window.location.href = 'admin/index.html';
+                        } else {
+                            window.location.href = 'pages/dashboard/index.html';
+                        }
+                    } else {
+                        // User is not approved
+                        const form = document.getElementById('login-form');
+                        if (form.querySelector('.error-message')) {
+                            form.querySelector('.error-message').remove();
+                        }
+                        errorElement.textContent = 'Your account is pending approval. Please wait for an administrator to approve your account.';
+                        form.appendChild(errorElement);
+                    }
+                } else {
+                    // User not found in Firestore
+                    window.location.href = 'pages/dashboard/index.html';
+                }
+            } catch (error) {
+                // Handle errors
+                const form = document.getElementById('login-form');
+                if (form.querySelector('.error-message')) {
+                    form.querySelector('.error-message').remove();
+                }
+                
+                let errorMessage = 'Failed to log in. Please check your credentials.';
+                if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                    errorMessage = 'Invalid email or password.';
+                } else if (error.code === 'auth/invalid-email') {
+                    errorMessage = 'Please enter a valid email address.';
+                } else if (error.code === 'auth/too-many-requests') {
+                    errorMessage = 'Too many failed login attempts. Please try again later.';
+                }
+                
+                errorElement.textContent = errorMessage;
+                form.appendChild(errorElement);
+                console.error('Error logging in:', error);
+            }
+        });
+        
+        // Forgot password handler
+        document.getElementById('send-reset-link').addEventListener('click', async function() {
+            const email = document.getElementById('forgot-email').value;
+            if (email) {
+                try {
+                    await sendPasswordResetEmail(auth, email);
+                    document.getElementById('forgot-modal').classList.remove('active');
+                    document.getElementById('reset-sent-modal').classList.add('active');
+                } catch (error) {
+                    const errorElement = document.createElement('div');
+                    errorElement.className = 'error-message';
+                    
+                    let errorMessage = 'Failed to send reset email. Please try again.';
+                    if (error.code === 'auth/user-not-found') {
+                        errorMessage = 'No account found with this email address.';
+                    } else if (error.code === 'auth/invalid-email') {
+                        errorMessage = 'Please enter a valid email address.';
+                    }
+                    
+                    errorElement.textContent = errorMessage;
+                    const form = document.getElementById('forgot-password-form');
+                    if (form.querySelector('.error-message')) {
+                        form.querySelector('.error-message').remove();
+                    }
+                    form.appendChild(errorElement);
+                    console.error('Error sending reset email:', error);
+                }
+            } else {
+                document.getElementById('forgot-email').classList.add('is-invalid');
+            }
+        });
+    </script>
+    
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

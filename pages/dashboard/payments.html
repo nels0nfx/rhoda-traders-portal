@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments - Rhoda Traders</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Dashboard Sidebar -->
+        <div class="dashboard-sidebar">
+            <div class="dashboard-logo">
+                <a href="../../index.html">
+                    <img src="../../images/logo.jpeg" alt="Rhoda Traders Logo" class="logo">
+                </a>
+            </div>
+            
+            <ul class="dashboard-nav">
+                <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-alt"></i> Submit Reports</a></li>
+                <li><a href="shipments.html"><i class="fas fa-box"></i> Shipments</a></li>
+                <li><a href="payments.html" class="active"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+                <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="help.html"><i class="fas fa-question-circle"></i> Help & Support</a></li>
+                <li><a href="../../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+        
+        <!-- Dashboard Main Content -->
+        <div class="dashboard-main">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Payments</h1>
+                <div class="user-info">
+                    <span class="user-greeting">Welcome, <strong>John Doe</strong></span>
+                    <div class="user-avatar">
+                        <img src="../../images/avatar.jpg" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment Summary Cards -->
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Total Earnings</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">$1,250</div>
+                    <div class="dashboard-card-label">
+                        All time
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">This Month</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">$450</div>
+                    <div class="dashboard-card-label">
+                        March 2025
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Pending</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">$200</div>
+                    <div class="dashboard-card-label">
+                        To be processed
+                    </div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Next Payment</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">April 5</div>
+                    <div class="dashboard-card-label">
+                        Estimated date
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment History -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Payment History</h2>
+                    <div class="filter-dropdown">
+                        <select id="payment-period-filter">
+                            <option value="all">All Time</option>
+                            <option value="this_month">This Month</option>
+                            <option value="last_month">Last Month</option>
+                            <option value="this_year">This Year</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Payment ID</th>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PAY-2025-0015</td>
+                                <td>March 20, 2025</td>
+                                <td>Shipment Processing (RT36925814)</td>
+                                <td>$150.00</td>
+                                <td><span class="status-badge status-completed">Paid</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="Download Receipt">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>PAY-2025-0014</td>
+                                <td>March 15, 2025</td>
+                                <td>Shipment Processing (RT14725836)</td>
+                                <td>$175.00</td>
+                                <td><span class="status-badge status-completed">Paid</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="Download Receipt">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>PAY-2025-0013</td>
+                                <td>March 10, 2025</td>
+                                <td>Bonus - Efficient Processing</td>
+                                <td>$50.00</td>
+                                <td><span class="status-badge status-completed">Paid</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="Download Receipt">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>PAY-2025-0012</td>
+                                <td>March 5, 2025</td>
+                                <td>Shipment Processing (RT25836947)</td>
+                                <td>$125.00</td>
+                                <td><span class="status-badge status-completed">Paid</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="Download Receipt">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>PAY-2025-0011</td>
+                                <td>February 25, 2025</td>
+                                <td>Shipment Processing (RT36914725)</td>
+                                <td>$160.00</td>
+                                <td><span class="status-badge status-completed">Paid</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline" data-tooltip="Download Receipt">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="pagination">
+                    <button class="pagination-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Pending Payments -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Pending Payments</h2>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Reference ID</th>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Estimated Payment</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>REF-2025-0016</td>
+                                <td>March 24, 2025</td>
+                                <td>Shipment Processing (RT78945612)</td>
+                                <td>$150.00</td>
+                                <td>April 5, 2025</td>
+                                <td><span class="status-badge status-pending">Processing</span></td>
+                            </tr>
+                            <tr>
+                                <td>REF-2025-0017</td>
+                                <td>March 24, 2025</td>
+                                <td>Overtime Hours (5 hours)</td>
+                                <td>$50.00</td>
+                                <td>April 5, 2025</td>
+                                <td><span class="status-badge status-pending">Pending Approval</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Payment Methods -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Payment Methods</h2>
+                    <button class="btn btn-sm" id="add-payment-method-btn"><i class="fas fa-plus"></i> Add Method</button>
+                </div>
+                
+                <div class="payment-methods">
+                    <div class="payment-method-card active">
+                        <div class="payment-method-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="payment-method-details">
+                            <div class="payment-method-name">Bank Account (Primary)</div>
+                            <div class="payment-method-info">**** **** **** 1234</div>
+                        </div>
+                        <div class="payment-method-actions">
+                            <button class="btn btn-sm btn-outline" data-tooltip="Edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-outline" data-tooltip="Remove"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-method-card">
+                        <div class="payment-method-icon">
+                            <i class="fab fa-paypal"></i>
+                        </div>
+                        <div class="payment-method-details">
+                            <div class="payment-method-name">PayPal</div>
+                            <div class="payment-method-info">john.doe@example.com</div>
+                        </div>
+                        <div class="payment-method-actions">
+                            <button class="btn btn-sm btn-outline" data-tooltip="Set as Primary"><i class="fas fa-check-circle"></i></button>
+                            <button class="btn btn-sm btn-outline" data-tooltip="Edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-outline" data-tooltip="Remove"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment Modal -->
+            <div class="modal" id="payment-details-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Payment Details</h2>
+                        <button class="close-modal"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="payment-details">
+                            <div class="detail-group">
+                                <h3>Payment Information</h3>
+                                <div class="detail-row">
+                                    <div class="detail-label">Payment ID:</div>
+                                    <div class="detail-value">PAY-2025-0015</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Date:</div>
+                                    <div class="detail-value">March 20, 2025</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Amount:</div>
+                                    <div class="detail-value">$150.00</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Status:</div>
+                                    <div class="detail-value"><span class="status-badge status-completed">Paid</span></div>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-group">
+                                <h3>Payment Details</h3>
+                                <div class="detail-row">
+                                    <div class="detail-label">Description:</div>
+                                    <div class="detail-value">Shipment Processing (RT36925814)</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Payment Method:</div>
+                                    <div class="detail-value">Bank Account (**** 1234)</div>
+                                </div>
+                                <div class="detail-row">
+                                    <div class="detail-label">Reference:</div>
+                                    <div class="detail-value">RTPAY-20250320-0015</div>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-group">
+                                <h3>Payment Breakdown</h3>
+                                <div class="payment-breakdown">
+                                    <div class="breakdown-row">
+                                        <div class="breakdown-label">Base Pay:</div>
+                                        <div class="breakdown-value">$135.00</div>
+                                    </div>
+                                    <div class="breakdown-row">
+                                        <div class="breakdown-label">Bonus:</div>
+                                        <div class="breakdown-value">$15.00</div>
+                                    </div>
+                                    <div class="breakdown-row">
+                                        <div class="breakdown-label">Taxes:</div>
+                                        <div class="breakdown-value">$0.00</div>
+                                    </div>
+                                    <div class="breakdown-row total">
+                                        <div class="breakdown-label">Total:</div>
+                                        <div class="breakdown-value">$150.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline close-modal">Close</button>
+                        <button class="btn btn-primary" id="download-receipt-btn">Download Receipt</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Add Payment Method Modal -->
+            <div class="modal" id="add-payment-method-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Add Payment Method</h2>
+                        <button class="close-modal"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="payment-method-tabs">
+                            <button class="tab-btn active" data-tab="bank">Bank Account</button>
+                            <button class="tab-btn" data-tab="paypal">PayPal</button>
+                        </div>
+                        
+                        <div class="tab-content" id="bank-tab">
+                            <form id="bank-form">
+                                <div class="form-group">
+                                    <label for="bank-name">Bank Name</label>
+                                    <input type="text" id="bank-name" placeholder="Enter bank name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="account-name">Account Holder Name</label>
+                                    <input type="text" id="account-name" placeholder="Enter account holder name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="account-number">Account Number</label>
+                                    <input type="text" id="account-number" placeholder="Enter account number">
+                                </div>
+                                <div class="form-group">
+                                    <label for="routing-number">Routing Number</label>
+                                    <input type="text" id="routing-number" placeholder="Enter routing number">
+                                </div>
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="bank-primary">
+                                    <label for="bank-primary">Set as primary payment method</label>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="tab-content" id="paypal-tab" style="display: none;">
+                            <form id="paypal-form">
+                                <div class="form-group">
+                                    <label for="paypal-email">PayPal Email</label>
+                                    <input type="email" id="paypal-email" placeholder="Enter PayPal email">
+                                </div>
+                                <div class="form-checkbox">
+                                    <input type="checkbox" id="paypal-primary">
+                                    <label for="paypal-primary">Set as primary payment method</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline close-modal">Cancel</button>
+                        <button class="btn btn-primary" id="save-payment-method-btn">Save Payment Method</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase JavaScript Files -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs, orderBy, limit } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBCF-MkWe8JhkXKNoKLqzWAZxZVHMukO-c",
+            authDomain: "rhoda-traders.firebaseapp.com",
+            projectId: "rhoda-traders",
+            storageBucket: "rhoda-traders.firebasestorage.app",
+            messagingSenderId: "88738705806",
+            appId: "1:88738705806:web:0cbbb1be4ce51daa7334df",
+            measurementId: "G-44T210GQ6S"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore();
+
+        // Check if user is logged in
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in
+                try {
+                    // Get user data from Firestore
+                    const q = query(collection(db, 'users'), where('uid', '==', user.uid));
+                    const querySnapshot = await getDocs(q);
+                    
+                    if (!querySnapshot.empty) {
+                        const userData = querySnapshot.docs[0].data();
+                        
+                        // Update UI with user data
+                        updateUserInfo(userData);
+                        
+                        // Load user's payments
+                        loadUserPayments(user.uid);
+                    } else {
+                        console.error('User data not found in Firestore');
+                    }
+                } catch (error) {
+                    console.error('Error getting user data:', error);
+                }
+            } else {
+                // User is signed out, redirect to login page
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Update user info in the UI
+        function updateUserInfo(userData) {
+            const userGreeting = document.querySelector('.user-greeting strong');
+            if (userGreeting) {
+                userGreeting.textContent = `${userData.firstName} ${userData.lastName}`;
+            }
+            
+            // Update avatar if available
+            if (userData.photoURL) {
+                const avatarElement = document.querySelector('.user-avatar img');
+                if (avatarElement) {
+                    avatarElement.src = userData.photoURL;
+                }
+            }
+        }
+
+        // Load user's payments from Firestore
+        async function loadUserPayments(userId) {
+            try {
+                // In a real app, you would fetch payment data from Firestore
+                // For this demo, we'll use the sample data in the HTML
+                
+                // Set up event listeners for the payment history table
+                setupPaymentHistoryActions();
+                
+                // Set up event listeners for payment methods
+                setupPaymentMethodActions();
+                
+                // Set up event listeners for the payment period filter
+                setupPaymentPeriodFilter();
+            } catch (error) {
+                console.error('Error loading payments:', error);
+            }
+        }
+
+        // Set up event listeners for the payment history table
+        function setupPaymentHistoryActions() {
+            // View details buttons
+            const viewDetailsButtons = document.querySelectorAll('[data-tooltip="View Details"]');
+            viewDetailsButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    openPaymentDetailsModal();
+                });
+            });
+            
+            // Download receipt buttons
+            const downloadReceiptButtons = document.querySelectorAll('[data-tooltip="Download Receipt"]');
+            downloadReceiptButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    downloadReceipt();
+                });
+            });
+        }
+
+        // Set up event listeners for payment methods
+        function setupPaymentMethodActions() {
+            // Add payment method button
+            const addPaymentMethodBtn = document.getElementById('add-payment-method-btn');
+            if (addPaymentMethodBtn) {
+                addPaymentMethodBtn.addEventListener('click', () => {
+                    openAddPaymentMethodModal();
+                });
+            }
+            
+            // Payment method action buttons
+            const editButtons = document.querySelectorAll('[data-tooltip="Edit"]');
+            editButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    // In a real app, this would open an edit modal
+                    alert('Edit payment method functionality would be implemented here.');
+                });
+            });
+            
+            const removeButtons = document.querySelectorAll('[data-tooltip="Remove"]');
+            removeButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    // In a real app, this would show a confirmation dialog
+                    alert('Remove payment method functionality would be implemented here.');
+                });
+            });
+            
+            const setPrimaryButtons = document.querySelectorAll('[data-tooltip="Set as Primary"]');
+            setPrimaryButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    // In a real app, this would update the primary payment method
+                    alert('Set as primary functionality would be implemented here.');
+                });
+            });
+        }
+
+        // Set up event listeners for the payment period filter
+        function setupPaymentPeriodFilter() {
+            const paymentPeriodFilter = document.getElementById('payment-period-filter');
+            if (paymentPeriodFilter) {
+                paymentPeriodFilter.addEventListener('change', () => {
+                    // In a real app, this would filter the payment history table
+                    // For this demo, we'll just log the selected value
+                    console.log('Selected payment period:', paymentPeriodFilter.value);
+                });
+            }
+        }
+
+        // Open payment details modal
+        function openPaymentDetailsModal() {
+            const modal = document.getElementById('payment-details-modal');
+            modal.style.display = 'flex';
+            
+            // Close modal when clicking the close button or outside the modal
+            const closeButtons = modal.querySelectorAll('.close-modal');
+            closeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                });
+            });
+            
+            // Close modal when clicking outside the modal content
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Download receipt button in modal
+            const downloadReceiptBtn = document.getElementById('download-receipt-btn');
+            downloadReceiptBtn.addEventListener('click', () => {
+                downloadReceipt();
+            });
+        }
+
+        // Open add payment method modal
+        function openAddPaymentMethodModal() {
+            const modal = document.getElementById('add-payment-method-modal');
+            modal.style.display = 'flex';
+            
+            // Set up tab functionality
+            const tabButtons = modal.querySelectorAll('.tab-btn');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Hide all tab content
+                    const tabContents = modal.querySelectorAll('.tab-content');
+                    tabContents.forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    
+                    // Show selected tab content
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-tab`).style.display = 'block';
+                });
+            });
+            
+            // Close modal when clicking the close button or outside the modal
+            const closeButtons = modal.querySelectorAll('.close-modal');
+            closeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                });
+            });
+            
+            // Close modal when clicking outside the modal content
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Save payment method button
+            const savePaymentMethodBtn = document.getElementById('save-payment-method-btn');
+            savePaymentMethodBtn.addEventListener('click', () => {
+                // In a real app, this would save the payment method to Firestore
+                alert('Payment method would be saved here in a real app.');
+                modal.style.display = 'none';
+            });
+        }
+
+        // Download receipt function
+        function downloadReceipt() {
+            // In a real app, this would download a receipt PDF
+            alert('Downloading receipt. In a real app, this would download a PDF.');
+        }
+
+        // Handle logout
+        document.querySelector('a[href="../../index.html"]').addEventListener('click', async function(event) {
+            event.preventDefault();
+            try {
+                await signOut(auth);
+                window.location.href = '../../index.html';
+            } catch (error) {
+                console.error('Error signing out:', error);
+            }
+        });
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="../../js/main.js"></script>
+</body>
+</html>

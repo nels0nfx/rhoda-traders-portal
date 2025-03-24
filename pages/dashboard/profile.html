@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Rhoda Traders</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Dashboard Sidebar -->
+        <div class="dashboard-sidebar">
+            <div class="dashboard-logo">
+                <a href="../../index.html">
+                    <img src="../../images/logo.jpeg" alt="Rhoda Traders Logo" class="logo">
+                </a>
+            </div>
+            
+            <ul class="dashboard-nav">
+                <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="profile.html" class="active"><i class="fas fa-user"></i> My Profile</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-alt"></i> Submit Reports</a></li>
+                <li><a href="shipments.html"><i class="fas fa-box"></i> Shipments</a></li>
+                <li><a href="payments.html"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+                <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="help.html"><i class="fas fa-question-circle"></i> Help & Support</a></li>
+                <li><a href="../../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+        
+        <!-- Dashboard Main Content -->
+        <div class="dashboard-main">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">My Profile</h1>
+                <div class="user-info">
+                    <span class="user-greeting">Welcome, <strong>John Doe</strong></span>
+                    <div class="user-avatar">
+                        <img src="../../images/avatar.jpg" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile Content -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Personal Information</h2>
+                    <button class="btn btn-sm" id="edit-profile-btn"><i class="fas fa-edit"></i> Edit Profile</button>
+                </div>
+                
+                <div class="profile-container">
+                    <div class="profile-info">
+                        <div class="profile-avatar">
+                            <img src="../../images/avatar.jpg" alt="User Avatar">
+                            <div class="profile-avatar-overlay">
+                                <i class="fas fa-camera"></i>
+                                <span>Change Photo</span>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-details">
+                            <form id="profile-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" id="firstName" value="John" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" id="lastName" value="Doe" disabled>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" id="email" value="john.doe@example.com" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="tel" id="phone" value="+1 (555) 123-4567" disabled>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="address">Address</label>
+                                        <input type="text" id="address" value="123 Main Street" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                        <input type="text" id="city" value="New York" disabled>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="state">State</label>
+                                        <input type="text" id="state" value="NY" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="zipCode">Zip Code</label>
+                                        <input type="text" id="zipCode" value="10001" disabled>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions" style="display: none;">
+                                    <button type="button" class="btn btn-primary" id="save-profile-btn">Save Changes</button>
+                                    <button type="button" class="btn btn-outline" id="cancel-edit-btn">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Employment Information -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Employment Information</h2>
+                </div>
+                
+                <div class="employment-info">
+                    <div class="info-card">
+                        <div class="info-label">Employee ID</div>
+                        <div class="info-value">RT-EMP-001</div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-label">Position</div>
+                        <div class="info-value">Wall Fitter</div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-label">Department</div>
+                        <div class="info-value">Installation</div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-label">Date Hired</div>
+                        <div class="info-value">January 15, 2025</div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-label">Status</div>
+                        <div class="info-value"><span class="status-badge status-approved">Active</span></div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-label">Supervisor</div>
+                        <div class="info-value">Jane Smith</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Documents -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Documents</h2>
+                    <button class="btn btn-sm" id="upload-doc-btn"><i class="fas fa-upload"></i> Upload Document</button>
+                </div>
+                
+                <div class="documents-container">
+                    <div class="document-card">
+                        <div class="document-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="document-info">
+                            <div class="document-title">Employment Contract</div>
+                            <div class="document-meta">Uploaded on: Jan 15, 2025</div>
+                        </div>
+                        <div class="document-actions">
+                            <button class="btn btn-sm btn-outline" data-tooltip="View"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-sm btn-outline" data-tooltip="Download"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="document-card">
+                        <div class="document-icon">
+                            <i class="fas fa-file-image"></i>
+                        </div>
+                        <div class="document-info">
+                            <div class="document-title">ID Card</div>
+                            <div class="document-meta">Uploaded on: Jan 15, 2025</div>
+                        </div>
+                        <div class="document-actions">
+                            <button class="btn btn-sm btn-outline" data-tooltip="View"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-sm btn-outline" data-tooltip="Download"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="document-card">
+                        <div class="document-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="document-info">
+                            <div class="document-title">Training Certificate</div>
+                            <div class="document-meta">Uploaded on: Feb 10, 2025</div>
+                        </div>
+                        <div class="document-actions">
+                            <button class="btn btn-sm btn-outline" data-tooltip="View"><i class="fas fa-eye"></i></button>
+                            <button class="btn btn-sm btn-outline" data-tooltip="Download"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Account Settings -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Account Settings</h2>
+                </div>
+                
+                <div class="settings-container">
+                    <div class="settings-group">
+                        <h3>Change Password</h3>
+                        <form id="password-form">
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <input type="password" id="currentPassword">
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" id="newPassword">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm New Password</label>
+                                <input type="password" id="confirmPassword">
+                            </div>
+                            <button type="button" class="btn btn-primary">Update Password</button>
+                        </form>
+                    </div>
+                    
+                    <div class="settings-group">
+                        <h3>Notification Preferences</h3>
+                        <div class="notification-settings">
+                            <div class="notification-option">
+                                <div class="notification-label">Email Notifications</div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="notification-option">
+                                <div class="notification-label">SMS Notifications</div>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="notification-option">
+                                <div class="notification-label">Shipment Updates</div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="notification-option">
+                                <div class="notification-label">Payment Notifications</div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase JavaScript Files -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+        import { getAuth, onAuthStateChanged, signOut, updatePassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-storage.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBCF-MkWe8JhkXKNoKLqzWAZxZVHMukO-c",
+            authDomain: "rhoda-traders.firebaseapp.com",
+            projectId: "rhoda-traders",
+            storageBucket: "rhoda-traders.firebasestorage.app",
+            messagingSenderId: "88738705806",
+            appId: "1:88738705806:web:0cbbb1be4ce51daa7334df",
+            measurementId: "G-44T210GQ6S"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore();
+        const storage = getStorage();
+
+        // Check if user is logged in
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in
+                try {
+                    // Get user data from Firestore
+                    const q = query(collection(db, 'users'), where('uid', '==', user.uid));
+                    const querySnapshot = await getDocs(q);
+                    
+                    if (!querySnapshot.empty) {
+                        const userData = querySnapshot.docs[0].data();
+                        const userDocId = querySnapshot.docs[0].id;
+                        
+                        // Update UI with user data
+                        updateProfileUI(userData);
+                        
+                        // Set up edit profile functionality
+                        setupProfileEdit(userData, userDocId);
+                        
+                        // Set up password change functionality
+                        setupPasswordChange(user);
+                    } else {
+                        console.error('User data not found in Firestore');
+                    }
+                } catch (error) {
+                    console.error('Error getting user data:', error);
+                }
+            } else {
+                // User is signed out, redirect to login page
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Update profile UI with user data
+        function updateProfileUI(userData) {
+            // Update user greeting
+            const userGreeting = document.querySelector('.user-greeting strong');
+            if (userGreeting) {
+                userGreeting.textContent = `${userData.firstName} ${userData.lastName}`;
+            }
+            
+            // Update form fields
+            document.getElementById('firstName').value = userData.firstName || '';
+            document.getElementById('lastName').value = userData.lastName || '';
+            document.getElementById('email').value = userData.email || '';
+            document.getElementById('phone').value = userData.phone || '';
+            document.getElementById('address').value = userData.address || '';
+            document.getElementById('city').value = userData.city || '';
+            document.getElementById('state').value = userData.state || '';
+            document.getElementById('zipCode').value = userData.zipCode || '';
+            
+            // Update employment info
+            const employeeIdEl = document.querySelector('.info-card:nth-child(1) .info-value');
+            if (employeeIdEl) employeeIdEl.textContent = userData.employeeId || 'Not assigned';
+            
+            const positionEl = document.querySelector('.info-card:nth-child(2) .info-value');
+            if (positionEl) positionEl.textContent = userData.position || 'Not assigned';
+            
+            const departmentEl = document.querySelector('.info-card:nth-child(3) .info-value');
+            if (departmentEl) departmentEl.textContent = userData.department || 'Not assigned';
+            
+            const hiredDateEl = document.querySelector('.info-card:nth-child(4) .info-value');
+            if (hiredDateEl && userData.hireDate) {
+                const date = userData.hireDate.toDate ? userData.hireDate.toDate() : new Date(userData.hireDate);
+                hiredDateEl.textContent = formatDate(date);
+            }
+            
+            const statusEl = document.querySelector('.info-card:nth-child(5) .info-value .status-badge');
+            if (statusEl) {
+                statusEl.className = `status-badge status-${userData.status}`;
+                statusEl.textContent = userData.status.charAt(0).toUpperCase() + userData.status.slice(1);
+            }
+            
+            // Update avatar if available
+            if (userData.photoURL) {
+                const avatarElements = document.querySelectorAll('.user-avatar img, .profile-avatar img');
+                avatarElements.forEach(el => {
+                    el.src = userData.photoURL;
+                });
+            }
+        }
+
+        // Set up profile edit functionality
+        function setupProfileEdit(userData, userDocId) {
+            const editBtn = document.getElementById('edit-profile-btn');
+            const saveBtn = document.getElementById('save-profile-btn');
+            const cancelBtn = document.getElementById('cancel-edit-btn');
+            const formActions = document.querySelector('.form-actions');
+            const formInputs = document.querySelectorAll('#profile-form input');
+            
+            // Enable editing
+            editBtn.addEventListener('click', () => {
+                formInputs.forEach(input => {
+                    if (input.id !== 'email') { // Don't allow email change
+                        input.disabled = false;
+                    }
+                });
+                formActions.style.display = 'flex';
+                editBtn.style.display = 'none';
+            });
+            
+            // Cancel editing
+            cancelBtn.addEventListener('click', () => {
+                // Reset form values
+                document.getElementById('firstName').value = userData.firstName || '';
+                document.getElementById('lastName').value = userData.lastName || '';
+                document.getElementById('phone').value = userData.phone || '';
+                document.getElementById('address').value = userData.address || '';
+                document.getElementById('city').value = userData.city || '';
+                document.getElementById('state').value = userData.state || '';
+                document.getElementById('zipCode').value = userData.zipCode || '';
+                
+                // Disable inputs
+                formInputs.forEach(input => {
+                    input.disabled = true;
+                });
+                
+                formActions.style.display = 'none';
+                editBtn.style.display = 'inline-block';
+            });
+            
+            // Save profile changes
+            saveBtn.addEventListener('click', async () => {
+                try {
+                    const updatedData = {
+                        firstName: document.getElementById('firstName').value,
+                        lastName: document.getElementById('lastName').value,
+                        phone: document.getElementById('phone').value,
+                        address: document.getElementById('address').value,
+                        city: document.getElementById('city').value,
+                        state: document.getElementById('state').value,
+                        zipCode: document.getElementById('zipCode').value,
+                        updatedAt: new Date()
+                    };
+                    
+                    // Update Firestore document
+                    await updateDoc(doc(db, 'users', userDocId), updatedData);
+                    
+                    // Update local data
+                    Object.assign(userData, updatedData);
+                    
+                    // Update UI
+                    updateProfileUI(userData);
+                    
+                    // Disable inputs
+                    formInputs.forEach(input => {
+                        input.disabled = true;
+                    });
+                    
+                    formActions.style.display = 'none';
+                    editBtn.style.display = 'inline-block';
+                    
+                    // Show success message
+                    alert('Profile updated successfully!');
+                } catch (error) {
+                    console.error('Error updating profile:', error);
+                    alert('Error updating profile. Please try again.');
+                }
+            });
+            
+            // Handle avatar change
+            const avatarOverlay = document.querySelector('.profile-avatar-overlay');
+            if (avatarOverlay) {
+                avatarOverlay.addEventListener('click', () => {
+                    // Create a file input
+                    const fileInput = document.createElement('input');
+                    fileInput.type = 'file';
+                    fileInput.accept = 'image/*';
+                    
+                    fileInput.addEventListener('change', async (e) => {
+                        if (e.target.files.length > 0) {
+                            const file = e.target.files[0];
+                            
+                            try {
+                                // Upload to Firebase Storage
+                                const storageRef = ref(storage, `avatars/${userData.uid}`);
+                                await uploadBytes(storageRef, file);
+                                
+                                // Get download URL
+                                const downloadURL = await getDownloadURL(storageRef);
+                                
+                                // Update Firestore
+                                await updateDoc(doc(db, 'users', userDocId), {
+                                    photoURL: downloadURL,
+                                    updatedAt: new Date()
+                                });
+                                
+                                // Update local data
+                                userData.photoURL = downloadURL;
+                                
+                                // Update UI
+                                const avatarElements = document.querySelectorAll('.user-avatar img, .profile-avatar img');
+                                avatarElements.forEach(el => {
+                                    el.src = downloadURL;
+                                });
+                                
+                                // Show success message
+                                alert('Profile picture updated successfully!');
+                            } catch (error) {
+                                console.error('Error uploading profile picture:', error);
+                                alert('Error uploading profile picture. Please try again.');
+                            }
+                        }
+                    });
+                    
+                    fileInput.click();
+                });
+            }
+        }
+
+        // Set up password change functionality
+        function setupPasswordChange(user) {
+            const passwordForm = document.getElementById('password-form');
+            const updatePasswordBtn = passwordForm.querySelector('button');
+            
+            updatePasswordBtn.addEventListener('click', async () => {
+                const currentPassword = document.getElementById('currentPassword').value;
+                const newPassword = document.getElementById('newPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                
+                // Validate inputs
+                if (!currentPassword || !newPassword || !confirmPassword) {
+                    alert('Please fill in all password fields');
+                    return;
+                }
+                
+                if (newPassword !== confirmPassword) {
+                    alert('New passwords do not match');
+                    return;
+                }
+                
+                if (newPassword.length < 6) {
+                    alert('Password must be at least 6 characters long');
+                    return;
+                }
+                
+                try {
+                    // Re-authenticate user (this is a simplified version - in production you'd use reauthenticateWithCredential)
+                    // For this demo, we'll just try to update the password directly
+                    
+                    await updatePassword(user, newPassword);
+                    
+                    // Clear form
+                    document.getElementById('currentPassword').value = '';
+                    document.getElementById('newPassword').value = '';
+                    document.getElementById('confirmPassword').value = '';
+                    
+                    // Show success message
+                    alert('Password updated successfully!');
+                } catch (error) {
+                    console.error('Error updating password:', error);
+                    
+                    if (error.code === 'auth/requires-recent-login') {
+                        alert('For security reasons, please log out and log back in before changing your password.');
+                    } else {
+                        alert('Error updating password. Please try again.');
+                    }
+                }
+            });
+        }
+
+        // Helper function to format date
+        function formatDate(date) {
+            return new Date(date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        // Handle logout
+        document.querySelector('a[href="../../index.html"]').addEventListener('click', async function(event) {
+            event.preventDefault();
+            try {
+                await signOut(auth);
+                window.location.href = '../../index.html';
+            } catch (error) {
+                console.error('Error signing out:', error);
+            }
+        });
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="../../js/main.js"></script>
+</body>
+</html>

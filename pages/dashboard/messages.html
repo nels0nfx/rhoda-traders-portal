@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - Rhoda Traders</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Dashboard Sidebar -->
+        <div class="dashboard-sidebar">
+            <div class="dashboard-logo">
+                <a href="../../index.html">
+                    <img src="../../images/logo.jpeg" alt="Rhoda Traders Logo" class="logo">
+                </a>
+            </div>
+            
+            <ul class="dashboard-nav">
+                <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-alt"></i> Submit Reports</a></li>
+                <li><a href="shipments.html"><i class="fas fa-box"></i> Shipments</a></li>
+                <li><a href="payments.html"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+                <li><a href="messages.html" class="active"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="help.html"><i class="fas fa-question-circle"></i> Help & Support</a></li>
+                <li><a href="../../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+        
+        <!-- Dashboard Main Content -->
+        <div class="dashboard-main">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Messages</h1>
+                <div class="user-info">
+                    <span class="user-greeting">Welcome, <strong>John Doe</strong></span>
+                    <div class="user-avatar">
+                        <img src="../../images/avatar.jpg" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Messages Container -->
+            <div class="messages-container">
+                <!-- Messages Sidebar -->
+                <div class="messages-sidebar">
+                    <div class="messages-search">
+                        <input type="text" placeholder="Search messages...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <div class="messages-tabs">
+                        <button class="messages-tab active" data-tab="inbox">Inbox</button>
+                        <button class="messages-tab" data-tab="sent">Sent</button>
+                        <button class="messages-tab" data-tab="archived">Archived</button>
+                    </div>
+                    
+                    <div class="messages-list">
+                        <div class="message-item unread active" data-conversation-id="1">
+                            <div class="message-avatar">
+                                <img src="../../images/admin-avatar.jpg" alt="Admin">
+                            </div>
+                            <div class="message-preview">
+                                <div class="message-header">
+                                    <div class="message-sender">Admin</div>
+                                    <div class="message-time">Today, 10:30 AM</div>
+                                </div>
+                                <div class="message-subject">Regarding your recent report</div>
+                                <div class="message-snippet">Thank you for submitting your report for shipment #RT78945612...</div>
+                            </div>
+                        </div>
+                        
+                        <div class="message-item" data-conversation-id="2">
+                            <div class="message-avatar">
+                                <img src="../../images/avatar-jane.jpg" alt="Jane Smith">
+                            </div>
+                            <div class="message-preview">
+                                <div class="message-header">
+                                    <div class="message-sender">Jane Smith</div>
+                                    <div class="message-time">Yesterday, 3:45 PM</div>
+                                </div>
+                                <div class="message-subject">Upcoming shipment details</div>
+                                <div class="message-snippet">Please review the details for the upcoming shipment scheduled for...</div>
+                            </div>
+                        </div>
+                        
+                        <div class="message-item" data-conversation-id="3">
+                            <div class="message-avatar">
+                                <img src="../../images/avatar-support.jpg" alt="Support Team">
+                            </div>
+                            <div class="message-preview">
+                                <div class="message-header">
+                                    <div class="message-sender">Support Team</div>
+                                    <div class="message-time">Mar 20, 2025</div>
+                                </div>
+                                <div class="message-subject">Your support request #SR-2025-0123</div>
+                                <div class="message-snippet">Thank you for contacting the support team. We have received your...</div>
+                            </div>
+                        </div>
+                        
+                        <div class="message-item" data-conversation-id="4">
+                            <div class="message-avatar">
+                                <img src="../../images/admin-avatar.jpg" alt="Admin">
+                            </div>
+                            <div class="message-preview">
+                                <div class="message-header">
+                                    <div class="message-sender">Admin</div>
+                                    <div class="message-time">Mar 15, 2025</div>
+                                </div>
+                                <div class="message-subject">Payment confirmation</div>
+                                <div class="message-snippet">This is to confirm that your payment of $175.00 for shipment...</div>
+                            </div>
+                        </div>
+                        
+                        <div class="message-item" data-conversation-id="5">
+                            <div class="message-avatar">
+                                <img src="../../images/avatar-system.jpg" alt="System">
+                            </div>
+                            <div class="message-preview">
+                                <div class="message-header">
+                                    <div class="message-sender">System</div>
+                                    <div class="message-time">Mar 10, 2025</div>
+                                </div>
+                                <div class="message-subject">Profile updated successfully</div>
+                                <div class="message-snippet">Your profile has been updated successfully. If you did not make...</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="compose-btn-container">
+                        <button class="btn btn-primary compose-btn"><i class="fas fa-pen"></i> Compose</button>
+                    </div>
+                </div>
+                
+                <!-- Message Content -->
+                <div class="message-content">
+                    <div class="message-content-header">
+                        <h2>Regarding your recent report</h2>
+                        <div class="message-actions">
+                            <button class="btn btn-sm btn-outline" data-tooltip="Reply"><i class="fas fa-reply"></i></button>
+                            <button class="btn btn-sm btn-outline" data-tooltip="Forward"><i class="fas fa-share"></i></button>
+                            <button class="btn btn-sm btn-outline" data-tooltip="Archive"><i class="fas fa-archive"></i></button>
+                            <button class="btn btn-sm btn-outline" data-tooltip="Delete"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="message-info">
+                        <div class="message-sender-info">
+                            <img src="../../images/admin-avatar.jpg" alt="Admin" class="sender-avatar">
+                            <div class="sender-details">
+                                <div class="sender-name">Admin <span class="sender-email">&lt;admin@rhodatraders.com&gt;</span></div>
+                                <div class="message-date">Today, 10:30 AM</div>
+                            </div>
+                        </div>
+                        <div class="message-recipients">
+                            <span class="recipient-label">To:</span>
+                            <span class="recipient">John Doe &lt;john.doe@example.com&gt;</span>
+                        </div>
+                    </div>
+                    
+                    <div class="message-body">
+                        <p>Dear John,</p>
+                        
+                        <p>Thank you for submitting your report for shipment #RT78945612. We have reviewed the information you provided and everything looks good.</p>
+                        
+                        <p>The shipment has been marked as "Counted" and is now ready for pickup. The FedEx pickup has been scheduled for tomorrow, March 25, 2025, between 1:00 PM and 3:00 PM.</p>
+                        
+                        <p>Please ensure that the shipment is properly packaged and ready for pickup. If you have any questions or need any assistance, please don't hesitate to reply to this message.</p>
+                        
+                        <p>Your payment for this shipment processing ($150.00) has been approved and will be included in your next payment cycle.</p>
+                        
+                        <p>Thank you for your hard work and dedication.</p>
+                        
+                        <p>Best regards,<br>
+                        Admin Team<br>
+                        Rhoda Traders</p>
+                    </div>
+                    
+                    <div class="message-attachments">
+                        <h3>Attachments (1)</h3>
+                        <div class="attachment">
+                            <div class="attachment-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="attachment-info">
+                                <div class="attachment-name">Shipment_Details_RT78945612.pdf</div>
+                                <div class="attachment-size">245 KB</div>
+                            </div>
+                            <div class="attachment-actions">
+                                <button class="btn btn-sm btn-outline" data-tooltip="View"><i class="fas fa-eye"></i></button>
+                                <button class="btn btn-sm btn-outline" data-tooltip="Download"><i class="fas fa-download"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reply-container">
+                        <div class="reply-header">
+                            <h3>Reply</h3>
+                        </div>
+                        <div class="reply-editor">
+                            <textarea placeholder="Type your reply here..."></textarea>
+                            <div class="editor-toolbar">
+                                <button class="toolbar-btn" data-tooltip="Bold"><i class="fas fa-bold"></i></button>
+                                <button class="toolbar-btn" data-tooltip="Italic"><i class="fas fa-italic"></i></button>
+                                <button class="toolbar-btn" data-tooltip="Underline"><i class="fas fa-underline"></i></button>
+                                <button class="toolbar-btn" data-tooltip="Bullet List"><i class="fas fa-list-ul"></i></button>
+                                <button class="toolbar-btn" data-tooltip="Numbered List"><i class="fas fa-list-ol"></i></button>
+                                <button class="toolbar-btn" data-tooltip="Attach File"><i class="fas fa-paperclip"></i></button>
+                            </div>
+                        </div>
+                        <div class="reply-actions">
+                            <button class="btn btn-outline">Cancel</button>
+                            <button class="btn btn-primary">Send Reply</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Compose Message Modal -->
+            <div class="modal" id="compose-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Compose Message</h2>
+                        <button class="close-modal"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="compose-form">
+                            <div class="form-group">
+                                <label for="compose-to">To:</label>
+                                <input type="text" id="compose-to" placeholder="Enter recipient email or select from list">
+                                <div class="recipient-suggestions">
+                                    <div class="recipient-suggestion" data-email="admin@rhodatraders.com">
+                                        <img src="../../images/admin-avatar.jpg" alt="Admin" class="suggestion-avatar">
+                                        <div class="suggestion-info">
+                                            <div class="suggestion-name">Admin</div>
+                                            <div class="suggestion-email">admin@rhodatraders.com</div>
+                                        </div>
+                                    </div>
+                                    <div class="recipient-suggestion" data-email="jane.smith@rhodatraders.com">
+                                        <img src="../../images/avatar-jane.jpg" alt="Jane Smith" class="suggestion-avatar">
+                                        <div class="suggestion-info">
+                                            <div class="suggestion-name">Jane Smith</div>
+                                            <div class="suggestion-email">jane.smith@rhodatraders.com</div>
+                                        </div>
+                                    </div>
+                                    <div class="recipient-suggestion" data-email="support@rhodatraders.com">
+                                        <img src="../../images/avatar-support.jpg" alt="Support Team" class="suggestion-avatar">
+                                        <div class="suggestion-info">
+                                            <div class="suggestion-name">Support Team</div>
+                                            <div class="suggestion-email">support@rhodatraders.com</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="compose-subject">Subject:</label>
+                                <input type="text" id="compose-subject" placeholder="Enter message subject">
+                            </div>
+                            <div class="form-group">
+                                <label for="compose-message">Message:</label>
+                                <textarea id="compose-message" placeholder="Type your message here..."></textarea>
+                                <div class="editor-toolbar">
+                                    <button type="button" class="toolbar-btn" data-tooltip="Bold"><i class="fas fa-bold"></i></button>
+                                    <button type="button" class="toolbar-btn" data-tooltip="Italic"><i class="fas fa-italic"></i></button>
+                                    <button type="button" class="toolbar-btn" data-tooltip="Underline"><i class="fas fa-underline"></i></button>
+                                    <button type="button" class="toolbar-btn" data-tooltip="Bullet List"><i class="fas fa-list-ul"></i></button>
+                                    <button type="button" class="toolbar-btn" data-tooltip="Numbered List"><i class="fas fa-list-ol"></i></button>
+                                    <button type="button" class="toolbar-btn" data-tooltip="Attach File"><i class="fas fa-paperclip"></i></button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Attachments:</label>
+                                <div class="attachments-container">
+                                    <div class="attachment-upload">
+                                        <i class="fas fa-plus"></i>
+                                        <span>Add Attachment</span>
+                                        <input type="file" id="attachment-input" multiple>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline close-modal">Cancel</button>
+                        <button class="btn btn-primary" id="send-message-btn">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase JavaScript Files -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs, orderBy, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-storage.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBCF-MkWe8JhkXKNoKLqzWAZxZVHMukO-c",
+            authDomain: "rhoda-traders.firebaseapp.com",
+            projectId: "rhoda-traders",
+            storageBucket: "rhoda-traders.firebasestorage.app",
+            messagingSenderId: "88738705806",
+            appId: "1:88738705806:web:0cbbb1be4ce51daa7334df",
+            measurementId: "G-44T210GQ6S"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore();
+        const storage = getStorage();
+
+        // Check if user is logged in
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in
+                try {
+                    // Get user data from Firestore
+                    const q = query(collection(db, 'users'), where('uid', '==', user.uid));
+                    const querySnapshot = await getDocs(q);
+                    
+                    if (!querySnapshot.empty) {
+                        const userData = querySnapshot.docs[0].data();
+                        
+                        // Update UI with user data
+                        updateUserInfo(userData);
+                        
+                        // Load user's messages
+                        loadUserMessages(user.uid);
+                    } else {
+                        console.error('User data not found in Firestore');
+                    }
+                } catch (error) {
+                    console.error('Error getting user data:', error);
+                }
+            } else {
+                // User is signed out, redirect to login page
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Update user info in the UI
+        function updateUserInfo(userData) {
+            const userGreeting = document.querySelector('.user-greeting strong');
+            if (userGreeting) {
+                userGreeting.textContent = `${userData.firstName} ${userData.lastName}`;
+            }
+            
+            // Update avatar if available
+            if (userData.photoURL) {
+                const avatarElement = document.querySelector('.user-avatar img');
+                if (avatarElement) {
+                    avatarElement.src = userData.photoURL;
+                }
+            }
+        }
+
+        // Load user's messages from Firestore
+        async function loadUserMessages(userId) {
+            try {
+                // In a real app, you would fetch messages from Firestore
+                // For this demo, we'll use the sample data in the HTML
+                
+                // Set up event listeners for the messages list
+                setupMessagesListActions();
+                
+                // Set up event listeners for message actions
+                setupMessageActions();
+                
+                // Set up event listeners for the compose button
+                setupComposeButton();
+                
+                // Set up event listeners for the message tabs
+                setupMessageTabs();
+            } catch (error) {
+                console.error('Error loading messages:', error);
+            }
+        }
+
+        // Set up event listeners for the messages list
+        function setupMessagesListActions() {
+            const messageItems = document.querySelectorAll('.message-item');
+            messageItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Remove active class from all items
+                    messageItems.forEach(i => i.classList.remove('active'));
+                    
+                    // Add active class to clicked item
+                    item.classList.add('active');
+                    
+                    // Mark as read if unread
+                    item.classList.remove('unread');
+                    
+                    // In a real app, you would load the conversation
+                    // For this demo, we'll just use the sample conversation in the HTML
+                });
+            });
+        }
+
+        // Set up event listeners for message actions
+        function setupMessageActions() {
+            // Reply button
+            const replyButton = document.querySelector('[data-tooltip="Reply"]');
+            if (replyButton) {
+                replyButton.addEventListener('click', () => {
+                    // Show reply container
+                    const replyContainer = document.querySelector('.reply-container');
+                    if (replyContainer) {
+                        replyContainer.style.display = 'block';
+                        replyContainer.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+            
+            // Forward button
+            const forwardButton = document.querySelector('[data-tooltip="Forward"]');
+            if (forwardButton) {
+                forwardButton.addEventListener('click', () => {
+                    // In a real app, this would open the compose modal with the message pre-filled
+                    openComposeModal(true);
+                });
+            }
+            
+            // Archive button
+            const archiveButton = document.querySelector('[data-tooltip="Archive"]');
+            if (archiveButton) {
+                archiveButton.addEventListener('click', () => {
+                    // In a real app, this would archive the message
+                    alert('Message archived. In a real app, this would update the message status in Firestore.');
+                });
+            }
+            
+            // Delete button
+            const deleteButton = document.querySelector('[data-tooltip="Delete"]');
+            if (deleteButton) {
+                deleteButton.addEventListener('click', () => {
+                    // In a real app, this would delete the message
+                    alert('Message deleted. In a real app, this would remove the message from Firestore.');
+                });
+            }
+            
+            // Attachment actions
+            const viewAttachmentButton = document.querySelector('.attachment-actions [data-tooltip="View"]');
+            if (viewAttachmentButton) {
+                viewAttachmentButton.addEventListener('click', () => {
+                    // In a real app, this would open the attachment
+                    alert('Viewing attachment. In a real app, this would open the attachment in a new tab.');
+                });
+            }
+            
+            const downloadAttachmentButton = document.querySelector('.attachment-actions [data-tooltip="Download"]');
+            if (downloadAttachmentButton) {
+                downloadAttachmentButton.addEventListener('click', () => {
+                    // In a real app, this would download the attachment
+                    alert('Downloading attachment. In a real app, this would download the file.');
+                });
+            }
+            
+            // Reply actions
+            const cancelReplyButton = document.querySelector('.reply-actions .btn-outline');
+            if (cancelReplyButton) {
+                cancelReplyButton.addEventListener('click', () => {
+                    // Hide reply container
+                    const replyContainer = document.querySelector('.reply-container');
+                    if (replyContainer) {
+                        replyContainer.style.display = 'none';
+                    }
+                });
+            }
+            
+            const sendReplyButton = document.querySelector('.reply-actions .btn-primary');
+            if (sendReplyButton) {
+                sendReplyButton.addEventListener('click', () => {
+                    // Get reply text
+                    const replyText = document.querySelector('.reply-editor textarea').value;
+                    
+                    if (!replyText.trim()) {
+                        alert('Please enter a reply message.');
+                        return;
+                    }
+                    
+                    // In a real app, this would send the reply
+                    alert('Reply sent. In a real app, this would add the reply to the conversation in Firestore.');
+                    
+                    // Clear reply text
+                    document.querySelector('.reply-editor textarea').value = '';
+                    
+                    // Hide reply container
+                    const replyContainer = document.querySelector('.reply-container');
+                    if (replyContainer) {
+                        replyContainer.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        // Set up event listeners for the compose button
+        function setupComposeButton() {
+            const composeButton = document.querySelector('.compose-btn');
+            if (composeButton) {
+                composeButton.addEventListener('click', () => {
+                    openComposeModal();
+                });
+            }
+        }
+
+        // Set up event listeners for the message tabs
+        function setupMessageTabs() {
+            const tabButtons = document.querySelectorAll('.messages-tab');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // In a real app, this would load messages for the selected tab
+                    // For this demo, we'll just log the selected tab
+                    console.log('Selected tab:', button.getAttribute('data-tab'));
+                });
+            });
+        }
+
+        // Open compose modal
+        function openComposeModal(isForward = false) {
+            const modal = document.getElementById('compose-modal');
+            modal.style.display = 'flex';
+            
+            // If forwarding, pre-fill subject and message
+            if (isForward) {
+                document.getElementById('compose-subject').value = 'Fwd: Regarding your recent report';
+                document.getElementById('compose-message').value = '\n\n---------- Forwarded message ----------\nFrom: Admin <admin@rhodatraders.com>\nDate: Today, 10:30 AM\nSubject: Regarding your recent report\nTo: John Doe <john.doe@example.com>\n\nDear John,\n\nThank you for submitting your report for shipment #RT78945612. We have reviewed the information you provided and everything looks good.\n\nThe shipment has been marked as "Counted" and is now ready for pickup. The FedEx pickup has been scheduled for tomorrow, March 25, 2025, between 1:00 PM and 3:00 PM.\n\nPlease ensure that the shipment is properly packaged and ready for pickup. If you have any questions or need any assistance, please don\'t hesitate to reply to this message.\n\nYour payment for this shipment processing ($150.00) has been approved and will be included in your next payment cycle.\n\nThank you for your hard work and dedication.\n\nBest regards,\nAdmin Team\nRhoda Traders';
+            }
+            
+            // Set up recipient suggestions
+            const toInput = document.getElementById('compose-to');
+            const suggestions = document.querySelector('.recipient-suggestions');
+            
+            toInput.addEventListener('focus', () => {
+                suggestions.style.display = 'block';
+            });
+            
+            toInput.addEventListener('blur', () => {
+                // Delay hiding suggestions to allow for clicks
+                setTimeout(() => {
+                    suggestions.style.display = 'none';
+                }, 200);
+            });
+            
+            // Set up suggestion clicks
+            const suggestionItems = document.querySelectorAll('.recipient-suggestion');
+            suggestionItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    toInput.value = item.getAttribute('data-email');
+                    suggestions.style.display = 'none';
+                });
+            });
+            
+            // Close modal when clicking the close button or outside the modal
+            const closeButtons = modal.querySelectorAll('.close-modal');
+            closeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                });
+            });
+            
+            // Close modal when clicking outside the modal content
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Set up attachment input
+            const attachmentInput = document.getElementById('attachment-input');
+            const attachmentUpload = document.querySelector('.attachment-upload');
+            
+            attachmentUpload.addEventListener('click', () => {
+                attachmentInput.click();
+            });
+            
+            attachmentInput.addEventListener('change', (event) => {
+                const files = event.target.files;
+                if (files.length > 0) {
+                    // In a real app, this would handle the files
+                    alert(`Selected ${files.length} file(s). In a real app, these would be uploaded when sending the message.`);
+                }
+            });
+            
+            // Send message button
+            const sendMessageBtn = document.getElementById('send-message-btn');
+            sendMessageBtn.addEventListener('click', () => {
+                // Get message data
+                const to = document.getElementById('compose-to').value;
+                const subject = document.getElementById('compose-subject').value;
+                const message = document.getElementById('compose-message').value;
+                
+                // Validate inputs
+                if (!to.trim()) {
+                    alert('Please enter a recipient email.');
+                    return;
+                }
+                
+                if (!subject.trim()) {
+                    alert('Please enter a subject.');
+                    return;
+                }
+                
+                if (!message.trim()) {
+                    alert('Please enter a message.');
+                    return;
+                }
+                
+                // In a real app, this would send the message
+                alert('Message sent. In a real app, this would add the message to Firestore.');
+                
+                // Clear form
+                document.getElementById('compose-to').value = '';
+                document.getElementById('compose-subject').value = '';
+                document.getElementById('compose-message').value = '';
+                
+                // Close modal
+                modal.style.display = 'none';
+            });
+        }
+
+        // Handle logout
+        document.querySelector('a[href="../../index.html"]').addEventListener('click', async function(event) {
+            event.preventDefault();
+            try {
+                await signOut(auth);
+                window.location.href = '../../index.html';
+            } catch (error) {
+                console.error('Error signing out:', error);
+            }
+        });
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="../../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support - Rhoda Traders</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Dashboard Sidebar -->
+        <div class="dashboard-sidebar">
+            <div class="dashboard-logo">
+                <a href="../../index.html">
+                    <img src="../../images/logo.jpeg" alt="Rhoda Traders Logo" class="logo">
+                </a>
+            </div>
+            
+            <ul class="dashboard-nav">
+                <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-alt"></i> Submit Reports</a></li>
+                <li><a href="shipments.html"><i class="fas fa-box"></i> Shipments</a></li>
+                <li><a href="payments.html"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+                <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="help.html" class="active"><i class="fas fa-question-circle"></i> Help & Support</a></li>
+                <li><a href="../../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+        
+        <!-- Dashboard Main Content -->
+        <div class="dashboard-main">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Help & Support</h1>
+                <div class="user-info">
+                    <span class="user-greeting">Welcome, <strong>John Doe</strong></span>
+                    <div class="user-avatar">
+                        <img src="../../images/avatar.jpg" alt="User Avatar">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Help & Support Container -->
+            <div class="help-container">
+                <!-- Help Sidebar -->
+                <div class="help-sidebar">
+                    <div class="help-search">
+                        <input type="text" placeholder="Search help topics...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <div class="help-categories">
+                        <h3>Categories</h3>
+                        <ul>
+                            <li class="active" data-category="getting-started">Getting Started</li>
+                            <li data-category="account">Account Management</li>
+                            <li data-category="shipments">Shipments</li>
+                            <li data-category="reports">Reports</li>
+                            <li data-category="payments">Payments</li>
+                            <li data-category="technical">Technical Issues</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="contact-support">
+                        <h3>Need More Help?</h3>
+                        <button class="btn btn-primary" id="open-ticket-btn"><i class="fas fa-ticket-alt"></i> Open Support Ticket</button>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>support@rhodatraders.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+1 (555) 123-4567</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Mon-Fri: 9am - 5pm EST</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Help Content -->
+                <div class="help-content">
+                    <!-- Getting Started Section -->
+                    <div class="help-section active" id="getting-started">
+                        <h2>Getting Started</h2>
+                        
+                        <div class="help-article">
+                            <h3>Welcome to Rhoda Traders Portal</h3>
+                            <p>Welcome to the Rhoda Traders employment portal! This guide will help you get familiar with the portal and its features.</p>
+                            
+                            <div class="help-steps">
+                                <div class="help-step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4>Complete Your Profile</h4>
+                                        <p>Make sure your profile information is complete and up-to-date. This includes your personal information, contact details, and payment methods.</p>
+                                        <a href="profile.html" class="btn btn-sm">Go to Profile</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="help-step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4>Check Your Dashboard</h4>
+                                        <p>Your dashboard provides an overview of your recent activity, upcoming shipments, and pending tasks. Check it regularly for updates.</p>
+                                        <a href="index.html" class="btn btn-sm">Go to Dashboard</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="help-step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4>View Shipments</h4>
+                                        <p>The Shipments page allows you to track incoming and outgoing shipments, view shipment details, and submit reports for completed shipments.</p>
+                                        <a href="shipments.html" class="btn btn-sm">View Shipments</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="help-step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h4>Submit Reports</h4>
+                                        <p>After processing a shipment, you'll need to submit a report. This includes counting items, noting any discrepancies, and preparing for pickup.</p>
+                                        <a href="reports.html" class="btn btn-sm">Submit Reports</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="help-article">
+                            <h3>Understanding Your Dashboard</h3>
+                            <p>Your dashboard is designed to give you a quick overview of your work status and activities.</p>
+                            
+                            <div class="help-image">
+                                <img src="../../images/help/dashboard-overview.jpg" alt="Dashboard Overview">
+                                <div class="image-caption">Dashboard Overview</div>
+                            </div>
+                            
+                            <h4>Dashboard Components:</h4>
+                            <ul>
+                                <li><strong>Overview Cards:</strong> Shows your application status, pending shipments, pending pickups, and earnings.</li>
+                                <li><strong>Recent Activity:</strong> Displays your most recent actions and updates.</li>
+                                <li><strong>Upcoming Shipments:</strong> Lists shipments that are expected to arrive soon.</li>
+                                <li><strong>Pending Pickups:</strong> Shows shipments that have been processed and are awaiting pickup.</li>
+                                <li><strong>Quick Actions:</strong> Provides shortcuts to common tasks.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="help-article">
+                            <h3>Frequently Asked Questions</h3>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <h4>How do I update my personal information?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>You can update your personal information by going to the <a href="profile.html">Profile</a> page. Click on the "Edit Profile" button, make your changes, and click "Save Changes".</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <h4>How do I submit a report for a shipment?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>To submit a report for a shipment:</p>
+                                    <ol>
+                                        <li>Go to the <a href="shipments.html">Shipments</a> page</li>
+                                        <li>Find the shipment you want to report</li>
+                                        <li>Click the "Submit Report" button</li>
+                                        <li>Fill out the report form with accurate information</li>
+                                        <li>Upload any required photos or documents</li>
+                                        <li>Click "Submit Report"</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <h4>When will I receive payment for my work?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>Payments are processed on a bi-weekly basis. You can view your payment history and upcoming payments on the <a href="payments.html">Payments</a> page. Payments are typically issued within 5 business days after the end of each pay period.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <h4>How do I contact support?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="faq-answer">
+                                    <p>You can contact support in several ways:</p>
+                                    <ul>
+                                        <li>Open a support ticket by clicking the "Open Support Ticket" button on this page</li>
+                                        <li>Send an email to support@rhodatraders.com</li>
+                                        <li>Call our support line at +1 (555) 123-4567 during business hours (Mon-Fri: 9am - 5pm EST)</li>
+                                        <li>Send a message through the <a href="messages.html">Messages</a> page</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Other sections would be added here (Account Management, Shipments, Reports, etc.) -->
+                    <!-- They would be hidden initially and shown when the corresponding category is clicked -->
+                    
+                    <!-- For brevity, only the Getting Started section is shown in detail -->
+                    <div class="help-section" id="account">
+                        <h2>Account Management</h2>
+                        <p>This section contains help articles about managing your account, updating your profile, and changing your password.</p>
+                        <!-- More content would be added here -->
+                    </div>
+                    
+                    <div class="help-section" id="shipments">
+                        <h2>Shipments</h2>
+                        <p>This section contains help articles about tracking shipments, processing shipments, and preparing for pickups.</p>
+                        <!-- More content would be added here -->
+                    </div>
+                    
+                    <div class="help-section" id="reports">
+                        <h2>Reports</h2>
+                        <p>This section contains help articles about submitting reports, filling out report forms, and uploading supporting documents.</p>
+                        <!-- More content would be added here -->
+                    </div>
+                    
+                    <div class="help-section" id="payments">
+                        <h2>Payments</h2>
+                        <p>This section contains help articles about payment schedules, payment methods, and resolving payment issues.</p>
+                        <!-- More content would be added here -->
+                    </div>
+                    
+                    <div class="help-section" id="technical">
+                        <h2>Technical Issues</h2>
+                        <p>This section contains help articles about troubleshooting technical issues, browser compatibility, and system requirements.</p>
+                        <!-- More content would be added here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Support Ticket Modal -->
+            <div class="modal" id="support-ticket-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Open Support Ticket</h2>
+                        <button class="close-modal"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="support-ticket-form">
+                            <div class="form-group">
+                                <label for="ticket-subject">Subject</label>
+                                <input type="text" id="ticket-subject" placeholder="Enter a subject for your ticket">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="ticket-category">Category</label>
+                                <select id="ticket-category">
+                                    <option value="">Select a category</option>
+                                    <option value="account">Account Issues</option>
+                                    <option value="shipments">Shipment Issues</option>
+                                    <option value="reports">Report Issues</option>
+                                    <option value="payments">Payment Issues</option>
+                                    <option value="technical">Technical Issues</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="ticket-priority">Priority</label>
+                                <select id="ticket-priority">
+                                    <option value="low">Low</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="high">High</option>
+                                    <option value="urgent">Urgent</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="ticket-description">Description</label>
+                                <textarea id="ticket-description" placeholder="Describe your issue in detail"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Attachments (Optional)</label>
+                                <div class="file-upload">
+                                    <input type="file" id="ticket-attachments" multiple>
+                                    <label for="ticket-attachments">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span>Click to upload files</span>
+                                    </label>
+                                </div>
+                                <div class="file-list"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline close-modal">Cancel</button>
+                        <button class="btn btn-primary" id="submit-ticket-btn">Submit Ticket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase JavaScript Files -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-storage.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBCF-MkWe8JhkXKNoKLqzWAZxZVHMukO-c",
+            authDomain: "rhoda-traders.firebaseapp.com",
+            projectId: "rhoda-traders",
+            storageBucket: "rhoda-traders.firebasestorage.app",
+            messagingSenderId: "88738705806",
+            appId: "1:88738705806:web:0cbbb1be4ce51daa7334df",
+            measurementId: "G-44T210GQ6S"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore();
+        const storage = getStorage();
+
+        // Check if user is logged in
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in
+                try {
+                    // Get user data from Firestore
+                    const q = query(collection(db, 'users'), where('uid', '==', user.uid));
+                    const querySnapshot = await getDocs(q);
+                    
+                    if (!querySnapshot.empty) {
+                        const userData = querySnapshot.docs[0].data();
+                        
+                        // Update UI with user data
+                        updateUserInfo(userData);
+                    } else {
+                        console.error('User data not found in Firestore');
+                    }
+                } catch (error) {
+                    console.error('Error getting user data:', error);
+                }
+            } else {
+                // User is signed out, redirect to login page
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Update user info in the UI
+        function updateUserInfo(userData) {
+            const userGreeting = document.querySelector('.user-greeting strong');
+            if (userGreeting) {
+                userGreeting.textContent = `${userData.firstName} ${userData.lastName}`;
+            }
+            
+            // Update avatar if available
+            if (userData.photoURL) {
+                const avatarElement = document.querySelector('.user-avatar img');
+                if (avatarElement) {
+                    avatarElement.src = userData.photoURL;
+                }
+            }
+        }
+
+        // Set up help category navigation
+        const categoryItems = document.querySelectorAll('.help-categories li');
+        const helpSections = document.querySelectorAll('.help-section');
+        
+        categoryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active class from all items
+                categoryItems.forEach(i => i.classList.remove('active'));
+                
+                // Add active class to clicked item
+                item.classList.add('active');
+                
+                // Hide all sections
+                helpSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show selected section
+                const category = item.getAttribute('data-category');
+                document.getElementById(category).classList.add('active');
+            });
+        });
+
+        // Set up FAQ toggles
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                // Toggle active class on parent
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+                
+                // Toggle icon
+                const icon = question.querySelector('i');
+                if (faqItem.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Set up support ticket modal
+        const openTicketBtn = document.getElementById('open-ticket-btn');
+        const supportTicketModal = document.getElementById('support-ticket-modal');
+        
+        openTicketBtn.addEventListener('click', () => {
+            supportTicketModal.style.display = 'flex';
+        });
+        
+        // Close modal when clicking the close button or outside the modal
+        const closeButtons = supportTicketModal.querySelectorAll('.close-modal');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                supportTicketModal.style.display = 'none';
+            });
+        });
+        
+        // Close modal when clicking outside the modal content
+        supportTicketModal.addEventListener('click', (event) => {
+            if (event.target === supportTicketModal) {
+                supportTicketModal.style.display = 'none';
+            }
+        });
+
+        // Set up file upload for support ticket
+        const fileInput = document.getElementById('ticket-attachments');
+        const fileList = document.querySelector('.file-list');
+        
+        fileInput.addEventListener('change', (event) => {
+            fileList.innerHTML = '';
+            
+            Array.from(event.target.files).forEach(file => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <div class="file-info">
+                        <i class="fas fa-file"></i>
+                        <span class="file-name">${file.name}</span>
+                        <span class="file-size">(${formatFileSize(file.size)})</span>
+                    </div>
+                    <button class="file-remove" data-name="${file.name}">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                
+                fileList.appendChild(fileItem);
+            });
+            
+            // Set up remove buttons
+            const removeButtons = document.querySelectorAll('.file-remove');
+            removeButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const fileName = button.getAttribute('data-name');
+                    
+                    // Create a new FileList without the removed file
+                    const dt = new DataTransfer();
+                    Array.from(fileInput.files).forEach(file => {
+                        if (file.name !== fileName) {
+                            dt.items.add(file);
+                        }
+                    });
+                    
+                    fileInput.files = dt.files;
+                    
+                    // Remove the file item from the list
+                    button.parentElement.remove();
+                });
+            });
+        });
+
+        // Format file size
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Submit support ticket
+        const submitTicketBtn = document.getElementById('submit-ticket-btn');
+        
+        submitTicketBtn.addEventListener('click', async () => {
+            const subject = document.getElementById('ticket-subject').value;
+            const category = document.getElementById('ticket-category').value;
+            const priority = document.getElementById('ticket-priority').value;
+            const description = document.getElementById('ticket-description').value;
+            
+            // Validate inputs
+            if (!subject.trim()) {
+                alert('Please enter a subject for your ticket.');
+                return;
+            }
+            
+            if (!category) {
+                alert('Please select a category for your ticket.');
+                return;
+            }
+            
+            if (!description.trim()) {
+                alert('Please enter a description for your ticket.');
+                return;
+            }
+            
+            try {
+                // Get current user
+                const user = auth.currentUser;
+                
+                if (!user) {
+                    alert('You must be logged in to submit a ticket.');
+                    return;
+                }
+                
+                // Upload files if any
+                const fileUrls = [];
+                
+                if (fileInput.files.length > 0) {
+                    for (const file of fileInput.files) {
+                        const storageRef = ref(storage, `support_tickets/${user.uid}/${Date.now()}_${file.name}`);
+                        await uploadBytes(storageRef, file);
+                        const downloadUrl = await getDownloadURL(storageRef);
+                        
+                        fileUrls.push({
+                            name: file.name,
+                            url: downloadUrl,
+                            size: file.size,
+                            type: file.type
+                        });
+                    }
+                }
+                
+                // Create ticket in Firestore
+                await addDoc(collection(db, 'support_tickets'), {
+                    userId: user.uid,
+                    subject,
+                    category,
+                    priority,
+                    description,
+                    attachments: fileUrls,
+                    status: 'open',
+                    createdAt: serverTimestamp(),
+                    updatedAt: serverTimestamp()
+                });
+                
+                // Reset form
+                document.getElementById('support-ticket-form').reset();
+                fileList.innerHTML = '';
+                
+                // Close modal
+                supportTicketModal.style.display = 'none';
+                
+                // Show success message
+                alert('Your support ticket has been submitted successfully. Our team will get back to you as soon as possible.');
+            } catch (error) {
+                console.error('Error submitting support ticket:', error);
+                alert('An error occurred while submitting your ticket. Please try again.');
+            }
+        });
+
+        // Handle logout
+        document.querySelector('a[href="../../index.html"]').addEventListener('click', async function(event) {
+            event.preventDefault();
+            try {
+                await signOut(auth);
+                window.location.href = '../../index.html';
+            } catch (error) {
+                console.error('Error signing out:', error);
+            }
+        });
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="../../js/main.js"></script>
+</body>
+</html>
