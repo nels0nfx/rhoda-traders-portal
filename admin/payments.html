@@ -1,1 +1,709 @@
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments - Rhoda Traders</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Additional styles for payments page */
+        .payment-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+        
+        .payment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .payment-id {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        
+        .payment-meta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .payment-date {
+            font-size: 0.85rem;
+            color: #777;
+        }
+        
+        .payment-status {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .status-pending {
+            background-color: #fff8e1;
+            color: #ffa000;
+        }
+        
+        .status-completed {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .status-failed {
+            background-color: #ffebee;
+            color: #d32f2f;
+        }
+        
+        .payment-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .payment-detail {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .detail-label {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-weight: 500;
+        }
+        
+        .payment-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .payment-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .filter-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .filter-options {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .filter-dropdown {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+        }
+        
+        .search-container {
+            position: relative;
+        }
+        
+        .search-input {
+            padding: 8px 15px 8px 40px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 250px;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+        
+        .payment-method-icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        .fa-cc-visa {
+            color: #1a1f71;
+        }
+        
+        .fa-cc-mastercard {
+            color: #eb001b;
+        }
+        
+        .fa-cc-paypal {
+            color: #003087;
+        }
+        
+        .fa-bank {
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Dashboard Sidebar -->
+        <div class="dashboard-sidebar">
+            <div class="dashboard-logo">
+                <a href="../index.html">
+                    <img src="../images/logo.jpeg" alt="Rhoda Traders Logo" class="logo">
+                </a>
+            </div>
+            
+            <ul class="dashboard-nav">
+                <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="applications.html"><i class="fas fa-user-plus"></i> Applications</a></li>
+                <li><a href="workers.html"><i class="fas fa-users"></i> Workers</a></li>
+                <li><a href="shipments.html"><i class="fas fa-box"></i> Shipments</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-alt"></i> Reports</a></li>
+                <li><a href="payments.html" class="active"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+                <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+        
+        <!-- Dashboard Main Content -->
+        <div class="dashboard-main">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Payments Management</h1>
+                <div class="user-info">
+                    <span class="user-greeting">Welcome, <strong>Admin</strong></span>
+                    <div class="user-avatar">
+                        <img src="../images/admin-avatar.jpg" alt="Admin Avatar">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filter and Search -->
+            <div class="filter-container">
+                <div class="filter-options">
+                    <select class="filter-dropdown">
+                        <option value="all">All Payments</option>
+                        <option value="pending">Pending</option>
+                        <option value="completed">Completed</option>
+                        <option value="failed">Failed</option>
+                    </select>
+                    
+                    <select class="filter-dropdown">
+                        <option value="all">All Workers</option>
+                        <option value="john">John Doe</option>
+                        <option value="jane">Jane Smith</option>
+                        <option value="robert">Robert Johnson</option>
+                    </select>
+                    
+                    <select class="filter-dropdown">
+                        <option value="all">All Dates</option>
+                        <option value="today">Today</option>
+                        <option value="this_week">This Week</option>
+                        <option value="this_month">This Month</option>
+                    </select>
+                </div>
+                
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search payments...">
+                </div>
+            </div>
+            
+            <!-- Payments Overview -->
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Total Payments</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">$48,750</div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">This Month</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">$12,600</div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Pending</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">$3,500</div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Average Payment</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">$300</div>
+                </div>
+            </div>
+            
+            <!-- Payments List -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Recent Payments</h2>
+                    <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> New Payment</button>
+                </div>
+                
+                <div class="payment-list">
+                    <!-- Payment 1 -->
+                    <div class="payment-card">
+                        <div class="payment-header">
+                            <div class="payment-id">Payment #: P-78945</div>
+                            <div class="payment-meta">
+                                <div class="payment-date">Today, 11:45 AM</div>
+                                <div class="payment-status status-completed">Completed</div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-details">
+                            <div class="payment-detail">
+                                <div class="detail-label">Worker</div>
+                                <div class="detail-value">John Doe</div>
+                            </div>
+                            
+                            <div class="payment-detail">
+                                <div class="detail-label">Payment Method</div>
+                                <div class="detail-value">
+                                    <i class="fab fa-cc-paypal payment-method-icon"></i> PayPal
+                                </div>
+                            </div>
+                            
+                            <div class="payment-detail">
+                                <div class="detail-label">Reports</div>
+                                <div class="detail-value">5 Reports</div>
+                            </div>
+                            
+                            <div class="payment-detail">
+                                <div class="detail-label">Amount</div>
+                                <div class="detail-value payment-amount">$350.00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-actions">
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Details</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-print"></i> Receipt</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-envelope"></i> Send Receipt</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment 2 -->
+                    <div class="payment-card">
+                        <div class="payment-header">
+                            <div class="payment-id">Payment #: P-78944</div>
+                            <div class="payment-meta">
+                                <div class="payment-date">Yesterday, 3:20 PM</div>
+                                <div class="payment-status status-pending">Pending</div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-details">
+                            <div class="payment-detail">
+                                <div class="detail-label">Worker</div>
+                                <div class="detail-value">Jane Smith</div>
+                            </div>
+                            
+                            <div class="payment-detail">
+                                <div class="detail-label">Payment Method</div>
+                                <div class="detail-value">
+                                    <i class="fas fa-bank payment-method-icon"></i> Bank Transfer
+                                </div>
+                            </div>
+                            
+                            <div class="payment-detail">
+                                <div class="detail-label">Reports</div>
+                                <div class="detail-value">3 Reports</div>
+                            </div>
+                            
+                            <div class="payment-detail">
+                                <div class="detail-label">Amount</div>
+                                <div class="detail-value payment-amount">$210.00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-actions">
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Details</button>
+                            <button class="btn btn-sm btn-success"><i class="fas fa-check"></i> Approve</button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i> Cancel</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment 3 -->
+                    <div class="payment-card">
+                        <div class="payment-header">
+                            <div class="payment-id">Payment #: P-78943</div>
+                            <div class="payment-meta">
+                                <div class="payment-date">March 21, 2025</div>
+                                <div class="payment-status status-failed">Failed</div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-details">
+                            <div class="payment-detail">
+                                <div class="detail-label">Worker</div>
+                                <div class="detail-value">Robert Johnson</div>
+                            </div>
+                            
+                            <div class="payment-detail">
+                                <div class="detail-label">Payment Method</div>
+                                <div class="detail-value">
+                                    <i class="fab fa-cc-mastercard payment-method-icon"></i> MasterCard
+                                </div>
+                            </div>
+                            
+                            <div class="payment-detail">
+                                <div class="detail-label">Reports</div>
+                                <div class="detail-value">4 Reports</div>
+                            </div>
+                            
+                            <div class="payment-detail">
+                                <div class="detail-label">Amount</div>
+                                <div class="detail-value payment-amount">$280.00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-actions">
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Details</button>
+                            <button class="btn btn-sm btn-warning"><i class="fas fa-redo"></i> Retry</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-envelope"></i> Contact Worker</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment 4 -->
+                    <div class="payment-card">
+                        <div class="payment-header">
+                            <div class="payment-id">Payment #: P-78942</div>
+                            <div class="payment-meta">
+                                <div class="payment-date">March 20, 2025</div>
+                                <div class="payment-status status-completed">Completed</div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-details">
+                            <div class="payment-detail">
+                                <div class="detail-label">Worker</div>
+                                <div class="detail-value">Sarah Williams</div>
+                            </div>
+                            
+                            <div class="payment-detail">
+                                <div class="detail-label">Payment Method</div>
+                                <div class="detail-value">
+                                    <i class="fab fa-cc-visa payment-method-icon"></i> Visa
+                                </div>
+                            </div>
+                            
+                            <div class="payment-detail">
+                                <div class="detail-label">Reports</div>
+                                <div class="detail-value">6 Reports</div>
+                            </div>
+                            
+                            <div class="payment-detail">
+                                <div class="detail-label">Amount</div>
+                                <div class="detail-value payment-amount">$420.00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-actions">
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Details</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-print"></i> Receipt</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-envelope"></i> Send Receipt</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination" style="margin-top: 20px; text-align: center;">
+                    <button class="btn btn-sm"><i class="fas fa-chevron-left"></i> Previous</button>
+                    <button class="btn btn-sm btn-primary">1</button>
+                    <button class="btn btn-sm">2</button>
+                    <button class="btn btn-sm">3</button>
+                    <button class="btn btn-sm">Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase JavaScript Files -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs, updateDoc, doc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBCF-MkWe8JhkXKNoKLqzWAZxZVHMukO-c",
+            authDomain: "rhoda-traders.firebaseapp.com",
+            projectId: "rhoda-traders",
+            storageBucket: "rhoda-traders.firebasestorage.app",
+            messagingSenderId: "88738705806",
+            appId: "1:88738705806:web:0cbbb1be4ce51daa7334df",
+            measurementId: "G-44T210GQ6S"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore();
+
+        // Check if user is logged in and is an admin
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in
+                try {
+                    // Get user data from Firestore
+                    const q = query(collection(db, 'users'), where('uid', '==', user.uid));
+                    const querySnapshot = await getDocs(q);
+                    
+                    if (!querySnapshot.empty) {
+                        const userData = querySnapshot.docs[0].data();
+                        
+                        // Check if user is an admin
+                        if (userData.role === 'admin') {
+                            // Update UI with admin data
+                            updateAdminInfo(userData);
+                            
+                            // Load payments data
+                            loadPaymentsData();
+                        } else {
+                            // Not an admin, redirect to user dashboard
+                            window.location.href = '../dashboard/index.html';
+                        }
+                    } else {
+                        // User not found in Firestore
+                        window.location.href = '../login.html';
+                    }
+                } catch (error) {
+                    console.error('Error getting user data:', error);
+                    window.location.href = '../login.html';
+                }
+            } else {
+                // User is signed out, redirect to login page
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Update admin info in the UI
+        function updateAdminInfo(userData) {
+            const userGreeting = document.querySelector('.user-greeting strong');
+            if (userGreeting) {
+                userGreeting.textContent = userData.firstName ? `${userData.firstName} ${userData.lastName}` : 'Admin';
+            }
+        }
+
+        // Load payments data
+        async function loadPaymentsData() {
+            try {
+                // Get payments by status
+                const pendingQuery = query(
+                    collection(db, 'payments'),
+                    where('status', '==', 'pending')
+                );
+                
+                const completedQuery = query(
+                    collection(db, 'payments'),
+                    where('status', '==', 'completed')
+                );
+                
+                const failedQuery = query(
+                    collection(db, 'payments'),
+                    where('status', '==', 'failed')
+                );
+                
+                const [pendingSnapshot, completedSnapshot, failedSnapshot] = await Promise.all([
+                    getDocs(pendingQuery),
+                    getDocs(completedQuery),
+                    getDocs(failedQuery)
+                ]);
+                
+                // Calculate total and average payments
+                let totalAmount = 0;
+                let pendingAmount = 0;
+                let paymentCount = 0;
+                
+                // Get this month's payments
+                const today = new Date();
+                const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+                const monthlyQuery = query(
+                    collection(db, 'payments'),
+                    where('createdAt', '>=', firstDayOfMonth)
+                );
+                
+                const monthlySnapshot = await getDocs(monthlyQuery);
+                let monthlyAmount = 0;
+                
+                // Process completed payments
+                completedSnapshot.forEach(doc => {
+                    const paymentData = doc.data();
+                    if (paymentData.amount) {
+                        totalAmount += paymentData.amount;
+                        paymentCount++;
+                        
+                        // Check if this payment is from the current month
+                        if (paymentData.createdAt && paymentData.createdAt.toDate() >= firstDayOfMonth) {
+                            monthlyAmount += paymentData.amount;
+                        }
+                    }
+                });
+                
+                // Process pending payments
+                pendingSnapshot.forEach(doc => {
+                    const paymentData = doc.data();
+                    if (paymentData.amount) {
+                        totalAmount += paymentData.amount;
+                        pendingAmount += paymentData.amount;
+                        paymentCount++;
+                        
+                        // Check if this payment is from the current month
+                        if (paymentData.createdAt && paymentData.createdAt.toDate() >= firstDayOfMonth) {
+                            monthlyAmount += paymentData.amount;
+                        }
+                    }
+                });
+                
+                const averageAmount = paymentCount > 0 ? Math.floor(totalAmount / paymentCount) : 0;
+                
+                // Update the UI
+                document.querySelectorAll('.dashboard-card-value')[0].textContent = `$${totalAmount.toLocaleString()}`;
+                document.querySelectorAll('.dashboard-card-value')[1].textContent = `$${monthlyAmount.toLocaleString()}`;
+                document.querySelectorAll('.dashboard-card-value')[2].textContent = `$${pendingAmount.toLocaleString()}`;
+                document.querySelectorAll('.dashboard-card-value')[3].textContent = `$${averageAmount.toLocaleString()}`;
+                
+                // In a real application, you would load the actual payment data here
+                // and populate the payment cards dynamically
+            } catch (error) {
+                console.error('Error loading payments data:', error);
+            }
+        }
+
+        // Add event listeners for filter dropdowns
+        document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+            dropdown.addEventListener('change', function() {
+                // In a real application, you would filter the payments list based on the selected options
+                console.log('Filter changed:', this.value);
+            });
+        });
+
+        // Add event listener for search input
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                // In a real application, you would search the payments list based on the input value
+                console.log('Search query:', this.value);
+            });
+        }
+
+        // Add event listeners for payment action buttons
+        document.querySelectorAll('.payment-actions button').forEach(button => {
+            button.addEventListener('click', function() {
+                const action = this.textContent.trim();
+                const paymentCard = this.closest('.payment-card');
+                const paymentId = paymentCard.querySelector('.payment-id').textContent.replace('Payment #: ', '');
+                
+                console.log(`${action} clicked for ${paymentId}`);
+                
+                // In a real application, you would implement the action functionality here
+                if (action.includes('Details')) {
+                    // Show payment details
+                    alert(`Viewing details for payment ${paymentId}`);
+                } else if (action.includes('Receipt')) {
+                    // Print receipt
+                    alert(`Printing receipt for payment ${paymentId}`);
+                } else if (action.includes('Send Receipt')) {
+                    // Send receipt
+                    alert(`Sending receipt for payment ${paymentId}`);
+                } else if (action.includes('Approve')) {
+                    // Approve payment
+                    if (confirm(`Are you sure you want to approve payment ${paymentId}?`)) {
+                        alert(`Payment ${paymentId} has been approved.`);
+                        
+                        // Update UI
+                        const statusBadge = paymentCard.querySelector('.payment-status');
+                        statusBadge.textContent = 'Completed';
+                        statusBadge.className = 'payment-status status-completed';
+                        
+                        // Update action buttons
+                        const actionButtons = paymentCard.querySelector('.payment-actions');
+                        actionButtons.innerHTML = `
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Details</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-print"></i> Receipt</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-envelope"></i> Send Receipt</button>
+                        `;
+                    }
+                } else if (action.includes('Cancel')) {
+                    // Cancel payment
+                    if (confirm(`Are you sure you want to cancel payment ${paymentId}?`)) {
+                        alert(`Payment ${paymentId} has been cancelled.`);
+                    }
+                } else if (action.includes('Retry')) {
+                    // Retry payment
+                    if (confirm(`Are you sure you want to retry payment ${paymentId}?`)) {
+                        alert(`Payment ${paymentId} will be retried.`);
+                    }
+                } else if (action.includes('Contact Worker')) {
+                    // Contact worker
+                    alert(`Opening message composer for payment ${paymentId}`);
+                }
+            });
+        });
+
+        // Handle new payment button
+        document.querySelector('.btn-primary').addEventListener('click', function() {
+            alert('Opening new payment form');
+            // In a real application, you would open a modal or navigate to a new payment form
+        });
+
+        // Handle logout
+        document.querySelector('a[href="../index.html"]').addEventListener('click', async function(event) {
+            event.preventDefault();
+            try {
+                await signOut(auth);
+                window.location.href = '../index.html';
+            } catch (error) {
+                console.error('Error signing out:', error);
+            }
+        });
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+</html>

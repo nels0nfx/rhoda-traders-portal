@@ -1,1 +1,688 @@
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipments Management - Rhoda Traders</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Additional styles for shipments page */
+        .shipment-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+        
+        .shipment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .shipment-id {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+        
+        .shipment-status {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .status-processing {
+            background-color: #e1f5fe;
+            color: #0288d1;
+        }
+        
+        .status-in-transit {
+            background-color: #fff8e1;
+            color: #ffa000;
+        }
+        
+        .status-delivered {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        .shipment-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .shipment-detail {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .detail-label {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-weight: 500;
+        }
+        
+        .shipment-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .tracking-steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .tracking-steps::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #ddd;
+            z-index: 1;
+        }
+        
+        .tracking-step {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 33%;
+        }
+        
+        .step-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .step-icon.active {
+            background-color: var(--primary-color);
+        }
+        
+        .step-label {
+            font-size: 0.85rem;
+            text-align: center;
+        }
+        
+        .filter-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .filter-options {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .filter-dropdown {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+        }
+        
+        .search-container {
+            position: relative;
+        }
+        
+        .search-input {
+            padding: 8px 15px 8px 40px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 250px;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Dashboard Sidebar -->
+        <div class="dashboard-sidebar">
+            <div class="dashboard-logo">
+                <a href="../index.html">
+                    <img src="../images/logo.jpeg" alt="Rhoda Traders Logo" class="logo">
+                </a>
+            </div>
+            
+            <ul class="dashboard-nav">
+                <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="applications.html"><i class="fas fa-user-plus"></i> Applications</a></li>
+                <li><a href="workers.html"><i class="fas fa-users"></i> Workers</a></li>
+                <li><a href="shipments.html" class="active"><i class="fas fa-box"></i> Shipments</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-alt"></i> Reports</a></li>
+                <li><a href="payments.html"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+                <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+        
+        <!-- Dashboard Main Content -->
+        <div class="dashboard-main">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Shipments Management</h1>
+                <div class="user-info">
+                    <span class="user-greeting">Welcome, <strong>Admin</strong></span>
+                    <div class="user-avatar">
+                        <img src="../images/admin-avatar.jpg" alt="Admin Avatar">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filter and Search -->
+            <div class="filter-container">
+                <div class="filter-options">
+                    <select class="filter-dropdown">
+                        <option value="all">All Shipments</option>
+                        <option value="processing">Processing</option>
+                        <option value="in_transit">In Transit</option>
+                        <option value="delivered">Delivered</option>
+                    </select>
+                    
+                    <select class="filter-dropdown">
+                        <option value="all">All Workers</option>
+                        <option value="john">John Doe</option>
+                        <option value="jane">Jane Smith</option>
+                        <option value="robert">Robert Johnson</option>
+                    </select>
+                    
+                    <select class="filter-dropdown">
+                        <option value="all">All Dates</option>
+                        <option value="today">Today</option>
+                        <option value="this_week">This Week</option>
+                        <option value="this_month">This Month</option>
+                    </select>
+                </div>
+                
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search by tracking number...">
+                </div>
+            </div>
+            
+            <!-- Shipments Overview -->
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Total Shipments</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">124</div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Processing</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">28</div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">In Transit</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">16</div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Delivered</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">80</div>
+                </div>
+            </div>
+            
+            <!-- Shipments List -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Recent Shipments</h2>
+                    <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Create Shipment</button>
+                </div>
+                
+                <div class="shipment-list">
+                    <!-- Shipment 1 -->
+                    <div class="shipment-card">
+                        <div class="shipment-header">
+                            <div class="shipment-id">Tracking #: RT78945612</div>
+                            <div class="shipment-status status-in-transit">In Transit</div>
+                        </div>
+                        
+                        <div class="shipment-details">
+                            <div class="shipment-detail">
+                                <div class="detail-label">Worker</div>
+                                <div class="detail-value">John Doe</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">Destination</div>
+                                <div class="detail-value">123 Main St, New York, NY</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">Items</div>
+                                <div class="detail-value">Wall Fittings (200 pcs)</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">Shipped Date</div>
+                                <div class="detail-value">March 23, 2025</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">Estimated Delivery</div>
+                                <div class="detail-value">March 25, 2025</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">FedEx Agent</div>
+                                <div class="detail-value">Michael Wilson</div>
+                            </div>
+                        </div>
+                        
+                        <div class="tracking-steps">
+                            <div class="tracking-step">
+                                <div class="step-icon active">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <div class="step-label">Processing</div>
+                            </div>
+                            
+                            <div class="tracking-step">
+                                <div class="step-icon active">
+                                    <i class="fas fa-shipping-fast"></i>
+                                </div>
+                                <div class="step-label">In Transit</div>
+                            </div>
+                            
+                            <div class="tracking-step">
+                                <div class="step-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="step-label">Delivered</div>
+                            </div>
+                        </div>
+                        
+                        <div class="shipment-actions">
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Details</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-edit"></i> Update</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-print"></i> Print</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Shipment 2 -->
+                    <div class="shipment-card">
+                        <div class="shipment-header">
+                            <div class="shipment-id">Tracking #: RT65432198</div>
+                            <div class="shipment-status status-processing">Processing</div>
+                        </div>
+                        
+                        <div class="shipment-details">
+                            <div class="shipment-detail">
+                                <div class="detail-label">Worker</div>
+                                <div class="detail-value">Jane Smith</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">Destination</div>
+                                <div class="detail-value">456 Oak Ave, Chicago, IL</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">Items</div>
+                                <div class="detail-value">Wall Fittings (150 pcs)</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">Processing Date</div>
+                                <div class="detail-value">March 24, 2025</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">Estimated Shipping</div>
+                                <div class="detail-value">March 25, 2025</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">FedEx Agent</div>
+                                <div class="detail-value">Pending Assignment</div>
+                            </div>
+                        </div>
+                        
+                        <div class="tracking-steps">
+                            <div class="tracking-step">
+                                <div class="step-icon active">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <div class="step-label">Processing</div>
+                            </div>
+                            
+                            <div class="tracking-step">
+                                <div class="step-icon">
+                                    <i class="fas fa-shipping-fast"></i>
+                                </div>
+                                <div class="step-label">In Transit</div>
+                            </div>
+                            
+                            <div class="tracking-step">
+                                <div class="step-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="step-label">Delivered</div>
+                            </div>
+                        </div>
+                        
+                        <div class="shipment-actions">
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Details</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-edit"></i> Update</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-print"></i> Print</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Shipment 3 -->
+                    <div class="shipment-card">
+                        <div class="shipment-header">
+                            <div class="shipment-id">Tracking #: RT12345678</div>
+                            <div class="shipment-status status-delivered">Delivered</div>
+                        </div>
+                        
+                        <div class="shipment-details">
+                            <div class="shipment-detail">
+                                <div class="detail-label">Worker</div>
+                                <div class="detail-value">Robert Johnson</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">Destination</div>
+                                <div class="detail-value">789 Pine St, Los Angeles, CA</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">Items</div>
+                                <div class="detail-value">Wall Fittings (180 pcs)</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">Shipped Date</div>
+                                <div class="detail-value">March 20, 2025</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">Delivery Date</div>
+                                <div class="detail-value">March 22, 2025</div>
+                            </div>
+                            
+                            <div class="shipment-detail">
+                                <div class="detail-label">FedEx Agent</div>
+                                <div class="detail-value">Sarah Thompson</div>
+                            </div>
+                        </div>
+                        
+                        <div class="tracking-steps">
+                            <div class="tracking-step">
+                                <div class="step-icon active">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <div class="step-label">Processing</div>
+                            </div>
+                            
+                            <div class="tracking-step">
+                                <div class="step-icon active">
+                                    <i class="fas fa-shipping-fast"></i>
+                                </div>
+                                <div class="step-label">In Transit</div>
+                            </div>
+                            
+                            <div class="tracking-step">
+                                <div class="step-icon active">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="step-label">Delivered</div>
+                            </div>
+                        </div>
+                        
+                        <div class="shipment-actions">
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Details</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-print"></i> Print</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-archive"></i> Archive</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination" style="margin-top: 20px; text-align: center;">
+                    <button class="btn btn-sm"><i class="fas fa-chevron-left"></i> Previous</button>
+                    <button class="btn btn-sm btn-primary">1</button>
+                    <button class="btn btn-sm">2</button>
+                    <button class="btn btn-sm">3</button>
+                    <button class="btn btn-sm">Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase JavaScript Files -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs, updateDoc, doc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBCF-MkWe8JhkXKNoKLqzWAZxZVHMukO-c",
+            authDomain: "rhoda-traders.firebaseapp.com",
+            projectId: "rhoda-traders",
+            storageBucket: "rhoda-traders.firebasestorage.app",
+            messagingSenderId: "88738705806",
+            appId: "1:88738705806:web:0cbbb1be4ce51daa7334df",
+            measurementId: "G-44T210GQ6S"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore();
+
+        // Check if user is logged in and is an admin
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in
+                try {
+                    // Get user data from Firestore
+                    const q = query(collection(db, 'users'), where('uid', '==', user.uid));
+                    const querySnapshot = await getDocs(q);
+                    
+                    if (!querySnapshot.empty) {
+                        const userData = querySnapshot.docs[0].data();
+                        
+                        // Check if user is an admin
+                        if (userData.role === 'admin') {
+                            // Update UI with admin data
+                            updateAdminInfo(userData);
+                            
+                            // Load shipments data
+                            loadShipmentsData();
+                        } else {
+                            // Not an admin, redirect to user dashboard
+                            window.location.href = '../dashboard/index.html';
+                        }
+                    } else {
+                        // User not found in Firestore
+                        window.location.href = '../login.html';
+                    }
+                } catch (error) {
+                    console.error('Error getting user data:', error);
+                    window.location.href = '../login.html';
+                }
+            } else {
+                // User is signed out, redirect to login page
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Update admin info in the UI
+        function updateAdminInfo(userData) {
+            const userGreeting = document.querySelector('.user-greeting strong');
+            if (userGreeting) {
+                userGreeting.textContent = userData.firstName ? `${userData.firstName} ${userData.lastName}` : 'Admin';
+            }
+        }
+
+        // Load shipments data
+        async function loadShipmentsData() {
+            try {
+                // Get shipments by status
+                const processingQuery = query(
+                    collection(db, 'shipments'),
+                    where('status', '==', 'processing')
+                );
+                
+                const inTransitQuery = query(
+                    collection(db, 'shipments'),
+                    where('status', '==', 'in_transit')
+                );
+                
+                const deliveredQuery = query(
+                    collection(db, 'shipments'),
+                    where('status', '==', 'delivered')
+                );
+                
+                const [processingSnapshot, inTransitSnapshot, deliveredSnapshot] = await Promise.all([
+                    getDocs(processingQuery),
+                    getDocs(inTransitQuery),
+                    getDocs(deliveredQuery)
+                ]);
+                
+                // Update dashboard cards
+                const processingCount = processingSnapshot.size;
+                const inTransitCount = inTransitSnapshot.size;
+                const deliveredCount = deliveredSnapshot.size;
+                const totalCount = processingCount + inTransitCount + deliveredCount;
+                
+                // Update the UI
+                document.querySelectorAll('.dashboard-card-value')[0].textContent = totalCount;
+                document.querySelectorAll('.dashboard-card-value')[1].textContent = processingCount;
+                document.querySelectorAll('.dashboard-card-value')[2].textContent = inTransitCount;
+                document.querySelectorAll('.dashboard-card-value')[3].textContent = deliveredCount;
+                
+                // In a real application, you would load the actual shipment data here
+                // and populate the shipment cards dynamically
+            } catch (error) {
+                console.error('Error loading shipments data:', error);
+            }
+        }
+
+        // Add event listeners for filter dropdowns
+        document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+            dropdown.addEventListener('change', function() {
+                // In a real application, you would filter the shipments list based on the selected options
+                console.log('Filter changed:', this.value);
+            });
+        });
+
+        // Add event listener for search input
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                // In a real application, you would search the shipments list based on the input value
+                console.log('Search query:', this.value);
+            });
+        }
+
+        // Add event listeners for shipment action buttons
+        document.querySelectorAll('.shipment-actions button').forEach(button => {
+            button.addEventListener('click', function() {
+                const action = this.textContent.trim();
+                const shipmentCard = this.closest('.shipment-card');
+                const trackingNumber = shipmentCard.querySelector('.shipment-id').textContent.replace('Tracking #: ', '');
+                
+                console.log(`${action} clicked for ${trackingNumber}`);
+                
+                // In a real application, you would implement the action functionality here
+                if (action.includes('Details')) {
+                    // Show shipment details
+                    alert(`Viewing details for shipment ${trackingNumber}`);
+                } else if (action.includes('Update')) {
+                    // Open update form
+                    alert(`Updating shipment ${trackingNumber}`);
+                } else if (action.includes('Print')) {
+                    // Print shipment details
+                    alert(`Printing shipment ${trackingNumber}`);
+                } else if (action.includes('Archive')) {
+                    // Archive shipment
+                    if (confirm(`Are you sure you want to archive shipment ${trackingNumber}?`)) {
+                        alert(`Shipment ${trackingNumber} has been archived.`);
+                    }
+                }
+            });
+        });
+
+        // Handle logout
+        document.querySelector('a[href="../index.html"]').addEventListener('click', async function(event) {
+            event.preventDefault();
+            try {
+                await signOut(auth);
+                window.location.href = '../index.html';
+            } catch (error) {
+                console.error('Error signing out:', error);
+            }
+        });
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+</html>

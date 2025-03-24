@@ -1,1 +1,532 @@
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workers Management - Rhoda Traders</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Additional styles for workers page */
+        .worker-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .worker-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .worker-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .worker-info {
+            flex-grow: 1;
+        }
+        
+        .worker-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .worker-meta {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .worker-stats {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .worker-stat {
+            background-color: #f5f6fa;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+        }
+        
+        .worker-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .filter-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .filter-options {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .filter-dropdown {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+        }
+        
+        .search-container {
+            position: relative;
+        }
+        
+        .search-input {
+            padding: 8px 15px 8px 40px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 250px;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Dashboard Sidebar -->
+        <div class="dashboard-sidebar">
+            <div class="dashboard-logo">
+                <a href="../index.html">
+                    <img src="../images/logo.jpeg" alt="Rhoda Traders Logo" class="logo">
+                </a>
+            </div>
+            
+            <ul class="dashboard-nav">
+                <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="applications.html"><i class="fas fa-user-plus"></i> Applications</a></li>
+                <li><a href="workers.html" class="active"><i class="fas fa-users"></i> Workers</a></li>
+                <li><a href="shipments.html"><i class="fas fa-box"></i> Shipments</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-alt"></i> Reports</a></li>
+                <li><a href="payments.html"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+                <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+        
+        <!-- Dashboard Main Content -->
+        <div class="dashboard-main">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Workers Management</h1>
+                <div class="user-info">
+                    <span class="user-greeting">Welcome, <strong>Admin</strong></span>
+                    <div class="user-avatar">
+                        <img src="../images/admin-avatar.jpg" alt="Admin Avatar">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filter and Search -->
+            <div class="filter-container">
+                <div class="filter-options">
+                    <select class="filter-dropdown">
+                        <option value="all">All Workers</option>
+                        <option value="active">Active Workers</option>
+                        <option value="inactive">Inactive Workers</option>
+                    </select>
+                    
+                    <select class="filter-dropdown">
+                        <option value="all">All Locations</option>
+                        <option value="usa">United States</option>
+                        <option value="canada">Canada</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="other">Other Countries</option>
+                    </select>
+                    
+                    <select class="filter-dropdown">
+                        <option value="all">All Performance</option>
+                        <option value="excellent">Excellent</option>
+                        <option value="good">Good</option>
+                        <option value="average">Average</option>
+                        <option value="poor">Poor</option>
+                    </select>
+                </div>
+                
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search workers...">
+                </div>
+            </div>
+            
+            <!-- Workers Overview -->
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Total Workers</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">42</div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Active Workers</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">38</div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Inactive Workers</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-user-clock"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">4</div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <h3 class="dashboard-card-title">Average Performance</h3>
+                        <div class="dashboard-card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="dashboard-card-value">86%</div>
+                </div>
+            </div>
+            
+            <!-- Workers List -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2>Workers List</h2>
+                    <button class="btn btn-sm btn-primary"><i class="fas fa-download"></i> Export List</button>
+                </div>
+                
+                <div class="worker-list">
+                    <!-- Worker 1 -->
+                    <div class="worker-card">
+                        <div class="worker-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe">
+                        </div>
+                        <div class="worker-info">
+                            <div class="worker-name">John Doe</div>
+                            <div class="worker-meta">Miami, USA | Joined: March 15, 2025</div>
+                            <div class="worker-stats">
+                                <div class="worker-stat"><i class="fas fa-box"></i> 24 Shipments</div>
+                                <div class="worker-stat"><i class="fas fa-file-alt"></i> 24 Reports</div>
+                                <div class="worker-stat"><i class="fas fa-star"></i> Excellent Performance</div>
+                            </div>
+                        </div>
+                        <div class="worker-actions">
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-envelope"></i> Message</button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-ban"></i> Suspend</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Worker 2 -->
+                    <div class="worker-card">
+                        <div class="worker-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jane Smith">
+                        </div>
+                        <div class="worker-info">
+                            <div class="worker-name">Jane Smith</div>
+                            <div class="worker-meta">Dallas, USA | Joined: March 10, 2025</div>
+                            <div class="worker-stats">
+                                <div class="worker-stat"><i class="fas fa-box"></i> 18 Shipments</div>
+                                <div class="worker-stat"><i class="fas fa-file-alt"></i> 18 Reports</div>
+                                <div class="worker-stat"><i class="fas fa-star"></i> Good Performance</div>
+                            </div>
+                        </div>
+                        <div class="worker-actions">
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-envelope"></i> Message</button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-ban"></i> Suspend</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Worker 3 -->
+                    <div class="worker-card">
+                        <div class="worker-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Robert Johnson">
+                        </div>
+                        <div class="worker-info">
+                            <div class="worker-name">Robert Johnson</div>
+                            <div class="worker-meta">Atlanta, USA | Joined: March 5, 2025</div>
+                            <div class="worker-stats">
+                                <div class="worker-stat"><i class="fas fa-box"></i> 15 Shipments</div>
+                                <div class="worker-stat"><i class="fas fa-file-alt"></i> 15 Reports</div>
+                                <div class="worker-stat"><i class="fas fa-star"></i> Average Performance</div>
+                            </div>
+                        </div>
+                        <div class="worker-actions">
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-envelope"></i> Message</button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-ban"></i> Suspend</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Worker 4 -->
+                    <div class="worker-card">
+                        <div class="worker-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Sarah Williams">
+                        </div>
+                        <div class="worker-info">
+                            <div class="worker-name">Sarah Williams</div>
+                            <div class="worker-meta">Toronto, Canada | Joined: February 28, 2025</div>
+                            <div class="worker-stats">
+                                <div class="worker-stat"><i class="fas fa-box"></i> 12 Shipments</div>
+                                <div class="worker-stat"><i class="fas fa-file-alt"></i> 12 Reports</div>
+                                <div class="worker-stat"><i class="fas fa-star"></i> Excellent Performance</div>
+                            </div>
+                        </div>
+                        <div class="worker-actions">
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-envelope"></i> Message</button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-ban"></i> Suspend</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Worker 5 -->
+                    <div class="worker-card">
+                        <div class="worker-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Michael Brown">
+                        </div>
+                        <div class="worker-info">
+                            <div class="worker-name">Michael Brown</div>
+                            <div class="worker-meta">Chicago, USA | Joined: February 25, 2025</div>
+                            <div class="worker-stats">
+                                <div class="worker-stat"><i class="fas fa-box"></i> 10 Shipments</div>
+                                <div class="worker-stat"><i class="fas fa-file-alt"></i> 10 Reports</div>
+                                <div class="worker-stat"><i class="fas fa-star"></i> Good Performance</div>
+                            </div>
+                        </div>
+                        <div class="worker-actions">
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View</button>
+                            <button class="btn btn-sm btn-outline"><i class="fas fa-envelope"></i> Message</button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-ban"></i> Suspend</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination" style="margin-top: 20px; text-align: center;">
+                    <button class="btn btn-sm"><i class="fas fa-chevron-left"></i> Previous</button>
+                    <button class="btn btn-sm btn-primary">1</button>
+                    <button class="btn btn-sm">2</button>
+                    <button class="btn btn-sm">3</button>
+                    <button class="btn btn-sm">Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase JavaScript Files -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs, updateDoc, doc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBCF-MkWe8JhkXKNoKLqzWAZxZVHMukO-c",
+            authDomain: "rhoda-traders.firebaseapp.com",
+            projectId: "rhoda-traders",
+            storageBucket: "rhoda-traders.firebasestorage.app",
+            messagingSenderId: "88738705806",
+            appId: "1:88738705806:web:0cbbb1be4ce51daa7334df",
+            measurementId: "G-44T210GQ6S"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore();
+
+        // Check if user is logged in and is an admin
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in
+                try {
+                    // Get user data from Firestore
+                    const q = query(collection(db, 'users'), where('uid', '==', user.uid));
+                    const querySnapshot = await getDocs(q);
+                    
+                    if (!querySnapshot.empty) {
+                        const userData = querySnapshot.docs[0].data();
+                        
+                        // Check if user is an admin
+                        if (userData.role === 'admin') {
+                            // Update UI with admin data
+                            updateAdminInfo(userData);
+                            
+                            // Load workers data
+                            loadWorkersData();
+                        } else {
+                            // Not an admin, redirect to user dashboard
+                            window.location.href = '../dashboard/index.html';
+                        }
+                    } else {
+                        // User not found in Firestore
+                        window.location.href = '../login.html';
+                    }
+                } catch (error) {
+                    console.error('Error getting user data:', error);
+                    window.location.href = '../login.html';
+                }
+            } else {
+                // User is signed out, redirect to login page
+                window.location.href = '../login.html';
+            }
+        });
+
+        // Update admin info in the UI
+        function updateAdminInfo(userData) {
+            const userGreeting = document.querySelector('.user-greeting strong');
+            if (userGreeting) {
+                userGreeting.textContent = userData.firstName ? `${userData.firstName} ${userData.lastName}` : 'Admin';
+            }
+        }
+
+        // Load workers data
+        async function loadWorkersData() {
+            try {
+                // Get active workers
+                const activeWorkersQuery = query(
+                    collection(db, 'users'),
+                    where('status', '==', 'approved'),
+                    where('role', '==', 'user')
+                );
+                
+                const activeWorkersSnapshot = await getDocs(activeWorkersQuery);
+                
+                // Get inactive workers
+                const inactiveWorkersQuery = query(
+                    collection(db, 'users'),
+                    where('status', '==', 'inactive'),
+                    where('role', '==', 'user')
+                );
+                
+                const inactiveWorkersSnapshot = await getDocs(inactiveWorkersQuery);
+                
+                // Update dashboard cards
+                const totalWorkers = activeWorkersSnapshot.size + inactiveWorkersSnapshot.size;
+                const activeWorkers = activeWorkersSnapshot.size;
+                const inactiveWorkers = inactiveWorkersSnapshot.size;
+                
+                // Calculate average performance (simplified)
+                let totalPerformance = 0;
+                let workerCount = 0;
+                
+                activeWorkersSnapshot.forEach(doc => {
+                    const userData = doc.data();
+                    // Simulate performance score (would be calculated from reports in a real app)
+                    const performance = Math.floor(Math.random() * 30) + 70; // 70-100 range
+                    totalPerformance += performance;
+                    workerCount++;
+                });
+                
+                const averagePerformance = workerCount > 0 ? Math.floor(totalPerformance / workerCount) : 0;
+                
+                // Update the UI
+                document.querySelectorAll('.dashboard-card-value')[0].textContent = totalWorkers;
+                document.querySelectorAll('.dashboard-card-value')[1].textContent = activeWorkers;
+                document.querySelectorAll('.dashboard-card-value')[2].textContent = inactiveWorkers;
+                document.querySelectorAll('.dashboard-card-value')[3].textContent = `${averagePerformance}%`;
+                
+                // In a real application, you would load the actual worker data here
+                // and populate the worker cards dynamically
+            } catch (error) {
+                console.error('Error loading workers data:', error);
+            }
+        }
+
+        // Add event listeners for filter dropdowns
+        document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+            dropdown.addEventListener('change', function() {
+                // In a real application, you would filter the workers list based on the selected options
+                console.log('Filter changed:', this.value);
+            });
+        });
+
+        // Add event listener for search input
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                // In a real application, you would search the workers list based on the input value
+                console.log('Search query:', this.value);
+            });
+        }
+
+        // Add event listeners for worker action buttons
+        document.querySelectorAll('.worker-actions button').forEach(button => {
+            button.addEventListener('click', function() {
+                const action = this.textContent.trim();
+                const workerCard = this.closest('.worker-card');
+                const workerName = workerCard.querySelector('.worker-name').textContent;
+                
+                console.log(`${action} clicked for ${workerName}`);
+                
+                // In a real application, you would implement the action functionality here
+                if (action.includes('View')) {
+                    // Show worker details
+                    alert(`Viewing details for ${workerName}`);
+                } else if (action.includes('Message')) {
+                    // Open message compose form
+                    alert(`Composing message to ${workerName}`);
+                } else if (action.includes('Suspend')) {
+                    // Confirm and suspend worker
+                    if (confirm(`Are you sure you want to suspend ${workerName}?`)) {
+                        alert(`${workerName} has been suspended.`);
+                    }
+                }
+            });
+        });
+
+        // Handle logout
+        document.querySelector('a[href="../index.html"]').addEventListener('click', async function(event) {
+            event.preventDefault();
+            try {
+                await signOut(auth);
+                window.location.href = '../index.html';
+            } catch (error) {
+                console.error('Error signing out:', error);
+            }
+        });
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+</html>
