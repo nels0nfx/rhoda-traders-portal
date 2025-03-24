@@ -97,17 +97,17 @@
                         </div>
                     </div>
                     <div class="dashboard-card-value">12</div>
-<div class="dashboard-card-label">
-                        <a href="/admin/shipments">Manage Shipments</a>
+                    <div class="dashboard-card-label">
+                        <a href="shipments.html">Manage Shipments</a>
                     </div>
                 </div>
             </div>
             
             <!-- Recent Applications -->
             <div class="dashboard-section">
-<div class="section-header">
+                <div class="section-header">
                     <h2>Recent Applications</h2>
-                    <a href="/admin/applications" class="btn btn-sm">View All</a>
+                    <a href="applications.html" class="btn btn-sm">View All</a>
                 </div>
                 
                 <div class="table-container">
@@ -184,9 +184,9 @@
             
             <!-- Worker Activity -->
             <div class="dashboard-section">
-<div class="section-header">
+                <div class="section-header">
                     <h2>Worker Activity</h2>
-                    <a href="/admin/workers" class="btn btn-sm">View All Workers</a>
+                    <a href="workers.html" class="btn btn-sm">View All Workers</a>
                 </div>
                 
                 <div class="table-container">
@@ -269,9 +269,9 @@
             
             <!-- Recent Reports -->
             <div class="dashboard-section">
-<div class="section-header">
+                <div class="section-header">
                     <h2>Recent Reports</h2>
-                    <a href="/admin/reports" class="btn btn-sm">View All Reports</a>
+                    <a href="reports.html" class="btn btn-sm">View All Reports</a>
                 </div>
                 
                 <div class="table-container">
@@ -344,29 +344,28 @@
                 </div>
                 
                 <div class="quick-actions">
-<div class="quick-actions">
-                    <a href="/admin/applications" class="quick-action-card">
+                    <a href="applications.html" class="quick-action-card">
                         <div class="quick-action-icon">
                             <i class="fas fa-user-plus"></i>
                         </div>
                         <div class="quick-action-title">Review Applications</div>
                     </a>
                     
-                    <a href="/admin/shipments" class="quick-action-card">
+                    <a href="shipments.html" class="quick-action-card">
                         <div class="quick-action-icon">
                             <i class="fas fa-box"></i>
                         </div>
                         <div class="quick-action-title">Manage Shipments</div>
                     </a>
                     
-                    <a href="/admin/reports" class="quick-action-card">
+                    <a href="reports.html" class="quick-action-card">
                         <div class="quick-action-icon">
                             <i class="fas fa-file-alt"></i>
                         </div>
                         <div class="quick-action-title">Review Reports</div>
                     </a>
                     
-                    <a href="/admin/messages" class="quick-action-card">
+                    <a href="messages.html" class="quick-action-card">
                         <div class="quick-action-icon">
                             <i class="fas fa-envelope"></i>
                         </div>

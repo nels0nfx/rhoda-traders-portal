@@ -344,29 +344,28 @@
                 </div>
                 
                 <div class="quick-actions">
-<div class="quick-actions">
-                    <a href="/admin/applications" class="quick-action-card">
+                    <a href="applications.html" class="quick-action-card">
                         <div class="quick-action-icon">
                             <i class="fas fa-user-plus"></i>
                         </div>
                         <div class="quick-action-title">Review Applications</div>
                     </a>
                     
-                    <a href="/admin/shipments" class="quick-action-card">
+                    <a href="shipments.html" class="quick-action-card">
                         <div class="quick-action-icon">
                             <i class="fas fa-box"></i>
                         </div>
                         <div class="quick-action-title">Manage Shipments</div>
                     </a>
                     
-                    <a href="/admin/reports" class="quick-action-card">
+                    <a href="reports.html" class="quick-action-card">
                         <div class="quick-action-icon">
                             <i class="fas fa-file-alt"></i>
                         </div>
                         <div class="quick-action-title">Review Reports</div>
                     </a>
                     
-                    <a href="/admin/messages" class="quick-action-card">
+                    <a href="messages.html" class="quick-action-card">
                         <div class="quick-action-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
