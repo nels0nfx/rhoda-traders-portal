@@ -22,17 +22,16 @@
                     <img src="../images/logo.jpeg" alt="Rhoda Traders Logo" class="logo">
                 </a>
             </div>
-            <ul class="dashboard-nav">
-                <li><a href="index.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="applications.html"><i class="fas fa-user-plus"></i> Applications</a></li>
-                <li><a href="workers.html"><i class="fas fa-users"></i> Workers</a></li>
-                <li><a href="shipments.html"><i class="fas fa-box"></i> Shipments</a></li>
-                <li><a href="reports.html"><i class="fas fa-file-alt"></i> Reports</a></li>
-                <li><a href="payments.html"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
-                <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
-                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
-                <li><a href="../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
+            
+                <li><a href="/admin" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="/admin/applications"><i class="fas fa-user-plus"></i> Applications</a></li>
+                <li><a href="/admin/workers"><i class="fas fa-users"></i> Workers</a></li>
+                <li><a href="/admin/shipments"><i class="fas fa-box"></i> Shipments</a></li>
+                <li><a href="/admin/reports"><i class="fas fa-file-alt"></i> Reports</a></li>
+                <li><a href="/admin/payments"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+                <li><a href="/admin/messages"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="/admin/settings"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="/"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             
         </div>
         
@@ -59,7 +58,7 @@
                     </div>
                     <div class="dashboard-card-value">15</div>
                     <div class="dashboard-card-label">
-                        <a href="applications.html">View Applications</a>
+                        <a href="/admin/applications">View Applications</a>
                     </div>
                 </div>
                 
@@ -72,7 +71,7 @@
                     </div>
                     <div class="dashboard-card-value">42</div>
                     <div class="dashboard-card-label">
-                        <a href="workers.html">Manage Workers</a>
+                        <a href="/admin/workers">Manage Workers</a>
                     </div>
                 </div>
                 
@@ -85,7 +84,7 @@
                     </div>
                     <div class="dashboard-card-value">8</div>
                     <div class="dashboard-card-label">
-                        <a href="reports.html">Review Reports</a>
+                        <a href="/admin/reports">Review Reports</a>
                     </div>
                 </div>
                 
@@ -98,7 +97,7 @@
                     </div>
                     <div class="dashboard-card-value">12</div>
                     <div class="dashboard-card-label">
-                        <a href="shipments.html">Manage Shipments</a>
+                        <a href="/admin/shipments">Manage Shipments</a>
                     </div>
                 </div>
             </div>
@@ -107,7 +106,7 @@
             <div class="dashboard-section">
                 <div class="section-header">
                     <h2>Recent Applications</h2>
-                    <a href="applications.html" class="btn btn-sm">View All</a>
+                    <a href="/admin/applications" class="btn btn-sm">View All</a>
                 </div>
                 
                 <div class="table-container">
@@ -186,7 +185,7 @@
             <div class="dashboard-section">
                 <div class="section-header">
                     <h2>Worker Activity</h2>
-                    <a href="workers.html" class="btn btn-sm">View All Workers</a>
+                    <a href="/admin/workers" class="btn btn-sm">View All Workers</a>
                 </div>
                 
                 <div class="table-container">
@@ -271,7 +270,7 @@
             <div class="dashboard-section">
                 <div class="section-header">
                     <h2>Recent Reports</h2>
-                    <a href="reports.html" class="btn btn-sm">View All Reports</a>
+                    <a href="/admin/reports" class="btn btn-sm">View All Reports</a>
                 </div>
                 
                 <div class="table-container">
@@ -344,34 +343,35 @@
                 </div>
                 
                 <div class="quick-actions">
-                    <a href="applications.html" class="quick-action-card">
+                    <a href="/admin/applications" class="quick-action-card">
                         <div class="quick-action-icon">
                             <i class="fas fa-user-plus"></i>
                         </div>
                         <div class="quick-action-title">Review Applications</div>
                     </a>
                     
-                    <a href="shipments.html" class="quick-action-card">
+                    <a href="/admin/shipments" class="quick-action-card">
                         <div class="quick-action-icon">
                             <i class="fas fa-box"></i>
                         </div>
                         <div class="quick-action-title">Manage Shipments</div>
                     </a>
                     
-                    <a href="reports.html" class="quick-action-card">
+                    <a href="/admin/reports" class="quick-action-card">
                         <div class="quick-action-icon">
                             <i class="fas fa-file-alt"></i>
                         </div>
                         <div class="quick-action-title">Review Reports</div>
                     </a>
                     
-                    <a href="messages.html" class="quick-action-card">
+                    <a href="/admin/messages" class="quick-action-card">
                         <div class="quick-action-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="quick-action-title">Send Messages</div>
                     </a>
                 </div>
+            </div>
             
             <!-- System Stats -->
             <div class="dashboard-section">

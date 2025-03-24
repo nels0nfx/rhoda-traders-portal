@@ -59,7 +59,7 @@
                     </div>
                     <div class="dashboard-card-value">15</div>
                     <div class="dashboard-card-label">
-                        <a href="applications.html">View Applications</a>
+                        <a href="/admin/applications">View Applications</a>
                     </div>
                 </div>
                 
@@ -72,7 +72,7 @@
                     </div>
                     <div class="dashboard-card-value">42</div>
                     <div class="dashboard-card-label">
-                        <a href="workers.html">Manage Workers</a>
+                        <a href="/admin/workers">Manage Workers</a>
                     </div>
                 </div>
                 
@@ -85,7 +85,7 @@
                     </div>
                     <div class="dashboard-card-value">8</div>
                     <div class="dashboard-card-label">
-                        <a href="reports.html">Review Reports</a>
+                        <a href="/admin/reports">Review Reports</a>
                     </div>
                 </div>
                 
@@ -98,7 +98,7 @@
                     </div>
                     <div class="dashboard-card-value">12</div>
                     <div class="dashboard-card-label">
-                        <a href="shipments.html">Manage Shipments</a>
+                        <a href="/admin/shipments">Manage Shipments</a>
                     </div>
                 </div>
             </div>
@@ -271,7 +271,7 @@
             <div class="dashboard-section">
                 <div class="section-header">
                     <h2>Recent Reports</h2>
-                    <a href="reports.html" class="btn btn-sm">View All Reports</a>
+                    <a href="/admin/reports" class="btn btn-sm">View All Reports</a>
                 </div>
                 
                 <div class="table-container">

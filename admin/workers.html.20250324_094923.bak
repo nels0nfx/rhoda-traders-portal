@@ -123,17 +123,15 @@
                 </a>
             </div>
             
-            <ul class="dashboard-nav">
-                <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="applications.html"><i class="fas fa-user-plus"></i> Applications</a></li>
-                <li><a href="workers.html" class="active"><i class="fas fa-users"></i> Workers</a></li>
-                <li><a href="shipments.html"><i class="fas fa-box"></i> Shipments</a></li>
-                <li><a href="reports.html"><i class="fas fa-file-alt"></i> Reports</a></li>
-                <li><a href="payments.html"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
-                <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
-                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
-                <li><a href="../index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-            </ul>
+                <li><a href="/admin"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="/admin/applications"><i class="fas fa-user-plus"></i> Applications</a></li>
+                <li><a href="/admin/workers" class="active"><i class="fas fa-users"></i> Workers</a></li>
+                <li><a href="/admin/shipments"><i class="fas fa-box"></i> Shipments</a></li>
+                <li><a href="/admin/reports"><i class="fas fa-file-alt"></i> Reports</a></li>
+                <li><a href="/admin/payments"><i class="fas fa-money-bill-wave"></i> Payments</a></li>
+                <li><a href="/admin/messages"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="/admin/settings"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="/"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </div>
         
         <!-- Dashboard Main Content -->
