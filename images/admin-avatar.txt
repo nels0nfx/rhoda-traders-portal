@@ -1,0 +1,2 @@
+This is a placeholder for the admin avatar image.
+Please create an admin-avatar.jpg file in the images folder.

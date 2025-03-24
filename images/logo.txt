@@ -1,0 +1,3 @@
+This is a placeholder for the Rhoda Traders logo.
+The actual logo can be downloaded from: https://files.catbox.moe/lopsf2.jpeg
+Please download this image manually and save it as logo.jpeg in the images folder.
